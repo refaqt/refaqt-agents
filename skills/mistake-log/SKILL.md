@@ -34,7 +34,7 @@ description: >-
 
 ## Entry format
 
-Use the consumer's mistake template when available (e.g. doqs `templates/mistake-entry.md`), or:
+Use this format (see also [`templates/adr.md`](../templates/adr.md) for ADRs):
 
 ```markdown
 # YYYY-MM-DD — Short title
