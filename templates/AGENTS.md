@@ -32,3 +32,17 @@ Repo-specific skills: [`.agents-local/skills/`](.agents-local/skills/).
 | Activity log | `.agents/skills/log/SKILL.md` |
 | Mistake log | `.agents/skills/mistake-log/SKILL.md` |
 | Maintain patterns | `.agents/skills/maintain-patterns/SKILL.md` |
+
+## DOQS machine repos (when `doqs/` submodule is present)
+
+1. Read `doqs/docs/architecture.md` for module layout, OKH, builds, simulation.
+2. After structural changes: `python doqs/scripts/validate_all.py` from repo root.
+3. Additional skills from this kit:
+
+| Skill | Path |
+| --- | --- |
+| DOQS naming | `.agents/skills/doqs-naming/SKILL.md` |
+| FreeCAD debugging | `.agents/skills/freecad/SKILL.md` |
+
+4. Repo-specific workflow rules → `.agents-local/rules/` (e.g. `doqs-workflow.md`).
+5. Copy [`templates/cursor-rule-doqs-naming.mdc`](templates/cursor-rule-doqs-naming.mdc) and [`templates/cursor-rule-freecad.mdc`](templates/cursor-rule-freecad.mdc) to `.cursor/rules/` when using Cursor.

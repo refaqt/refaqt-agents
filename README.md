@@ -10,7 +10,7 @@ Mount this repository as a git submodule at `.agents/` in each consumer repo (Cu
 | ----------------- | ------------------------------------------------------------------------------------ |
 | `rules/`          | Standing guidance (markdown). Consumers load via thin adapters and root `AGENTS.md`. |
 | `skills/`         | Process skills (`SKILL.md`).                                                         |
-| `templates/`      | Starter `AGENTS.md` and living-doc stubs for new repos.                              |
+| `templates/`      | Starter `AGENTS.md`, ADR template, Cursor rule stubs, and living-doc stubs for new repos. |
 | `bootstrap/docs/` | Same stubs, kept for kits that still reference `.cursor/bootstrap`.                  |
 
 ## Install into a consumer repo
@@ -38,6 +38,8 @@ Windows note: do not symlink root `AGENTS.md` into the submodule — use a thin 
 | `log`               | Add or edit `docs/log/` activity entries (any role)            |
 | `mistake-log`       | Read/write `docs/mistakes/`; promote prevention rules          |
 | `maintain-patterns` | Update the consumer's `.agents-local/skills/patterns/SKILL.md` |
+| `doqs-naming`       | DOQS module/BOM/OKH naming and validation (requires `doqs/` submodule) |
+| `freecad`           | FreeCAD debugging, workbench issues, assembly/Binder problems   |
 
 ## License
 
