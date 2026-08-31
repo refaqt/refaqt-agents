@@ -33,6 +33,8 @@ Windows note: do not symlink root `AGENTS.md` into the submodule — use a thin 
 
 ## Skills in this kit
 
+### Process (any role)
+
 | Skill               | When                                                           |
 | ------------------- | -------------------------------------------------------------- |
 | `log`               | Add or edit `docs/log/` activity entries (any role)            |
@@ -40,6 +42,20 @@ Windows note: do not symlink root `AGENTS.md` into the submodule — use a thin 
 | `maintain-patterns` | Update the consumer's `.agents-local/skills/patterns/SKILL.md` |
 | `doqs-naming`       | DOQS module/BOM/OKH naming and validation (requires `doqs/` submodule) |
 | `freecad`           | FreeCAD debugging, workbench issues, assembly/Binder problems   |
+
+### Role skills
+
+Organized under `skills/{category}/{skill-name}/SKILL.md` for cooperative open-hardware ventures.
+
+| Category | Skills |
+| --- | --- |
+| `business/` | `business-development`, `finance`, `marketing`, `purchasing`, `sales` |
+| `engineering/` | `software-development`, `mechanical-engineering`, `electrical-engineering`, `industrial-automation`, `mechatronic-engineering`, `optical-engineering`, `systems-engineering`, `production-engineering`, `sysml-v2` |
+| `supply-chain/` | `supply-chain-management` |
+| `compliance/` | `product-compliance` (CE marking, machinery safety, conformity assessment) |
+| `legal/` | `legal-advice`, `belgian-law`, `european-law`, `us-law`, `belgian-fiscal-tax`, `belgian-corporate-law` |
+| `governance/` | `open-source-community`, `sociocracy`, `agile` |
+| `web3/` | `web3-blockchain` |
 
 ## License
 
