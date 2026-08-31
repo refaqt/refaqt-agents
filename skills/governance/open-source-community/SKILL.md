@@ -26,7 +26,7 @@ Use this skill to grow healthy contributor ecosystems for open hardware, firmwar
 - Statutory cooperative membership → `belgian-corporate-law`, `sociocracy`
 - License selection final say → `legal-advice`
 - Technical architecture → engineering skills
-- Token incentives → `web3-blockchain` (careful coupling)
+- Token incentives → `token-engineering` (coordinate `belgian-fiscal-tax`, counsel)
 
 ## Core principles
 
@@ -81,4 +81,4 @@ Use this skill to grow healthy contributor ecosystems for open hardware, firmwar
 
 - Publishing CAD/BOM invites forks — nurture downstream with semver and migration guides.
 - Safety-critical repos need tighter merge gates (`product-compliance` awareness in CONTRIBUTING).
-- Don't promise governance tokens without `web3-blockchain` and counsel review.
+- Don't promise governance tokens without `token-engineering`, `web3-blockchain`, and counsel review.

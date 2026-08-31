@@ -17,6 +17,8 @@ Use this skill for tax and VAT questions in Belgian operations. Statutory accoun
 - Import duties interaction with customs (with `supply-chain-management`)
 - Deductible vs. non-deductible expenses framework (consult accountant)
 - Cooperative tax treatment overview (links to `belgian-corporate-law`)
+- Token issuance, vesting, redemption, and contributor reward tax awareness → `token-engineering`
+- **VAT on token-for-work:** non-cash consideration, barter, redemption value, invoicing when tokens compensate services
 - R&D incentives awareness (not grant writing)
 - Payroll withholding concepts (not HR law)
 - Invoice content requirements for VAT (operational checklist)
@@ -63,6 +65,7 @@ Use this skill for tax and VAT questions in Belgian operations. Statutory accoun
 | Need | Skill |
 | --- | --- |
 | Corporate form | `belgian-corporate-law` |
+| Token system design | `token-engineering` |
 | Legal contracts | `legal-advice`, `belgian-law` |
 | EU VAT directives | `european-law` |
 | Pricing | `finance` |

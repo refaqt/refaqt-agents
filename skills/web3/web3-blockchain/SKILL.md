@@ -15,7 +15,7 @@ Use this skill for **sober** evaluation and implementation of blockchain-related
 - Use-case fit analysis (when **not** to use a blockchain)
 - Architecture options (L1/L2, private consortium, IPFS + hashes)
 - Smart contract functional specs (high level)
-- Governance token **design patterns** ( voting, delegation, caps) — not securities advice
+- Governance token **implementation** on-chain (voting, delegation, caps) — detailed tokenomics → `token-engineering`
 - Supply chain provenance and audit trails (hash anchoring)
 - Wallet/key management operational security
 - Integration with `software-development` stacks
@@ -23,6 +23,7 @@ Use this skill for **sober** evaluation and implementation of blockchain-related
 
 **Does NOT own:**
 - Securities law, MiCA, SEC determinations → `legal-advice`, `european-law`, `us-law`, human counsel
+- Token system design and tax-aware tokenomics → `token-engineering`
 - Tax treatment of tokens → `belgian-fiscal-tax`, counsel
 - Cooperative statutory governance → `belgian-corporate-law`, `sociocracy`
 - Marketing hype or investment pitches → `marketing`, `business-development`
@@ -57,6 +58,8 @@ Use this skill for **sober** evaluation and implementation of blockchain-related
 
 ### Token/governance design outline (pre-legal)
 
+Coordinate with `token-engineering` for full tokenomics; this skill covers chain-side concerns:
+
 - Utility vs. governance separation
 - Vesting, caps, no-profit expectation for members
 - Multisig admin and upgrade policy
@@ -78,6 +81,7 @@ Use this skill for **sober** evaluation and implementation of blockchain-related
 | Need | Skill |
 | --- | --- |
 | Legal | `legal-advice`, `european-law`, `us-law` |
+| Token design | `token-engineering` |
 | Tax | `belgian-fiscal-tax` |
 | Governance | `sociocracy`, `belgian-corporate-law` |
 | Community | `open-source-community` |

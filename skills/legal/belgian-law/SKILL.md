@@ -33,6 +33,7 @@ Use this skill when Belgian jurisdiction governs or the venture operates from Be
 - **Federal complexity:** Belgium has federal/regional/community competences; identify which matter (economy, employment, environment).
 - **Multilingual:** Contracts and labels may need FR/NL (and DE in some regions) — coordinate `marketing`, `product-compliance`.
 - **Cooperative form matters:** Legal shape affects liability and governance — tight link to `belgian-corporate-law`.
+- **Token and incentive systems:** Consumer-facing token claims and promotions → `token-engineering`, `belgian-fiscal-tax`.
 - **Open hardware still Belgian merchant:** Consumer guarantees and product safety apply.
 
 ## Key workflows
@@ -63,6 +64,7 @@ Use this skill when Belgian jurisdiction governs or the venture operates from Be
 | EU frameworks | `european-law` |
 | Tax | `belgian-fiscal-tax` |
 | Cooperative statutes | `belgian-corporate-law` |
+| Token / incentive systems | `token-engineering` |
 | CE marking | `product-compliance` |
 | General triage | `legal-advice` |
 
