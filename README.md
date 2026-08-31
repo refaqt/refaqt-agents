@@ -55,7 +55,7 @@ Organized under `skills/{category}/{skill-name}/SKILL.md` for cooperative open-h
 | `compliance/` | `product-compliance` (CE marking, machinery safety, conformity assessment) |
 | `legal/` | `legal-advice`, `belgian-law`, `european-law`, `us-law`, `belgian-fiscal-tax`, `belgian-corporate-law` |
 | `governance/` | `open-source-community`, `sociocracy`, `agile` |
-| `web3/` | `web3-blockchain` |
+| `web3/` | `web3-blockchain`, `token-engineering` |
 
 ## License
 

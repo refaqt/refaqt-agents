@@ -17,6 +17,7 @@ Use this skill for the **legal form and governance skeleton** of a Belgian coope
 - Member admission, withdrawal, expulsion (process outline)
 - General assembly and board competencies (high level)
 - Capital, shares/parts, and member financial contributions
+- Token or contribution-credit schemes vs statutory parts/shares — coordinate `token-engineering`
 - Director liability awareness (not defense strategy)
 - Statutory publication and registry (BS/BCE) requirements overview
 - Merge/split/liquidation triggers → always counsel
@@ -61,6 +62,7 @@ Align with `sociocracy` circles without contradicting statutes.
 | Need | Skill |
 | --- | --- |
 | Tax on contributions | `belgian-fiscal-tax` |
+| Token and incentive design | `token-engineering` |
 | Operating governance | `sociocracy` |
 | Contracts | `legal-advice` |
 | EU cooperative context | `european-law` |

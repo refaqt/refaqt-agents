@@ -82,7 +82,7 @@ Use this skill to **frame legal questions**, identify risk areas, and **route** 
 | EU | `european-law` |
 | US | `us-law` |
 | CE | `product-compliance` |
-| Web3 tokens | `web3-blockchain` + counsel |
+| Web3 tokens | `token-engineering`, `web3-blockchain` + counsel |
 
 ## Practical constraints
 

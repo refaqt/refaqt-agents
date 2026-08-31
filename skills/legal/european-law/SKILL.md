@@ -67,7 +67,7 @@ Use this skill for EU-level rules that harmonize across member states: product r
 | CE execution | `product-compliance` |
 | Belgium-specific | `belgian-law` |
 | Contracts | `legal-advice` |
-| Web3 tokens EU | `web3-blockchain`, counsel (MiCA etc.) |
+| Web3 tokens EU | `token-engineering`, `web3-blockchain`, counsel (MiCA etc.) |
 
 ## Practical constraints
 
