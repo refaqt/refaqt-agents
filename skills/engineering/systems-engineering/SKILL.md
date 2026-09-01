@@ -25,7 +25,7 @@ Use this skill to hold the whole system: requirements flow down, evidence flows 
 - CE technical file authorship execution → `product-compliance` (close collaboration)
 - Contractual requirements → `legal-advice`, `sales`
 - Financial approval → `finance`, `sociocracy`
-- Detailed SysML modeling mechanics → `sysml-v2` (this skill consumes/produces those artifacts)
+- Detailed SysML v2 modeling mechanics → `sysml-v2` (this skill consumes/produces those artifacts; never SysML v1)
 
 ## Core principles
 
@@ -65,7 +65,7 @@ Document options, criteria weights, scores, sensitivity, recommendation — stor
 - INCOSE SE Handbook concepts
 - ISO/IEC/IEEE 15288 lifecycle
 - ISO 12100 risk assessment (input to safety)
-- MBSE relationship → `sysml-v2`
+- MBSE relationship → SysML v2 only (`sysml-v2`; not SysML v1)
 
 ## Cross-links
 
