@@ -18,12 +18,13 @@ Mount this repository as a git submodule at `.agents/` in each consumer repo (Cu
 ```bash
 # From the consumer repo root (after any existing .agents/ content is moved out)
 git submodule add https://github.com/refaqt/refaqt-agents.git .agents
-git submodule update --init --recursive
 ```
+
+Set `branch = main` on tooling submodules in `.gitmodules` (`doqs` and/or `.agents`). Copy helpers from [`doqs/templates/setup-tooling/`](https://github.com/refaqt/doqs/tree/main/templates/setup-tooling) to the **repo root** (never run them from that templates folder). After clone, agents run `bash setup-tooling.sh`.
 
 Then:
 
-1. Copy or adapt [`templates/AGENTS.md`](templates/AGENTS.md) to the **repo root** as `AGENTS.md` (add a "This repository" section).
+1. Copy or adapt [`templates/AGENTS.md`](templates/AGENTS.md) to the **repo root** as `AGENTS.md` (keep the **First step (required)** block; add a "This repository" section).
 2. Keep root `CLAUDE.md` as a one-liner pointing at `AGENTS.md`.
 3. Add thin Cursor adapters under `.cursor/rules/*.mdc` that point at `.agents/rules/*.md` (see consumer examples in aqtuator).
 4. Put **repo-specific** skills under `.agents-local/skills/` (not inside the submodule).

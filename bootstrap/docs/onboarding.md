@@ -9,7 +9,7 @@ How to set up, run, and navigate this repository.
 ## Setup
 
 1. Clone the repository (with submodules): `git clone --recurse-submodules …`
-2. If `.agents/` is empty: `git submodule update --init --recursive`
+2. Copy helpers from `doqs/templates/setup-tooling/` to the **repo root** if this is a new repo (never run them from the templates folder). Agents: `bash setup-tooling.sh`. Humans on Windows may double-click `setup-tooling.bat`.
 3. [Install dependencies and configure the environment.]
 
 ## Where to read next
