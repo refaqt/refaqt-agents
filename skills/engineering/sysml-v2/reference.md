@@ -1,18 +1,17 @@
 # SysML v2 reference — keep v1 out of the model
 
-Read this file when writing or reviewing SysML. The workflow is in [SKILL.md](SKILL.md).
+Read this file when you write or review SysML. The workflow is in [SKILL.md](SKILL.md).
 
-**Every example, keyword, and diagram type below that is labeled v1 is forbidden
-in artifacts this skill produces.** Translate, then write SysML v2.
+**Every example, keyword, and diagram type below that is labeled v1 is forbidden in artifacts this skill produces.** Translate, then write SysML v2.
 
 ## Language identity
 
 | | SysML v1 (do not use) | SysML v2 (use this) |
 | --- | --- | --- |
-| Foundation | UML 2 + SysML profile/stereotypes | **KerML** (Kernel Modeling Language) |
+| Foundation | Unified Modeling Language (UML) 2 + SysML profile/stereotypes | **KerML** (Kernel Modeling Language) |
 | What a “block” is | Stereotyped UML class | Does not exist — use **`part def` / `part`** |
-| Canonical source | Proprietary tool project + XMI | **Textual SysML v2** (`.sysml`), optional views |
-| Structure diagrams | BDD, IBD | Definition/usage text + SysML v2 interconnection/general views |
+| Main source | Proprietary tool project + XML Metadata Interchange (XMI) | **Textual SysML v2** (`.sysml`), optional views |
+| Structure diagrams | Block definition diagram (BDD), internal block diagram (IBD) | Definition/usage text + SysML v2 interconnection/general views |
 | Ports | Flow / proxy / full ports | **`port def` / `port`** with items and features |
 | Values | Value properties, value types | **`attribute def` / `attribute`** |
 | Constraints | Constraint blocks, parametrics | **`constraint def`**, `assert constraint` |
@@ -21,11 +20,11 @@ in artifacts this skill produces.** Translate, then write SysML v2.
 | Relationships | UML dependency + stereotypes | SysML v2 `satisfy`, `verify`, `allocate`, `connect`, `flow` |
 | Specialization | UML generalization | **`:>`** (specialization), **`:>>`** (redefinition) |
 
-Unqualified “SysML” means **SysML v2**. Do not emit a hybrid.
+When this skill says “SysML” with no version, it means **SysML v2**. Do not mix v1 and v2 in one model.
 
 ## Forbidden SysML v1 constructs
 
-Never write these as the model (names, stereotypes, diagram types, or serialization):
+Never write these as the model (names, UML tags called stereotypes, diagram types, or file format):
 
 - `block`, `«block»`, block definition diagram (BDD), internal block diagram (IBD)
 - Part property, reference property, value property, constraint property
@@ -47,7 +46,7 @@ If an input uses any of the above, rewrite it in SysML v2 before committing.
 | Part property | `part` (usage) |
 | Reference property | `ref part` (or other `ref` usage, as appropriate) |
 | Value property | `attribute` |
-| Value type | `attribute def`
+| Value type | `attribute def` |
 | Constraint block | `constraint def` |
 | Constraint property | `assert constraint` / constraint usage |
 | Flow port / proxy / full port | `port def` / `port` |
@@ -66,9 +65,9 @@ If an input uses any of the above, rewrite it in SysML v2 before committing.
 | BDD / IBD | SysML v2 textual definition/usage + views |
 | Viewpoint (v1) | `viewpoint def` / `viewpoint`, `view def` / `view` |
 
-## Canonical SysML v2 textual shape
+## Required SysML v2 textual shape
 
-Use definition/usage, not blocks. This is the expected shape (illustrative):
+Use definition/usage, not blocks. This is the expected shape (example only):
 
 ```sysml
 package VehicleContext {
@@ -118,12 +117,8 @@ BDD / IBD as source      // forbidden — use .sysml + SysML v2 views
 1. State that this skill models in **SysML v2 only**.
 2. Translate the intent with the table above.
 3. Produce SysML v2 text (and SysML v2 views if needed).
-4. Do not leave v1 keywords in comments, diagram titles, or file names as if they
-   were the language.
+4. Do not leave v1 keywords in comments, diagram titles, or file names as if they were the language.
 
 ## Standards and further reading
 
-Prefer the OMG SysML v2 and KerML specifications over SysML v1 textbooks, UML
-references, or vendor v1 tutorials. When searching, include **“SysML v2”** and
-**KerML**; discard hits that are SysML 1.x / UML 2 unless you are only mapping
-legacy terms.
+Prefer the Object Management Group (OMG) SysML v2 and KerML specifications over SysML v1 textbooks, UML references, or vendor v1 tutorials. When searching, include **“SysML v2”** and **KerML**. Ignore search results that are SysML 1.x / UML 2 unless you are only mapping old terms.

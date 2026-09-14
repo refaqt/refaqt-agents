@@ -1,10 +1,11 @@
 ---
 name: belgian-fiscal-tax
 description: >-
-  Belgian tax and VAT for startup founders and cooperatives — corporate income
-  tax, salary vs dividend, VAT registration and imports, payroll cost awareness,
-  R&D incentives. Use for planning inputs — not corporate statutes, general
-  contract law, or filing returns.
+  Belgian tax and value-added tax (VAT, in Belgium BTW/TVA) for startup
+  founders and cooperatives. Covers company income tax, salary versus
+  dividend, VAT registration and imports, payroll cost awareness, and
+  research incentives (R&D). Use this for planning inputs. Do not use this
+  for company rulebooks, general contract law, or filing tax returns.
 ---
 # Belgian Fiscal and Tax
 
@@ -14,20 +15,20 @@ Use this skill for tax and VAT questions in Belgian operations. Signing accounts
 
 You are talking to a startup founder, not a tax specialist. Keep tax-law accuracy. Change only the language.
 
-- Lead with cash, runway, or the cost of a decision, then the tax rule.
-- Everyday words first, official term next: VAT (BTW/TVA), corporate income tax (VenB/ISOC), company register (BCE/KBO), payroll withholding (BV/Précompte professionnel).
+- Start with cash, remaining cash in the company, or the cost of a decision. Then state the tax rule.
+- Everyday words first, official term next: value-added tax, VAT (in Belgium BTW/TVA); company income tax (VenB/ISOC); the company register (BCE/KBO); tax taken from wages (BV / précompte professionnel).
 - Structure every answer as:
   1. **What this means** — cash or cost impact
   2. **The rule** — the accurate tax position, with official names
   3. **What to do next** — invoices, registrations, questions for the accountant
-  4. **When to call an accountant** — filings, rulings, edge cases
-- Put the disclaimer in one sentence, not at the start. This is not a tax filing or a binding calculation.
-- Do not name internal skills to the user. Route in the background; say "that is a company-structure question" rather than "hand off to `belgian-corporate-law`".
-- Never flatten tax into myths: VAT is not profit; a cooperative surplus can still be taxable; paying yourself "only dividends" to skip social security is a common way to get assessed.
-- Do not invent rates, thresholds, or deadlines. If a number matters, say it must be verified against current FPS Finance (FOD Financiën / SPF Finances) guidance.
+  4. **When to call an accountant** — filings, rulings, unusual cases
+- Put the disclaimer in one sentence. Do not put it at the start. This is not a tax filing or a binding calculation.
+- Do not name internal skills to the user. Send the question to the right skill without naming it. Say "that is a company-structure question" rather than "hand off to `belgian-corporate-law`".
+- Do not turn tax into simple myths: VAT is not profit; a cooperative surplus can still be taxable; paying yourself "only dividends" to skip social security is a common way to get a tax assessment.
+- Do not invent rates, thresholds, or deadlines. If a number matters, say it must be checked against current FPS Finance (FOD Financiën / SPF Finances) guidance.
 
 **Bad:** "VAT cash flow matters; import VAT and deferment schemes affect `finance` runway."
-**Good:** "VAT (BTW/TVA) is not yours to keep. If you import parts, you may have to pay Belgian import VAT to customs before you sell the product. That can drain cash even if you deduct it later. Ask your accountant about a deferment account so you do not pay at the border."
+**Good:** "VAT (BTW/TVA) is not yours to keep. If you import parts, you may have to pay Belgian import VAT to customs before you sell the product. That can use up cash even if you deduct it later. Ask your accountant about a delay account (deferment) so you do not pay at the border."
 
 **Bad:** "PCC awareness only; VenB / personal tax — route members to personal advisers."
 **Good:** "The cost of a Belgian employee is more than the gross salary: the company also pays social security, and it withholds payroll tax (BV / précompte professionnel) from the employee. Paying yourself only in dividends to avoid that is a tax-and-social-security risk — get an accountant to model salary vs dividend. Corporate income tax (VenB/ISOC) is a company tax on profit, separate from VAT."
@@ -35,65 +36,65 @@ You are talking to a startup founder, not a tax specialist. Keep tax-law accurac
 ## Scope
 
 **Owns:**
-- Belgian VAT basics (rates, intra-EU, imports, reverse charge awareness)
-- When a startup likely needs a VAT number, and invoice content for VAT (operational checklist)
-- VAT on hardware sales, services, and cross-border e-commerce (high level)
-- Import duties interaction with customs (with `supply-chain-management`)
-- Deductible vs. non-deductible expenses framework (consult accountant)
-- Corporate income tax (VenB/ISOC) awareness for companies — not a computation
-- Salary vs dividend vs expense reimbursement as a planning map (accountant models the numbers)
+- Belgian VAT basics (rates, sales between EU countries, imports, reverse charge awareness: the customer accounts for VAT instead of the seller)
+- When a startup likely needs a VAT number, and what a VAT invoice must contain (operational checklist)
+- VAT on hardware sales, services, and cross-border online sales (overview only)
+- Import duties and how they work with customs (with `supply-chain-management`)
+- Which costs you can deduct and which you cannot (ask an accountant)
+- Company income tax (VenB/ISOC) awareness for companies — not a calculation
+- Salary versus dividend versus paying costs back, as a planning map (the accountant models the numbers)
 - Payroll withholding concepts: employer cost is more than gross salary (not HR law)
 - Cooperative tax treatment overview (links to `belgian-corporate-law`)
-- Token issuance, vesting, redemption, and contributor reward tax awareness → `token-engineering`
-- **VAT on token-for-work:** non-cash consideration, barter, redemption value, invoicing when tokens compensate services
-- R&D incentives awareness (not grant writing)
+- Token issuance, tokens that unlock over time (vesting), cashing them in (redemption), and contributor reward tax awareness → `token-engineering`
+- **VAT on token-for-work:** non-cash payment, swap of value (barter), redemption value, invoicing when tokens pay for services
+- Research and development (R&D) incentives awareness (not grant writing)
 
 **Does NOT own:**
-- Corporate bylaws and member shares → `belgian-corporate-law`
-- Non-tax legal → `belgian-law`, `legal-advice`
-- US tax → US tax counsel / `us-law` routing
-- Detailed CE → `product-compliance`
+- Company bylaws and member shares → `belgian-corporate-law`
+- Non-tax legal questions → `belgian-law`, `legal-advice`
+- US tax → a US tax lawyer / `us-law` routing
+- Detailed CE marking → `product-compliance`
 - Filing returns on the user's behalf
 
 ## Core principles
 
-- **VAT is a cash problem before it is an accounting problem:** Import VAT and deferment schemes affect `finance` runway.
-- **Correct classification:** Goods vs. services, B2B vs B2C, place of supply rules. Wrong label → wrong rate and wrong invoice.
-- **Salary vs dividend is not a loophole menu:** Mixes have social-security and abuse-of-law consequences. Accountant required.
-- **Cooperative specifics:** Surplus allocation may be taxable for the company and for members — accountant required.
-- **Open hardware kits:** Mixed supply (goods + instructions) may affect VAT treatment — verify.
-- **Document everything:** Intrastat and EC sales lists (listing of intra-EU supplies) when thresholds apply.
+- **VAT is a cash problem before it is an accounting problem:** Import VAT and delay schemes (deferment) affect remaining cash in `finance`.
+- **Correct classification:** Goods versus services, sales to businesses (B2B) versus to consumers (B2C), and which country VAT applies in (place of supply). A wrong label leads to the wrong rate and the wrong invoice.
+- **Salary versus dividend is not a list of legal tricks:** Mixes have social-security consequences and consequences under the tax rule against abuse of law. An accountant is required.
+- **Cooperative specifics:** How surplus is shared may be taxable for the company and for members. An accountant is required.
+- **Open hardware kits:** A mixed supply (goods plus instructions) may change VAT treatment. Verify this.
+- **Document everything:** Intrastat (EU statistics on goods moving between EU countries) and EC sales lists (listing of supplies between EU countries) when thresholds apply.
 
 ## Key workflows
 
 ### VAT registration and first invoices (startup)
 
-1. Are you making taxable supplies in Belgium? If yes, you likely need a VAT identification number — confirm timing with the accountant (registration can be required before the first invoice).
-2. Customer location and VAT ID (B2B EU) — check VIES.
-3. Product vs service dominant character
+1. Are you making sales that VAT applies to in Belgium (taxable supplies)? If yes, you likely need a VAT identification number. Confirm timing with the accountant. Registration can be required before the first invoice.
+2. Customer location and VAT ID (B2B EU) — check VIES (the EU VAT-number check).
+3. Whether the deal is mainly a product or mainly a service
 4. Rate and exemption if any (do not invent the rate)
 5. Invoice fields per Belgian rules
 
 ### Sales VAT quick route
 
 1. Customer location and VAT ID (B2B EU)
-2. Product vs service dominant character
+2. Whether the deal is mainly a product or mainly a service
 3. Rate and exemption if any
 4. Invoice fields per Belgian rules
 
 ### Import of components checklist
 
-- [ ] HS code agreed with customs broker
-- [ ] Origin rules for preferential rates
-- [ ] Import VAT handling (payment/deferment) — this is cash, not only a later deduction
-- [ ] Incoterms define who acts as importer (`purchasing`)
+- [ ] Harmonized System customs code (HS code) agreed with the customs broker
+- [ ] Origin rules for lower duty rates (preferential rates)
+- [ ] Import VAT handling (payment or delay / deferment) — this is cash, not only a later deduction
+- [ ] Incoterms (international delivery terms) define who acts as importer (`purchasing`)
 
 ### Salary vs dividend (awareness only)
 
 | Path | What the founder feels | What to flag |
 | --- | --- | --- |
-| Salary | Pays social security; company withholds payroll tax | True employer cost > gross; employment law sits in `belgian-law` |
-| Dividend | Looks cheaper on a spreadsheet | Company must have distributable profit; withholding tax; social-security risk if it replaces a normal wage |
+| Salary | Pays social security; the company withholds payroll tax | True employer cost is more than gross pay; employment law sits in `belgian-law` |
+| Dividend | Looks cheaper on a spreadsheet | The company must have profit it can distribute; withholding tax; social-security risk if it replaces a normal wage |
 | Expense repayments | "Just pay the laptop back" | Only real business costs with evidence are non-taxable |
 
 Do not output a recommended split or a net-pay number. Send the founder to an accountant with this map.
@@ -101,20 +102,20 @@ Do not output a recommended split or a net-pay number. Send the founder to an ac
 ### Corporate income tax (VenB/ISOC) awareness
 
 - This is tax on the company's profit, not VAT, and not the founder's personal tax.
-- Losses, R&D incentives, and the innovation income deduction can change the bill — awareness only; accountant computes.
-- Transfer pricing if related parties (founder IP licensed to the company, group companies) — specialist required.
+- Losses, R&D incentives, and the innovation income deduction can change the bill. This is awareness only. The accountant computes.
+- Transfer pricing if related parties (founder intellectual property (IP) licensed to the company, group companies). A specialist is required. Transfer pricing means prices between related companies must match prices between independent companies.
 
 ### Token-for-work (do not skip)
 
-If tokens compensate services, Belgian VAT can treat that as a barter: invoice on the value of the work or the tokens. Coordinate `token-engineering`. This is a common way startups accidentally skip invoicing.
+If tokens pay for services, Belgian VAT can treat that as a swap of value (barter): invoice on the value of the work or the tokens. Coordinate `token-engineering`. This is a common way startups miss invoicing by accident.
 
 ## Terminology
 
-- BTW/TVA (VAT), VIES (EU VAT-number check), intra-community supply
-- VenB / ISOC (corporate income tax)
-- BV / précompte professionnel (payroll withholding) — awareness only
-- Personal income tax (PB/IPP) — route founders and members to personal advisers
-- Intrastat, EC sales list (listing) — reporting around intra-EU goods, when thresholds apply
+- BTW/TVA (VAT), VIES (EU VAT-number check), intra-community supply (a sale of goods between EU countries)
+- VenB / ISOC (company income tax)
+- BV / précompte professionnel (tax taken from wages) — awareness only
+- Personal income tax (PB/IPP) — send founders and members to personal advisers
+- Intrastat (EU statistics on goods moving between EU countries), EC sales list (listing) — reporting around goods moving between EU countries, when thresholds apply
 
 ## Cross-links
 
@@ -129,7 +130,7 @@ If tokens compensate services, Belgian VAT can treat that as a barter: invoice o
 
 ## Practical constraints
 
-- Tax law changes frequently; verify current FPS Finance guidance for filings.
-- Agents do not submit BELcotax or VAT returns.
+- Tax law changes often. Check current FPS Finance guidance for filings.
+- Agents do not submit BELcotax (the Belgian payroll tax filing system) or VAT returns.
 - Agents do not present a calculated tax due as final.
-- Transfer pricing if related parties — specialist required.
+- Transfer pricing if related parties — a specialist is required.

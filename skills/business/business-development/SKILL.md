@@ -1,85 +1,87 @@
 ---
 name: business-development
 description: >-
-  Explore markets, partnerships, business models, and venture strategy for open-source
-  hardware cooperatives. Use when evaluating opportunities, drafting value propositions,
-  partner outreach, competitive landscape, pricing strategy, or go-to-market hypotheses.
+  Explore markets, partnerships, ways to earn money (business models), and
+  long-term plans for open-source hardware cooperatives. Use when you judge an
+  opportunity, write what you offer (value proposition), contact a partner,
+  compare competitors, set a price idea, or plan how to reach customers
+  (go-to-market).
 ---
 # Business Development
 
-Use this skill when shaping *what* the venture pursues and *with whom* — not when executing day-to-day sales, marketing campaigns, finance, or legal contracts.
+Use this skill when you decide *what* the venture should pursue and *with whom*. Do not use it for daily sales, marketing campaigns, money tracking, or legal contracts.
 
 ## Scope
 
 **Owns:**
-- Market and customer discovery (problems, segments, willingness to pay)
-- Partnership and ecosystem mapping (suppliers, integrators, communities, funders)
-- Business model design and iteration (revenue, cost structure, open-source trade-offs)
-- Competitive and alternative analysis
-- High-level pricing and packaging hypotheses
-- Opportunity evaluation frameworks and decision memos
+- Finding markets and customers (problems, customer groups, and whether they will pay)
+- Mapping partners and the wider network (suppliers, companies that integrate our products, communities, funders)
+- Designing and improving how we earn money (revenue, cost structure, and the trade-offs of open source)
+- Comparing competitors and other options customers might choose
+- High-level ideas for prices and how we package the offer
+- Simple ways to judge opportunities (evaluation frameworks), and short decision notes (decision memos)
 
 **Does NOT own (hand off):**
-- Contract drafting or regulatory interpretation → `legal-advice`, jurisdiction skills
-- Product CE marking and conformity → `product-compliance`
-- Detailed BOM costing and procurement → `finance`, `purchasing`
-- Campaign execution and brand → `marketing`
-- Pipeline and deal closing → `sales`
-- Technical feasibility and architecture → engineering skills, `systems-engineering`
+- Writing contracts or reading regulations → `legal-advice`, jurisdiction skills
+- Product CE marking (EU safety mark) and conformity → `product-compliance`
+- Detailed bill of materials (BOM) costing and buying parts → `finance`, `purchasing`
+- Running campaigns and brand work → `marketing`
+- The deal list (pipeline) and closing deals → `sales`
+- Whether we can build it (technical feasibility) and the architecture → engineering skills, `systems-engineering`
 - Supply continuity and logistics → `supply-chain-management`
 
 ## Core principles (cooperative + open hardware)
 
-- **Open by default:** Prefer models that strengthen the commons (documentation, designs, interoperability) while sustaining the cooperative — do not assume closed IP is the only path to revenue.
-- **Member value alignment:** Evaluate opportunities against cooperative purpose, member benefit, and long-term resilience, not only short-term margin.
-- **Hardware reality:** BOM cost, lead times, safety, and serviceability constrain every business model; flag these early to `finance` and engineering skills.
-- **Durable over product-specific:** Frame analysis so it survives pivoting products or business models.
-- **Evidence over narrative:** Separate validated learning from assumptions; document hypotheses and kill criteria.
+- **Open by default:** Prefer models that make the shared public designs stronger (the commons: documentation, designs, products that work with others). Those models should also keep the cooperative alive. Do not assume that closed intellectual property (IP) is the only way to earn money.
+- **Member value alignment:** Judge opportunities against the cooperative's purpose, member benefit, and long-term strength. Do not judge only by short-term profit.
+- **Hardware reality:** The bill of materials (BOM) cost, wait times, safety, and how easy the product is to service all limit every business model. Flag these early to `finance` and engineering skills.
+- **Durable over product-specific:** Write the analysis so it still helps if the product or the way we earn money changes.
+- **Evidence over story:** Separate what you have tested from what you assume. Write down your guesses and the conditions that would stop the idea.
 
 ## Key workflows
 
 ### Opportunity screening
 
-1. Problem and segment — who hurts, how much, and why now?
-2. Fit — does this align with cooperative capabilities and open-hardware ethos?
-3. Economics — rough TAM/SAM/SOM, unit economics sketch, capex/opex implications
-4. Ecosystem — partners, competitors, substitutes, community pull
+1. Problem and customer group — who has the problem, how serious it is, and why now?
+2. Fit — does this match the cooperative's skills and open-hardware values?
+3. Money — rough size of the whole market (TAM), the part we can serve (SAM), and the part we can realistically win (SOM). Sketch cost and profit per unit. Note one-time investment (capex) and running costs (opex).
+4. Wider network — partners, competitors, substitutes, and whether the community wants this
 5. Risks — technical, regulatory (`product-compliance`), legal (jurisdiction skills), supply (`supply-chain-management`)
-6. Recommendation — pursue, experiment, partner, or defer — with explicit next steps
+6. Recommendation — go ahead, run a small test, partner, or wait — with clear next steps
 
 ### Partnership evaluation
 
 | Question | Why it matters |
 | --- | --- |
-| What do they need from us vs. what we need from them? | Avoid asymmetric lock-in |
-| Does the deal preserve open documentation and member governance? | Cooperative integrity |
-| Exclusivity, IP, and data terms? | Escalate to `legal-advice` |
-| Can we prototype or pilot before committing? | De-risk hardware ventures |
+| What do they need from us, and what do we need from them? | Avoid a deal that locks only one side in |
+| Does the deal keep documentation open and keep members in control? | Cooperative integrity |
+| Are there exclusivity, intellectual property (IP), or data terms? | Escalate to `legal-advice` |
+| Can we build a small test or pilot before we commit? | Reduce risk in hardware ventures |
 
 ### Business model canvas (lightweight)
 
-Document: customer segments, value proposition, channels, revenue streams, key resources (BOM, tooling, people), key activities, key partners, cost structure — and explicitly note **what stays open** vs. **what is sold as service, assembly, certification support, or customization**.
+Write down: customer groups, what we offer, how we reach people, how we earn money, key resources (bill of materials (BOM), tools, people), key activities, key partners, and cost structure. Also state clearly **what stays open** versus **what we sell as a service, assembly, certification support, or custom work**.
 
 ## Decision frameworks
 
-- **Build / partner / buy / defer** — default to partner or defer when core competency or cash runway is weak.
-- **Minimum viable offering** — smallest sellable or fundable slice that proves demand without over-building inventory.
-- **Open-source boundary** — mechanical/electrical designs, firmware, docs, vs. hosted services, certified assemblies, training, support SLAs.
+- **Build / partner / buy / wait** — prefer partner or wait when our core skill or remaining cash is weak.
+- **Smallest useful offer** (minimum viable offering) — the smallest slice we can sell or fund that proves demand, without building too much stock.
+- **Open-source boundary** — mechanical and electrical designs, firmware, and docs stay open. Hosted services, certified assembled products, training, and support with a service level agreement (SLA) can be sold.
 
 ## Terminology and references
 
-- TAM / SAM / SOM, unit economics, LTV/CAC (when data exists)
-- OSHWA open source hardware definition (guidance, not legal advice)
-- Cooperative statutes vary by jurisdiction — defer specifics to `belgian-corporate-law` when relevant
+- Whole market (TAM), market we can serve (SAM), market we can win (SOM), profit per unit (unit economics), customer lifetime value versus cost to win a customer (LTV/CAC) — use these when you have data
+- Open Source Hardware Association (OSHWA) definition of open-source hardware (guidance, not legal advice)
+- Cooperative laws differ by country — send details to `belgian-corporate-law` when relevant
 
 ## Cross-links
 
 | Need | Skill |
 | --- | --- |
-| Quotes, invoices, runway | `finance` |
-| Lead gen and positioning | `marketing` |
-| Closing and CRM | `sales` |
-| Vendor quotes and POs | `purchasing` |
+| Quotes, invoices, months of cash left | `finance` |
+| Finding leads and how we describe the offer | `marketing` |
+| Closing deals and the customer list | `sales` |
+| Vendor quotes and purchase orders | `purchasing` |
 | CE, machinery safety | `product-compliance` |
 | Contracts and liability | `legal-advice` → jurisdiction skills |
 | Architecture trade-offs | `systems-engineering` |
@@ -87,6 +89,6 @@ Document: customer segments, value proposition, channels, revenue streams, key r
 
 ## Practical constraints
 
-- Inventory and certification lag software; avoid commitments that assume instant scale.
-- Open hardware invites cloning — compete on quality, support, certification, and community trust.
-- Cooperative decisions may require consent processes — coordinate with `sociocracy` when proposals affect governance or budget.
+- Stock and certification move slower than software. Do not promise growth that assumes instant scale.
+- Open hardware invites copies. Compete on quality, support, certification, and community trust.
+- Cooperative decisions may need consent processes. Coordinate with `sociocracy` when a proposal affects governance or budget.

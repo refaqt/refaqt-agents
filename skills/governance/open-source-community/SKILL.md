@@ -1,71 +1,72 @@
 ---
 name: open-source-community
 description: >-
-  Build and sustain contributor communities around open-source hardware and
-  software. Use for contributor onboarding, CLA/DCO, governance of repos,
-  events, and maintainer workflows — not corporate marketing or legal opinions.
+  Build and keep contributor communities around open-source hardware and
+  software. Use for welcoming new contributors, contributor license or sign-off
+  rules (CLA/DCO), how repositories are run, events, and maintainer workflows —
+  not company marketing or legal opinions.
 ---
 # Open Source Community Building
 
-Use this skill to grow healthy contributor ecosystems for open hardware, firmware, docs, and tooling.
+Use this skill to grow healthy contributor groups for open hardware, firmware, docs, and tools.
 
 ## Scope
 
 **Owns:**
-- Contributor onboarding paths (good first issues, mentorship)
-- Communication norms (CODE_OF_CONDUCT, discussion forums, chat)
-- Maintainer workload and release cadence expectations
-- Recognition and attribution practices
-- Community metrics (contributors, issues, time-to-first-review) — lightweight
+- Paths for new contributors (good first issues, mentorship)
+- Communication norms (code of conduct (`CODE_OF_CONDUCT`), discussion forums, chat)
+- Maintainer workload and expected release rhythm
+- Recognition and credit practices
+- Simple community numbers (contributors, issues, time to first review)
 - Event formats (build days, office hours, hackathons)
-- Relationship between core cooperative team and wider community
-- DCO vs CLA policy recommendation (legal review → `legal-advice`)
+- The relationship between the core cooperative team and the wider community
+- Advice on Developer Certificate of Origin (DCO) versus Contributor License Agreement (CLA) (legal review → `legal-advice`)
 
 **Does NOT own:**
 - Brand campaigns → `marketing`
-- Statutory cooperative membership → `belgian-corporate-law`, `sociocracy`
-- License selection final say → `legal-advice`
+- Legal cooperative membership → `belgian-corporate-law`, `sociocracy`
+- Final license choice → `legal-advice`
 - Technical architecture → engineering skills
-- Token incentives → `token-engineering` (coordinate `belgian-fiscal-tax`, counsel)
+- Token incentives → `token-engineering` (coordinate `belgian-fiscal-tax` and a lawyer)
 
 ## Core principles
 
-- **Maintainers are scarce:** Protect them with clear scope and review SLAs.
-- **Open hardware needs physical empathy:** Document tools, costs, and safety for builders.
-- **Welcome ≠ low bar:** Contribution guidelines and tests keep quality (`software-development`, `maintain-patterns`).
+- **Maintainers are scarce:** Protect them with a clear scope and review response times (service level agreements, SLAs).
+- **Open hardware needs care for the physical build:** Document tools, costs, and safety for people who build it.
+- **A welcome is not a lower quality bar:** Contribution guidelines and tests keep quality (`software-development`, `maintain-patterns`).
 - **Credit fairly:** CONTRIBUTORS file, release notes, talk invitations.
-- **Commercial cooperative + community:** Be explicit about what's community-governed vs. employer roadmap.
+- **Commercial cooperative and community:** Be clear about what the community governs versus what the employer roadmap covers.
 
 ## Key workflows
 
 ### Repository health checklist
 
 - [ ] README: what, why, build, license
-- [ ] CONTRIBUTING.md with PR flow
+- [ ] CONTRIBUTING.md with pull request (PR) flow
 - [ ] CODE_OF_CONDUCT and enforcement contact
 - [ ] Issue templates (bug, feature, docs)
-- [ ] Label taxonomy and triage rotation
+- [ ] Set of labels (taxonomy) and who sorts incoming issues, in rotation
 - [ ] Security disclosure process (`legal-advice` for advisories)
 
 ### Contributor ladder
 
-1. User/report issues
+1. User / report issues
 2. Docs and small fixes
 3. Subsystem maintainer
 4. Governance participant (see `sociocracy`)
 
 ### Conflict resolution
 
-1. Clarify facts in issue/thread
-2. Refer to CoC if interpersonal
-3. Escalate to governance circle if persistent
-4. Legal harassment/threats → `legal-advice` immediately
+1. Clarify facts in the issue or thread
+2. Point to the code of conduct (CoC) if the problem is between people
+3. Escalate to the governance circle if it continues
+4. Legal harassment or threats → `legal-advice` immediately
 
 ## Terminology
 
-- DCO, CLA, fork, downstream, upstream
-- OSHWA, Open Source Hardware Association practices
-- Maintainer, triager, emeritus maintainer
+- Developer Certificate of Origin (DCO), Contributor License Agreement (CLA), a copy of a project (fork), projects that use our work (downstream), projects we use (upstream)
+- Open Source Hardware Association (OSHWA) practices
+- Maintainer, person who sorts incoming issues (triager), former maintainer (emeritus maintainer)
 
 ## Cross-links
 
@@ -79,6 +80,6 @@ Use this skill to grow healthy contributor ecosystems for open hardware, firmwar
 
 ## Practical constraints
 
-- Publishing CAD/BOM invites forks — nurture downstream with semver and migration guides.
-- Safety-critical repos need tighter merge gates (`product-compliance` awareness in CONTRIBUTING).
-- Don't promise governance tokens without `token-engineering`, `web3-blockchain`, and counsel review.
+- Publishing computer-aided design (CAD) files and the bill of materials (BOM) invites copies (forks). Support those copies with semantic versioning (semver) and migration guides.
+- Safety-critical repositories need stricter merge rules. Put `product-compliance` awareness in CONTRIBUTING.
+- Do not promise governance tokens without `token-engineering`, `web3-blockchain`, and a lawyer's review.
