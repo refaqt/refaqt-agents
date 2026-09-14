@@ -64,7 +64,7 @@ Use this skill for code that runs on devices, servers, or developer computers. T
 
 ## Terminology and standards
 
-- Semantic versioning for software (version numbers like 1.2.3). Coordinate with hardware revision naming (`doqs-naming` in consumer repos).
+- Semantic versioning for software (version numbers like 1.2.3). Coordinate with hardware revision naming (`doqs-naming` in project repos).
 - MISRA coding rules / International Electrotechnical Commission (IEC) 62304 — when the work is medical or safety-related. Set scope with `product-compliance`.
 - Open-source hardware (OSHW) stack: host tools + firmware + config repos
 

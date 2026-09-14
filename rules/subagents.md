@@ -2,17 +2,17 @@
 
 ## Delegation
 
-- Before spawning a subagent, define scope, inputs, expected outputs, and failure conditions.
-- Subagents must not exceed scope; if work is out of scope, stop and report back.
-- Each subagent returns a short completion report: done, skipped, and issues found.
-- Subagents do not call other subagents unless the workflow explicitly requires it.
+- Before you start a subagent, define the scope, the inputs, the expected outputs, and what counts as failure.
+- Subagents must stay inside their scope. If work is outside the scope, stop and report back.
+- Each subagent returns a short completion report: done, skipped, and issues found. Write that report in B2 English. Follow [communication.md](communication.md).
+- Subagents do not call other subagents unless the workflow says they must.
 
 ## Coordination
 
-- The orchestrating agent owns final integration; validate subagent output before merging.
-- Parallel subagents must not edit the same file; assign disjoint file ownership first.
-- Subagents have read access by default; grant write access explicitly per task.
+- The main agent owns the final merge. Check subagent output before you merge it.
+- Parallel subagents must not edit the same file. Give each one its own files first.
+- Subagents can read by default. Give write access only when the task needs it.
 
 ## Safety
 
-- Pause for user confirmation before deleting files, running migrations, or changing environment configuration.
+- Pause for user confirmation before you delete files, run migrations, or change environment configuration.

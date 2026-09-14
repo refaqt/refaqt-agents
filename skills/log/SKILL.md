@@ -1,7 +1,7 @@
 ---
 name: log
 description: >-
-  Add or edit an entry in the unified activity log (docs/log/). Use whenever the
+  Add or edit an entry in the activity log (docs/log/). Use whenever the
   user wants to record work — engineering, hardware, software, outreach, research,
   a call or meeting, or a business decision. Triggers on "log this", "add a log
   entry", "note that", "record today's work", or a photo sent with a description
@@ -10,9 +10,13 @@ description: >-
 
 # Adding an activity log entry
 
-`docs/log/` is the chronological record of work on the project across **all** roles.
+`docs/log/` is the date-ordered record of work on the project for **all** roles.
 One flat directory — no per-role subfolder. Every entry is labeled with the role(s)
 it belongs to under the heading.
+
+Write every log entry in B2 English. Follow `.agents/rules/communication.md`.
+Keep numbers, units, and official names exact. If you quote a person, you may keep
+their words in quotation marks.
 
 ## File
 
@@ -46,7 +50,6 @@ docs/log/YYYY-MM-DD_topic-slug.md
 - Business: `business-dev`, `marketing`, `sales`, `finance`, `purchasing`
 
 List every role the work touches. Prefer the sections that carry content; drop empty ones.
-Write in the user's voice; keep numbers, units, and terminology exact.
 
 For engineering lab-notebook style, these alternate section names are fine when they fit better:
 `## Goal`, `## Work Done`, `## Decisions Made`, `## Open Questions`, `## Next Steps`.
@@ -60,7 +63,7 @@ Reference them relatively (`![](images/2026-08-21-01.png)`) and add a short capt
 
 - Lasting technical choices → also `docs/decisions/YYYY-MM-DD_topic.md` (link from the log entry).
 - Failures / prevention → also `docs/mistakes/YYYY-MM-DD_topic.md`.
-- Repo-specific deliverables (datasets, pitch drafts, etc.) live outside `docs/log/`; link them from the entry.
+- Files that belong only to this repo (datasets, pitch drafts, and similar) live outside `docs/log/`; link them from the entry.
 
 ## Finish
 

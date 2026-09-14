@@ -8,6 +8,9 @@ description: >-
 
 # Project patterns (`.agents-local/skills/patterns/SKILL.md`)
 
+Write pattern entries in B2 English. Follow `.agents/rules/communication.md`.
+Keep code, file paths, and official names exact.
+
 ## Before starting work
 
 1. Read `.agents-local/skills/patterns/SKILL.md` if it exists.
@@ -42,8 +45,8 @@ When you solve something specific to this repository in a way worth repeating:
 
 ## Quality bar
 
-- **Name:** Short, unique, searchable.
+- **Name:** Short, unique, searchable. Use everyday words.
 - **When to use:** One sentence so the agent can match tasks quickly.
 - **Pattern:** Smallest example that still shows the project-specific hook.
-- **Gotchas:** Real pitfalls for this repo.
+- **Gotchas:** Real pitfalls for this repo, in plain sentences.
 - **Last used:** ISO date or issue/PR reference.

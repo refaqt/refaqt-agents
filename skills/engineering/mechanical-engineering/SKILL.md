@@ -34,7 +34,7 @@ Use this skill for physical structure, motion, and how easy the mechanical syste
 - **Open hardware documentation:** Publish editable source (STEP plus native CAD where policy allows), drawings, and a BOM with a clear license.
 - **DfM early:** Cost and lead time come from the process choice. Involve `production-engineering` and `purchasing` before you lock the shape.
 - **Safety by design:** Treat places that can pinch fingers (pinch points), emergency-stop (e-stop) reach, stability, and sharp edges as design inputs to `product-compliance` (Machinery Regulation / International Organization for Standardization (ISO) 12100 approach). This feeds European product conformity (CE) evidence.
-- **Revision discipline:** Use part numbers, revision tables, and a change log. Align with `doqs-naming` in consumer repos.
+- **Revision discipline:** Use part numbers, revision tables, and a change log. Align with `doqs-naming` in project repos.
 - **Modularity:** Keep interfaces (mounting, space envelopes, couplings) stable across product variants.
 
 ## Key workflows
@@ -75,7 +75,7 @@ Use this skill for physical structure, motion, and how easy the mechanical syste
 
 | Need | Skill |
 | --- | --- |
-| CAD tooling issues | `freecad` (consumer repos) |
+| CAD tooling issues | `freecad` (project repos) |
 | Motors, bearings integration | `mechatronic-engineering` |
 | CE guards and fixtures | `product-compliance` |
 | Costing | `finance`, `purchasing` |
