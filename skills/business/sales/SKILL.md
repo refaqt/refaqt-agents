@@ -1,24 +1,25 @@
 ---
 name: sales
 description: >-
-  Customer discovery calls, proposals, pipeline, and order fulfillment coordination
-  for hardware and software offerings. Use when qualifying leads, quoting customers,
-  handling objections, or closing deals — not for brand strategy or legal contracts.
+  Customer discovery calls, proposals, the deal list (pipeline), and handing
+  orders to delivery for hardware and software offers. Use when you check if a
+  lead is a fit, send a quote, answer objections, or close a deal — not for
+  brand strategy or legal contracts.
 ---
 # Sales
 
-Use this skill to convert qualified interest into orders and ongoing customer relationships. Marketing generates awareness; sales owns the conversation and commitment path.
+Use this skill to turn a checked lead into orders and ongoing customer relationships. Marketing creates awareness. Sales owns the conversation and the path to a commitment.
 
 ## Scope
 
 **Owns:**
-- Lead qualification (BANT or cooperative-adapted criteria)
+- Checking if a lead is a fit (budget, authority, need, timeline (BANT), or similar criteria adapted for a cooperative)
 - Discovery calls and needs assessment
-- Proposals and quotes (content; pricing math with `finance`)
-- Pipeline tracking and follow-up
-- Objection handling (price, lead time, open-source concerns)
-- Order handoff to `purchasing`, `production-engineering`, `supply-chain-management`
-- Customer feedback loop to `business-development` and product teams
+- Proposals and quotes (the content; price math with `finance`)
+- Tracking the deal list (pipeline) and follow-up
+- Handling objections (price, wait time, open-source concerns)
+- Handing the order to `purchasing`, `production-engineering`, `supply-chain-management`
+- Sending customer feedback to `business-development` and product teams
 
 **Does NOT own:**
 - Marketing campaigns → `marketing`
@@ -29,11 +30,11 @@ Use this skill to convert qualified interest into orders and ongoing customer re
 
 ## Core principles
 
-- **Honest lead times:** Quote availability from `supply-chain-management`, not optimism.
-- **Open hardware sales story:** Customers buy reliability, support, certification, and integration — not secrecy.
-- **Cooperative transparency:** Disclose ownership model when it affects trust or procurement policies of customers.
-- **Configure, don't invent:** Sales variants must map to released BOM/software configurations.
-- **Document commitments:** Every customer promise traceable to quote line or SOW.
+- **Honest wait times (lead times):** Quote the dates `supply-chain-management` gives you. Do not quote a hopeful date.
+- **Open hardware sales story:** Customers buy reliability, support, certification, and integration. They do not buy secrecy.
+- **Cooperative transparency:** Explain the ownership model when it affects trust or the customer's buying rules.
+- **Configure, do not invent:** Sales variants must map to released bill of materials (BOM) and software configurations.
+- **Document commitments:** Every customer promise must link to a quote line or a statement of work (SOW).
 
 ## Key workflows
 
@@ -47,38 +48,38 @@ Use this skill to convert qualified interest into orders and ongoing customer re
 
 ### Quote structure
 
-1. Scope (SKU, qty, revision, included docs/support)
-2. Price and validity period (`finance`)
-3. Lead time and incoterms
+1. Scope (stock keeping unit (SKU), quantity, revision, included docs and support)
+2. Price and how long the quote stays valid (`finance`)
+3. Wait time and international delivery terms (Incoterms)
 4. Warranty and support boundaries
 5. Exclusions (custom engineering, certification not included)
-6. Payment terms — legal review if non-standard → `legal-advice`
+6. Payment terms — legal review if they are not standard → `legal-advice`
 
 ### Open-source objection framework
 
 | Concern | Response angle |
 | --- | --- |
 | "Can we be copied?" | Quality, certification, supply, support, roadmap |
-| "Who owns IP?" | License clarity — defer detail to `legal-advice` |
+| "Who owns IP?" | License clarity — send detail to `legal-advice` |
 | "Is it production-ready?" | Revision, test data, reference customers |
 
 ## Terminology
 
-- CRM stages, MQL/SQL, SOW, SLA, SKU
-- Distributor vs. direct, VAR, OEM
+- Customer relationship management (CRM) stages, marketing-qualified lead (MQL), sales-qualified lead (SQL), statement of work (SOW), service level agreement (SLA), stock keeping unit (SKU)
+- Distributor versus direct, value-added reseller (VAR), original equipment manufacturer (OEM)
 
 ## Cross-links
 
 | Need | Skill |
 | --- | --- |
 | Pricing | `finance` |
-| Positioning | `marketing`, `business-development` |
+| How we describe the offer | `marketing`, `business-development` |
 | Contracts | `legal-advice` |
 | Delivery | `supply-chain-management`, `production-engineering` |
 | CE questions | `product-compliance` |
 
 ## Practical constraints
 
-- Do not sell CE-marked status until `product-compliance` confirms for that SKU and market.
-- Custom engineering requires engineering estimate before price commitment.
-- Export-controlled items (if any) → escalate `legal-advice`, `us-law`, `european-law`.
+- Do not sell CE-marked status until `product-compliance` confirms it for that stock keeping unit (SKU) and market.
+- Custom engineering needs an engineering estimate before you commit to a price.
+- Items under export control (if any) → escalate to `legal-advice`, `us-law`, `european-law`.

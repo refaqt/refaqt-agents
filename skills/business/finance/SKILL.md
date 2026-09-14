@@ -1,71 +1,72 @@
 ---
 name: finance
 description: >-
-  Budgeting, costing, cash flow, pricing math, and financial planning for hardware
-  cooperatives. Use when estimating BOM costs, margins, runway, invoices, budgets,
-  financial scenarios, or cooperative financial governance — not for tax filings.
+  Budgets, product costs, cash timing (cash flow), price math, and money plans
+  for hardware cooperatives. Use when you estimate bill of materials (BOM)
+  costs, profit margins, months of cash left (runway), invoices, budgets, money
+  scenarios, or how the cooperative reports money — not for tax filings.
 ---
 # Finance
 
-Use this skill for numbers that drive decisions: costs, prices, budgets, and runway. Tax compliance and statutory accounts belong in `belgian-fiscal-tax` with `legal-advice`.
+Use this skill for numbers that drive decisions: costs, prices, budgets, and months of cash left (runway). Tax rules and official annual accounts belong in `belgian-fiscal-tax` with `legal-advice`.
 
 ## Scope
 
 **Owns:**
-- BOM and landed cost roll-ups (materials, assembly, overhead allocation)
-- Margin and break-even analysis
-- Budgets, forecasts, and scenario modeling
-- Pricing support (cost-plus, value-based inputs from `business-development`)
-- Cash flow timing (inventory, deposits, payment terms)
-- Invoice and quote structure (line items, incoterms awareness — legal terms → `legal-advice`)
-- Cooperative financial reporting needs (management accounts, member capital summaries)
+- Bill of materials (BOM) and full arrived cost (landed cost): materials, assembly, and a share of overhead
+- Profit margin and the volume where we stop losing money (break-even)
+- Budgets, forecasts, and scenario models
+- Pricing support (price from cost plus a margin (cost-plus), and value-based inputs from `business-development`)
+- Cash timing (stock, deposits, payment terms)
+- Invoice and quote structure (line items, and awareness of international delivery terms (Incoterms) — legal wording → `legal-advice`)
+- Cooperative money reporting needs (management accounts, member capital summaries)
 
 **Does NOT own:**
-- Tax returns, VAT filing, payroll tax → `belgian-fiscal-tax`
-- Statutory annual accounts interpretation → `belgian-fiscal-tax`, `belgian-corporate-law`
+- Tax returns, value-added tax (VAT) filing, payroll tax → `belgian-fiscal-tax`
+- Reading official annual accounts → `belgian-fiscal-tax`, `belgian-corporate-law`
 - Contract payment clauses → `legal-advice`
-- Vendor selection → `purchasing`
-- CE testing budgets as technical scope → `product-compliance`
+- Choosing vendors → `purchasing`
+- CE testing budgets (EU safety mark) as technical scope → `product-compliance`
 
 ## Core principles
 
-- **Unit economics first:** Hardware fails quietly when BOM, scrap, warranty, and logistics are underestimated.
-- **Open BOM transparency:** Internal and (where appropriate) public BOM clarity supports trust and community contribution; protect only genuinely sensitive commercial terms.
-- **Cash is timing:** Lead times and MOQs dominate cooperative survival more than spreadsheet margin.
-- **Separate opex vs. capex:** Tooling, certification, and R&D machines are not recurring COGS.
-- **Document assumptions:** Every model lists sources, dates, and confidence.
+- **Cost per unit first:** A hardware business can run out of money if you underestimate the bill of materials (BOM), scrap, warranty, and shipping.
+- **Open BOM transparency:** A clear internal bill of materials, and a public one where that is appropriate, supports trust and community help. Protect only real commercial secrets.
+- **Cash is timing:** Wait times (lead times) and minimum order quantities (MOQs) matter more for survival than a good margin on a spreadsheet.
+- **Separate running costs from one-time investment:** Tooling, certification, and research and development (R&D) machines are not repeating cost of goods sold (COGS). Keep running costs (opex) separate from one-time investment (capex).
+- **Document assumptions:** Every model lists sources, dates, and how sure you are.
 
 ## Key workflows
 
 ### BOM cost roll-up
 
-1. Gather BOM from engineering (`mechanical-engineering`, `electrical-engineering`) with revision and quantity breaks
-2. Add purchased parts from `purchasing` quotes (currency, MOQ, lead time)
-3. Add assembly/test labor, packaging, scrap factor
-4. Allocate overhead (facility, equipment depreciation) explicitly
-5. Output: per-unit cost at volume tiers; flag single-source cost risk → `supply-chain-management`
+1. Get the bill of materials (BOM) from engineering (`mechanical-engineering`, `electrical-engineering`) with the revision and quantity breaks
+2. Add purchased parts from `purchasing` quotes (currency, minimum order quantity (MOQ), wait time)
+3. Add assembly and test labor, packaging, and a scrap factor
+4. Allocate overhead (building, equipment depreciation) in an explicit way
+5. Output: cost per unit at volume tiers. Flag cost risk from a single supplier → `supply-chain-management`
 
 ### Pricing support checklist
 
-- [ ] Landed COGS at target volume
+- [ ] Full arrived cost of goods sold (landed COGS) at the target volume
 - [ ] Warranty and support reserve
-- [ ] Certification amortization (`product-compliance`)
-- [ ] Channel/discount structure (coordinate `sales`, `marketing`)
+- [ ] Spreading certification cost over units (amortization) (`product-compliance`)
+- [ ] Channel and discount structure (coordinate `sales`, `marketing`)
 - [ ] Cooperative surplus / member allocation policy (coordinate `sociocracy`, `belgian-corporate-law`)
 
 ### Runway and scenario
 
 | Scenario | Variables |
 | --- | --- |
-| Base | Orders, lead times, burn, receivables |
-| Downside | Delayed certification, supplier slip, lower conversion |
+| Base | Orders, wait times, cash spent per month (burn), money customers still owe (receivables) |
+| Downside | Delayed certification, supplier delay, fewer sales |
 | Upside | Volume discount, grant, partnership prepayment |
 
 ## Terminology
 
-- COGS, gross margin, contribution margin, MOQ, NRE, capex/opex
-- Incoterms (EXW, DDP, etc.) — commercial meaning; legal wording → `legal-advice`
-- Cooperative surplus, member shares — jurisdiction-specific → `belgian-corporate-law`
+- Cost of goods sold (COGS), gross margin, contribution margin, minimum order quantity (MOQ), one-time engineering fee (NRE), one-time investment versus running costs (capex/opex)
+- International delivery terms (Incoterms), such as Ex Works (EXW) and Delivered Duty Paid (DDP) — commercial meaning; legal wording → `legal-advice`
+- Cooperative surplus, member shares — rules depend on the country → `belgian-corporate-law`
 
 ## Cross-links
 
@@ -80,6 +81,6 @@ Use this skill for numbers that drive decisions: costs, prices, budgets, and run
 
 ## Practical constraints
 
-- Quote validity dates must match supplier lead times.
-- Open hardware may reduce ASP; model service, kits, and certification paths explicitly.
-- Multi-currency BOMs: document FX assumptions and hedging policy if any.
+- The date a quote expires must match how long the supplier needs to deliver.
+- Open hardware may lower the average selling price (ASP). Model services, kits, and certification paths in an explicit way.
+- Bills of materials (BOMs) in several currencies: write down exchange-rate (FX) assumptions and any hedging policy (a plan to reduce currency risk), if you have one.
