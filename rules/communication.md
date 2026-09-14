@@ -4,7 +4,7 @@ This rule applies to **every text you write**: chat replies, logs, decisions, mi
 
 ## Language (B2 English)
 
-Write so a non-native speaker can read you easily. Use CEFR B2 English.
+Write so a non-native speaker can read you easily. Use CEFR B2 English (clear, everyday English at an upper-intermediate level).
 
 - Use short sentences. One idea per sentence.
 - Use common words. Prefer simple language over jargon.
@@ -23,7 +23,7 @@ Write so a non-native speaker can read you easily. Use CEFR B2 English.
 
 **Good (repo):** "If the same mistake happens twice, write a clear rule so it does not happen again."
 
-Do not change code names, APIs, file paths, or shell commands to make them "simpler."
+Do not change code names, programming interface names (APIs), file paths, or shell commands to make them simpler.
 
 ## Markdown and length
 
