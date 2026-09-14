@@ -1,6 +1,6 @@
 # FreeCAD reference — URLs and search templates
 
-Read this file when you need specific links or search patterns. The main workflow is in [SKILL.md](SKILL.md).
+Use this file for exact links and search patterns. The main workflow is in [SKILL.md](SKILL.md).
 
 ## Official documentation
 
@@ -22,10 +22,10 @@ Read this file when you need specific links or search patterns. The main workflo
 |----------|-----|
 | GitHub releases (stable + notes) | https://github.com/FreeCAD/FreeCAD/releases |
 | Weekly/dev builds | https://github.com/FreeCAD/FreeCAD-Bundle/releases/tag/weekly-builds |
-| CalVer scheme announcement (2026) | https://blog.freecad.org/2026/06/26/new-freecad-versioning-scheme-and-development-cycle/ |
+| Calendar versioning (CalVer) scheme announcement (2026) | https://blog.freecad.org/2026/06/26/new-freecad-versioning-scheme-and-development-cycle/ |
 | FreeCAD blog (release news) | https://blog.freecad.org/ |
 
-When answering, state which release line applies (e.g. 1.1 stable vs 26.3dev weekly).
+When you answer, say which release line applies (for example 1.1 stable versus 26.3dev weekly).
 
 ## Forum
 
@@ -55,7 +55,7 @@ site:forum.freecad.org "<error text>" <workbench>
 | Documentation repo | https://github.com/FreeCAD/FreeCAD-documentation |
 | CONTRIBUTING | https://github.com/FreeCAD/FreeCAD/blob/main/CONTRIBUTING.md |
 
-**Addon/workbench bugs** belong on the addon's GitHub repo, not `FreeCAD/FreeCAD`. Examples: A2plus, Fasteners, Assembly4, etc. Search `site:github.com <addon-name> <error>`.
+Bugs in an addon or workbench belong on that addon's GitHub repo, not on `FreeCAD/FreeCAD`. Examples: A2plus, Fasteners, Assembly4, and similar. Search `site:github.com <addon-name> <error>`.
 
 ## Search query templates
 
@@ -99,12 +99,12 @@ FreeCAD "SubShapeBinder" circular dependency
 
 ## Reporting bugs (for the user)
 
-If the issue is a confirmed bug after research:
+If research confirms a bug:
 
-1. Reproduce in latest stable or agreed dev build
+1. Reproduce in the latest stable build or the agreed development build
 2. Reproduce in Safe Mode when possible
 3. File on the correct tracker (core vs addon)
-4. Include: FreeCAD version, OS, step-by-step reproduction, minimal `.FCStd` if possible
+4. Include: FreeCAD version, operating system (OS), step-by-step reproduction, a small `.FCStd` if possible
 
 Guides:
 

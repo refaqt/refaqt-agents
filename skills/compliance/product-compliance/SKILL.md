@@ -1,75 +1,77 @@
 ---
 name: product-compliance
 description: >-
-  Product regulatory compliance — EU CE marking, Machinery Regulation, LVD, EMC,
-  RoHS, REACH, and conformity assessment planning. Use when determining applicable
-  directives, technical files, labeling, and testing strategy — not general legal
-  advice or jurisdiction-wide corporate law.
+  Product rules for hardware — EU CE marking, Machinery Regulation, Low Voltage
+  Directive (LVD), electromagnetic compatibility (EMC), Restriction of Hazardous
+  Substances (RoHS), EU chemical rules (REACH), and a plan for conformity checks.
+  Use when you decide which directives apply, what goes in the technical file,
+  labeling, and a test plan — not for general legal advice or company law for a
+  whole country.
 ---
 # Product Compliance (CE Marking & Conformity)
 
-Use this skill when placing hardware (and integrated software) on markets that require conformity assessment — especially EU CE marking for machinery and electrical products.
+Use this skill when you place hardware (and the software inside it) on markets that require conformity checks. This is especially EU CE marking for machinery and electrical products.
 
-**Skill name rationale:** `product-compliance` covers CE marking, machinery safety, EMC/LVD, material compliance, and related **product** regulations. It is narrower than all "regulatory compliance" (which includes GDPR, labor, etc.) and broader than "CE marking" alone.
+**Skill name rationale:** `product-compliance` covers CE marking, machinery safety, electromagnetic compatibility (EMC), the Low Voltage Directive (LVD), material rules, and related **product** regulations. It is narrower than all "regulatory compliance" (which includes the General Data Protection Regulation (GDPR), labor law, and more). It is broader than "CE marking" alone.
 
 ## Scope
 
 **Owns:**
-- Determining applicable EU regulations/directives (Machinery Regulation/EU 2023/1230, EMC, LVD, RED, RoHS, REACH, etc.)
-- Hazard and risk assessment inputs coordination (ISO 12100, ISO 13849, IEC 62061 as applicable)
-- Conformity assessment route (self-declaration vs. notified body)
-- Technical file structure and required evidence list
+- Deciding which EU regulations and directives apply (Machinery Regulation / EU 2023/1230, electromagnetic compatibility (EMC), Low Voltage Directive (LVD), Radio Equipment Directive (RED), Restriction of Hazardous Substances (RoHS), EU chemical rules (REACH), and similar)
+- Hazard and risk assessment inputs (ISO 12100, ISO 13849, IEC 62061 as applicable)
+- Conformity assessment route (self-declaration vs a notified body)
+- Technical file structure and the list of required evidence
 - Declaration of Conformity (DoC) content checklist — legal signing → `legal-advice`, `belgian-law`
 - Labeling, manuals, and market language requirements (high level)
-- Test plan (EMC, safety, functional) and lab engagement
-- Post-market surveillance and change impact on conformity
+- Test plan (electromagnetic compatibility (EMC), safety, functional) and work with a test lab
+- Checks after the product is on the market (post-market surveillance) and how a change affects conformity
 
 **Does NOT own:**
 - Drafting contracts or corporate statutes → `legal-advice`, jurisdiction skills
-- Tax/import HS code filings → `belgian-fiscal-tax`
-- Detailed electrical/mechanical design → engineering skills (this skill sets requirements)
-- US FCC/UL strategy primary → coordinate `us-law` concepts; EU focus here
-- Guaranteeing legal outcomes — flag when human notified body or counsel required
+- Tax or import Harmonized System (HS) code filings → `belgian-fiscal-tax`
+- Detailed electrical or mechanical design → engineering skills (this skill sets requirements)
+- US Federal Communications Commission (FCC) / UL strategy as the main path → coordinate `us-law` concepts; this skill focuses on the EU
+- Guaranteeing legal outcomes — flag when a human notified body or a lawyer is required
 
 ## Core principles
 
-- **Start early:** Retrofit compliance is expensive; involve this skill at architecture phase (`systems-engineering`).
-- **Evidence, not stickers:** CE marking follows a technical file, not a checklist sticker purchase.
-- **Open hardware nuance:** Publishing designs does not exempt from placing product on market rules.
-- **Integrated systems:** Machinery + control software + optional IoT — map all components in scope.
-- **Cooperative duty of care:** Member and customer safety aligns with compliance; document seriously.
+- **Start early:** Adding compliance after design is expensive. Involve this skill at architecture time (`systems-engineering`).
+- **Evidence, not stickers:** CE marking follows a technical file. Buying a CE sticker is not enough.
+- **Open hardware still counts:** Publishing designs does not skip the rules for placing a product on the market.
+- **Integrated systems:** Machinery plus control software plus optional Internet of Things (IoT) devices — map every in-scope component.
+- **Cooperative duty of care:** Keep members and customers safe. That matches compliance. Document this with care.
 
 ## Key workflows
 
 ### Applicability assessment
 
 1. Product description and intended use
-2. Markets (EU, UK, US, etc.) — defer non-EU detail to other skills
-3. Directives/regulations list with rationale
-4. Harmonized standards selection (presumption of conformity)
-5. Notified body needed? (category dependent)
+2. Markets (EU, UK, US, and others) — leave non-EU detail to other skills
+3. Directives and regulations list with reasons
+4. Harmonized standards selection (presumption of conformity: you are presumed to meet the law if you follow the standard)
+5. Is a notified body needed? (depends on the category)
 
-### Technical file checklist (EU machinery/electrical typical)
+### Technical file checklist (typical EU machinery or electrical product)
 
-- [ ] Product description and drawings/BOM revisions
+- [ ] Product description and drawings / bill of materials (BOM) revisions
 - [ ] Risk assessment (ISO 12100)
-- [ ] Safety/control concept (ISO 13849 / IEC 62061 if applicable)
-- [ ] Electrical schematics and LVD evidence
-- [ ] EMC test reports
+- [ ] Safety and control concept (ISO 13849 / IEC 62061 if applicable)
+- [ ] Electrical schematics and Low Voltage Directive (LVD) evidence
+- [ ] Electromagnetic compatibility (EMC) test reports
 - [ ] Manuals and warnings (languages)
-- [ ] DoC draft
-- [ ] Post-market process
+- [ ] Declaration of Conformity (DoC) draft
+- [ ] Process after the product is on the market (post-market)
 
 ### Change control
 
-Any BOM, firmware, or safety-relevant change triggers impact review before shipment.
+Any bill of materials (BOM), firmware, or safety-relevant change triggers an impact review before shipment.
 
 ## Terminology and references
 
-- CE, DoC, Technical File, Notified Body
+- CE marking, Declaration of Conformity (DoC), Technical File, Notified Body
 - EU Machinery Regulation (EU) 2023/1230 (transition from Machinery Directive 2006/42/EC — verify current applicability dates)
-- EMC Directive 2014/30/EU, LVD 2014/35/EU, RoHS, REACH
-- ISO 12100, ISO 13849-1, IEC 60204-1, IEC 61010 (product dependent)
+- Electromagnetic Compatibility (EMC) Directive 2014/30/EU, Low Voltage Directive (LVD) 2014/35/EU, Restriction of Hazardous Substances (RoHS), EU chemical rules (REACH)
+- ISO 12100, ISO 13849-1, IEC 60204-1, IEC 61010 (depends on the product)
 
 ## Cross-links
 
@@ -85,6 +87,6 @@ Any BOM, firmware, or safety-relevant change triggers impact review before shipm
 
 ## Practical constraints
 
-- DIY kits vs. finished machines may differ in obligations — document intended channel (`sales`).
-- Open documentation may help **maintenance** compliance but not replace initial conformity.
-- Subagents and agents **do not sign** DoCs — escalate to qualified human roles.
+- Do-it-yourself (DIY) kits versus finished machines may have different duties. Document the intended sales channel (`sales`).
+- Open documentation may help **maintenance** compliance. It does not replace the first conformity check.
+- Subagents and agents **do not sign** Declarations of Conformity (DoCs). Hand this to a qualified human role.

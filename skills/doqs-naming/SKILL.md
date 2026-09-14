@@ -1,8 +1,9 @@
 ---
 name: doqs-naming
 description: >-
-  Apply DOQS naming and versioning rules when creating or renaming modules,
-  BOM rows, parts, adapters, or release tags. Run validate_all after structural changes.
+  Apply DOQS naming and versioning rules when you create or rename modules,
+  bill of materials (BOM) rows, parts, adapters, or release tags. Run
+  validate_all after structural changes.
 ---
 
 # DOQS naming and validation
@@ -10,19 +11,19 @@ description: >-
 ## When to use
 
 - New or renamed folders under `modules/`
-- BOM `id` / `name` rows or `bom/bom.csv` headers
+- Bill of materials (BOM) `id` / `name` rows or `bom/bom.csv` headers
 - `[[part]]`, `[[model]]`, or adapter paths
-- Release tagging and `okh.toml` `version` bumps
+- Release tagging and Open Know-How (`okh.toml`) `version` bumps
 - Exported drawings (title block revision)
 
 ## Rules (summary)
 
-Read the canonical spec:
+Read the official spec:
 
 - `doqs/docs/naming.md`
 - `doqs/docs/naming-lexicon.md`
 
-Quick reference:
+Quick reference (kebab-case means lowercase words with hyphens; semver means semantic versioning, major.minor.patch):
 
 | Item | Rule |
 |------|------|
@@ -36,7 +37,7 @@ Quick reference:
 
 ## Mandatory validation
 
-From the **machine repository root** after OKH, BOM, or path changes:
+From the **machine repository root** after Open Know-How (OKH), bill of materials (BOM), or path changes:
 
 ```powershell
 python doqs/scripts/validate_all.py
@@ -48,7 +49,7 @@ Before tagging:
 python doqs/scripts/validate_okh.py --expected-version X.Y.Z
 ```
 
-Gradual adoption on existing machines: `python doqs/scripts/check_names.py --warnings-only` until BOM and folder names are migrated.
+On existing machines, adopt the names step by step: `python doqs/scripts/check_names.py --warnings-only` until bill of materials (BOM) and folder names are migrated.
 
 ## Do not
 
