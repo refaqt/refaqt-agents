@@ -1,39 +1,41 @@
 ---
 name: mechanical-engineering
 description: >-
-  Mechanical design, CAD, DfM, structures, mechanisms, and thermal design for
-  open hardware machines and components. Use for parts, assemblies, tolerancing,
-  materials, and manufacturing drawings — not electrical or control logic.
+  Mechanical design, computer-aided design (CAD), design for manufacture
+  (DfM), structures, mechanisms, and thermal design for open hardware
+  machines and parts. Use for parts, assemblies, tolerances, materials, and
+  manufacturing drawings. Do not use this skill for electrical work or
+  control logic.
 ---
 # Mechanical Engineering
 
-Use this skill for physical structure, motion, and manufacturability of mechanical systems.
+Use this skill for physical structure, motion, and how easy the mechanical system is to manufacture.
 
 ## Scope
 
 **Owns:**
 - Concept and detailed mechanical design
-- CAD models, drawings, BOM mechanical lines
+- Computer-aided design (CAD) models, drawings, and mechanical lines in the parts list (BOM)
 - Tolerance analysis and fit definitions
-- Material selection (strength, environment, food/medical constraints if any)
-- DfM/DfA for chosen processes ( machining, sheet metal, printing, molding)
+- Material selection (strength, environment, and food or medical limits if any)
+- Design for manufacture (DfM) and design for assembly (DfA) for the chosen processes (machining, sheet metal, printing, molding)
 - Packaging and mechanical safety guards (with `product-compliance`)
-- Maintenance access and serviceability
+- Maintenance access and ease of service
 
 **Does NOT own:**
-- Electrical routing and EMC → `electrical-engineering`
-- Sensor/actuator selection integration → `mechatronic-engineering`
+- Electrical routing and electromagnetic compatibility (EMC) → `electrical-engineering`
+- Sensor and actuator selection integration → `mechatronic-engineering`
 - Production line layout → `production-engineering`
 - Optical bench design → `optical-engineering`
 - Full system requirements → `systems-engineering`
 
 ## Core principles
 
-- **Open hardware documentation:** Publish editable source (STEP + native CAD where policy allows), drawings, and BOM with clear license.
-- **DfM early:** Cost and lead time driven by process choice; engage `production-engineering` and `purchasing` before locking geometry.
-- **Safety by design:** Pinch points, e-stop reach, stability, sharp edges — input to `product-compliance` (Machinery Regulation / ISO 12100 mindset).
-- **Revision discipline:** Part numbers, revision tables, change log; align with `doqs-naming` in consumer repos.
-- **Modularity:** Interfaces (mounting, envelopes, couplings) stable across product variants.
+- **Open hardware documentation:** Publish editable source (STEP plus native CAD where policy allows), drawings, and a BOM with a clear license.
+- **DfM early:** Cost and lead time come from the process choice. Involve `production-engineering` and `purchasing` before you lock the shape.
+- **Safety by design:** Treat places that can pinch fingers (pinch points), emergency-stop (e-stop) reach, stability, and sharp edges as design inputs to `product-compliance` (Machinery Regulation / International Organization for Standardization (ISO) 12100 approach). This feeds European product conformity (CE) evidence.
+- **Revision discipline:** Use part numbers, revision tables, and a change log. Align with `doqs-naming` in consumer repos.
+- **Modularity:** Keep interfaces (mounting, space envelopes, couplings) stable across product variants.
 
 ## Key workflows
 
@@ -43,7 +45,7 @@ Use this skill for physical structure, motion, and manufacturability of mechanic
 - [ ] Tolerances achievable at target process and volume
 - [ ] Standard parts preferred over custom
 - [ ] Service and assembly sequence (`production-engineering`)
-- [ ] Mass, CG, and mounting loads
+- [ ] Mass, center of gravity (CG), and mounting loads
 - [ ] Corrosion and environment rating
 - [ ] Export control screening if applicable → `legal-advice`
 
@@ -51,23 +53,23 @@ Use this skill for physical structure, motion, and manufacturability of mechanic
 
 - Native CAD + STEP/STL as policy defines
 - PDF drawings with title block, revision, material, finish
-- BOM lines with MPN or drawing number
+- BOM lines with manufacturer part number (MPN) or drawing number
 - Assembly instructions outline
 
 ### DfM questions
 
 | Process | Ask |
 | --- | --- |
-| CNC | Setup count, tool access, thin walls |
+| Computer numerical control (CNC) | Setup count, tool access, thin walls |
 | Sheet metal | Bend radius, hole edge distance |
-| 3D print | Orientation, supports, anisotropy |
-| Injection mold | Draft, undercuts, tooling cost |
+| 3D print | Orientation, supports, strength that depends on print direction (anisotropy) |
+| Injection mold | Draft angles, undercuts, tooling cost |
 
 ## Terminology and standards
 
-- GD&T per ISO 1101 / ASME Y14.5 as project standard
+- Geometric dimensioning and tolerancing (GD&T) per ISO 1101 / American Society of Mechanical Engineers (ASME) Y14.5 as the project standard
 - ISO 12100 risk assessment inputs (not full compliance — `product-compliance`)
-- RoHS/REACH material declarations for purchased parts
+- Restriction of Hazardous Substances (RoHS) and Registration, Evaluation, Authorisation and Restriction of Chemicals (REACH) material declarations for purchased parts
 
 ## Cross-links
 
@@ -75,12 +77,12 @@ Use this skill for physical structure, motion, and manufacturability of mechanic
 | --- | --- |
 | CAD tooling issues | `freecad` (consumer repos) |
 | Motors, bearings integration | `mechatronic-engineering` |
-| CE guards/fixtures | `product-compliance` |
+| CE guards and fixtures | `product-compliance` |
 | Costing | `finance`, `purchasing` |
 | System envelopes | `systems-engineering` |
 
 ## Practical constraints
 
-- Open publication of CAD enables forks — design for clarity and robust interfaces.
-- Tolerance stack with optics or precision motion may require `optical-engineering` / `mechatronic-engineering` joint review.
+- Open CAD files let other people copy and change the design. Design clear, stable interfaces.
+- A tolerance stack with optics or precision motion may need a joint review with `optical-engineering` / `mechatronic-engineering`.
 - Weight and shipping affect `supply-chain-management` and `sales` quotes.
