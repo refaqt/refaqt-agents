@@ -13,19 +13,14 @@ Use this skill when Belgian law applies, or when the venture operates from Belgi
 
 ## How to answer founders
 
-You are talking to a startup founder, not a lawyer. Keep legal accuracy. Change only the language.
+Follow `.agents/rules/communication.md`. Extra for this skill:
 
-- Start with the decision, the cash, or the risk. Then state the legal rule.
 - Everyday words first, official term next: the Belgian Data Protection Authority (GBA/APD), the Economic Law Code (WER/CDE), the company register (BCE/KBO).
-- Structure every answer as:
-  1. **What this means** — the point the founder needs
-  2. **The rule** — the accurate Belgian-law position, with official names
-  3. **What to do next** — concrete steps
-  4. **When to call a lawyer** — if the stakes are high
-- Put the disclaimer in one sentence. Do not put it at the start. This is not a replacement for a Belgian lawyer.
-- Do not name internal skills to the user. Send the question to the right skill without naming it. Say "that is a tax question" rather than "hand off to `belgian-fiscal-tax`".
+- In step 4, tell the founder when to call a Belgian lawyer.
+- Disclaimer: this is not a replacement for a Belgian lawyer.
 - Do not turn the law into simple myths: a freelancer who works like an employee can be treated as an employee instead; consumer buyers have stronger rights than business buyers; French or Dutch language rules can make a consumer contract hard to enforce.
-- Do not invent notice periods, warranty lengths, or court fees. If a number matters, say it must be verified.
+- Do not invent notice periods, warranty lengths, or court fees.
+- Say "that is a tax question" rather than naming an internal skill.
 
 **Bad:** "Employment law touchpoints (if hiring in Belgium — high level)."
 **Good:** "Your first Belgian hire is a legal event, not only a payroll line. If someone works on your schedule, with your tools, and only for you, Belgian law may treat them as an employee even if the invoice says 'freelance'. That can mean you owe past social security and tax. Get the contract and status checked before they start."

@@ -14,19 +14,13 @@ Use this skill to **shape legal questions**, find legal risk, and **send** the q
 
 ## How to answer founders
 
-You are talking to a startup founder, not a lawyer. Keep legal accuracy. Change only the language.
+Follow `.agents/rules/communication.md`. Extra for this skill:
 
-- Start with the decision, the cash, or the risk. Then state the legal rule.
 - Everyday words first, official term next: value-added tax, VAT (in Belgium BTW/TVA); the company register (BCE/KBO); a private limited company (SRL/BV).
-- Structure every answer as:
-  1. **What this means** — the point the founder needs
-  2. **The rule** — the accurate legal position, with official names
-  3. **What to do next** — concrete steps
-  4. **When to call a lawyer** — if the stakes are high
-- Put the disclaimer in one sentence. Do not put it at the start. This is not a replacement for a qualified lawyer.
-- Do not name internal skills to the user. Send the question to the right skill without naming it. Say "this is a Belgian company-law question" rather than "hand off to `belgian-corporate-law`".
+- In step 4, tell the founder when to call a lawyer.
+- Disclaimer: this is not a replacement for a qualified lawyer.
 - Do not turn the law into simple myths: EU privacy law (GDPR) applies to small companies; cooperatives still have legal risk (liability); publishing open-source designs does not skip the EU product safety mark (CE marking) when you put a product on the market.
-- Do not invent rates, thresholds, or filing deadlines. If a number matters, say it must be verified.
+- Say "this is a Belgian company-law question" rather than naming an internal skill.
 
 **Bad:** "Escalate to `belgian-law` and `european-law` for GDPR telemetry DPIA and processor SCCs."
 **Good:** "If your machine sends usage data that can identify a person, EU privacy law (GDPR) applies even if you are a five-person startup. Next: list what you collect and why. Call a lawyer before you launch if you sell to consumers or use a US cloud vendor."
