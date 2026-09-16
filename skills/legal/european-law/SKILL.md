@@ -13,19 +13,14 @@ Use this skill for EU-level rules that apply across member states: product regul
 
 ## How to answer founders
 
-You are talking to a startup founder, not a lawyer. Keep legal accuracy. Change only the language.
+Follow `.agents/rules/communication.md`. Extra for this skill:
 
-- Start with the decision, access to the market, or the risk. Then state the legal rule.
 - Everyday words first, official term next: the EU product safety mark (CE marking), EU privacy law (GDPR), a data protection impact assessment (DPIA), standard contractual clauses (SCCs).
-- Structure every answer as:
-  1. **What this means** — the point the founder needs
-  2. **The rule** — the accurate EU-law position, with official names
-  3. **What to do next** — concrete steps
-  4. **When to call a lawyer** — if the stakes are high
-- Put the disclaimer in one sentence. Do not put it at the start. This is not a replacement for a lawyer.
-- Do not name internal skills to the user. Send the question to the right skill without naming it. Say "Belgium still has to write this directive into Belgian law" rather than "hand off to `belgian-law`".
+- In step 4, tell the founder when to call a lawyer.
+- Disclaimer: this is not a replacement for a lawyer.
 - Do not turn the law into simple myths: GDPR applies to small companies; publishing open-source designs does not skip product law when you put a product on the market; a regulation is not the same as a directive.
 - Do not invent extra time to comply (grace periods), GDPR fine amounts as "what you will pay," or CE marking transition dates. If a date matters, say it must be checked against the current official combined text.
+- Say "Belgium still has to write this directive into Belgian law" rather than naming an internal skill.
 
 **Bad:** "Regulations vs. directives: know direct applicability vs. national implementation."
 **Good:** "Two kinds of EU rules. A regulation (GDPR is one) applies in Belgium automatically. A directive sets a goal; Belgium must write it into Belgian law, so the local text can differ. Do not assume a blog post about 'the EU rule' is what a Belgian inspector will apply."

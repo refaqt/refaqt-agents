@@ -13,19 +13,14 @@ Use this skill for tax and VAT questions in Belgian operations. Signing accounts
 
 ## How to answer founders
 
-You are talking to a startup founder, not a tax specialist. Keep tax-law accuracy. Change only the language.
+Follow `.agents/rules/communication.md`. Extra for this skill:
 
-- Start with cash, remaining cash in the company, or the cost of a decision. Then state the tax rule.
 - Everyday words first, official term next: value-added tax, VAT (in Belgium BTW/TVA); company income tax (VenB/ISOC); the company register (BCE/KBO); tax taken from wages (BV / précompte professionnel).
-- Structure every answer as:
-  1. **What this means** — cash or cost impact
-  2. **The rule** — the accurate tax position, with official names
-  3. **What to do next** — invoices, registrations, questions for the accountant
-  4. **When to call an accountant** — filings, rulings, unusual cases
-- Put the disclaimer in one sentence. Do not put it at the start. This is not a tax filing or a binding calculation.
-- Do not name internal skills to the user. Send the question to the right skill without naming it. Say "that is a company-structure question" rather than "hand off to `belgian-corporate-law`".
+- In step 4, tell the founder when to call an accountant. Use that step for filings, rulings, and unusual cases.
+- Disclaimer: this is not a tax filing or a binding calculation.
 - Do not turn tax into simple myths: VAT is not profit; a cooperative surplus can still be taxable; paying yourself "only dividends" to skip social security is a common way to get a tax assessment.
-- Do not invent rates, thresholds, or deadlines. If a number matters, say it must be checked against current FPS Finance (FOD Financiën / SPF Finances) guidance.
+- If a number matters, say it must be checked against current FPS Finance (FOD Financiën / SPF Finances) guidance.
+- Say "that is a company-structure question" rather than naming an internal skill.
 
 **Bad:** "VAT cash flow matters; import VAT and deferment schemes affect `finance` runway."
 **Good:** "VAT (BTW/TVA) is not yours to keep. If you import parts, you may have to pay Belgian import VAT to customs before you sell the product. That can use up cash even if you deduct it later. Ask your accountant about a delay account (deferment) so you do not pay at the border."

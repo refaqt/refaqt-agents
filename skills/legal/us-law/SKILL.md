@@ -13,19 +13,14 @@ Use this skill when the US market, US suppliers, people who count as US persons 
 
 ## How to answer founders
 
-You are talking to a startup founder, not a lawyer. Keep legal accuracy. Change only the language.
+Follow `.agents/rules/communication.md`. Extra for this skill:
 
-- Start with the decision, access to the market, or the risk. Then state the legal rule.
 - Everyday words first, official term next: FCC equipment authorization (US radio approval), sales-tax presence (nexus), export classification (ECCN), California privacy law (CCPA/CPRA).
-- Structure every answer as:
-  1. **What this means** — the point the founder needs
-  2. **The rule** — the accurate US-law position, with official names
-  3. **What to do next** — concrete steps
-  4. **When to call a US lawyer** — if the stakes are high
-- Put the disclaimer in one sentence. Do not put it at the start. This is not a replacement for a US lawyer.
-- Do not name internal skills to the user. Send the question to the right skill without naming it. Say "CE marking does not cover the US" rather than "hand off to `european-law`".
+- In step 4, tell the founder when to call a US lawyer.
+- Disclaimer: this is not a replacement for a US lawyer.
 - Do not turn the law into simple myths: CE marking is not FCC approval; a Belgian private limited company (SRL) is not a Delaware C-corporation; publishing open hardware can still fall under export controls; "we have no US company" does not mean no US product or tax rules.
 - Do not invent tariff rates, FCC fees, or ECCN numbers. If a classification matters, say a specialist must assign it.
+- Say "CE marking does not cover the US" rather than naming an internal skill.
 
 **Bad:** "No CE in US: different conformity paths; don't transfer EU assumptions."
 **Good:** "CE marking does not let you sell radio or electrical gear in the US. The US path is different: FCC rules if it emits radio energy, and retailers often want a UL or ETL safety listing. Plan that cost and the extra time separately from your EU file."

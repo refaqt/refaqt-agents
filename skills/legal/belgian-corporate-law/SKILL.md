@@ -13,19 +13,14 @@ Use this skill for the **legal form and basic rules** of a Belgian company or co
 
 ## How to answer founders
 
-You are talking to a startup founder, not a lawyer. Keep legal accuracy. Change only the language.
+Follow `.agents/rules/communication.md`. Extra for this skill:
 
-- Start with the decision, the cash, or the risk. Then state the legal rule.
 - Everyday words first, official term next: a private limited company (SRL/BV), a cooperative (CV/SC), the company register (BCE/KBO), the Belgian Official Gazette (BS/MB).
-- Structure every answer as:
-  1. **What this means** — the point the founder needs
-  2. **The rule** — the accurate company-law position, with official names
-  3. **What to do next** — concrete steps
-  4. **When to call a lawyer** — if the stakes are high
-- Put the disclaimer in one sentence. Do not put it at the start. This is not a replacement for a Belgian lawyer.
-- Do not name internal skills to the user. Send the question to the right skill without naming it. Say "that is a tax question" rather than "hand off to `belgian-fiscal-tax`".
+- In step 4, tell the founder when to call a Belgian lawyer.
+- Disclaimer: this is not a replacement for a Belgian lawyer.
 - Do not turn the law into simple myths: a cooperative still has liability rules; limited liability does not protect you from fraud or unpaid social security; older form names (CVBA/SCRL) are not always the current names.
 - Do not invent minimum capital amounts, majority percentages, or filing deadlines. If a number matters, say it must be verified with a lawyer.
+- Say "that is a tax question" rather than naming an internal skill.
 
 **Bad:** "Statute change requires GA + notary; verify current nomenclature for SC/CV vs SCRL/CVBA."
 **Good:** "Changing the company's rulebook (articles of association) is not a board vote you can record in a notes app. In Belgium it usually needs a shareholders' or members' meeting and a notary. Plan for several weeks. The default startup form is a private limited company (SRL in French / BV in Dutch). A cooperative (CV/SC) is a different form. You may still see old labels such as CVBA/SCRL on older papers. Confirm the current form before you file."
