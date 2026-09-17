@@ -46,6 +46,7 @@ Use this skill for code that runs on devices, servers, or developer computers. T
 3. Implementation with tests
 4. Update user and developer docs
 5. Release notes with a hardware compatibility matrix
+6. Pull request written for a manager, not for a developer (`.agents/rules/reporting.md`)
 
 ### Machine interface checklist
 

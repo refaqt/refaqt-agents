@@ -18,6 +18,10 @@ Write every log entry in B2 English. Follow `.agents/rules/communication.md`.
 Keep numbers, units, and official names exact. If you quote a person, you may keep
 their words in quotation marks.
 
+Write the outcome first, so a manager can read the entry without opening the code. Put command
+output, error traces, and long file listings in a closed `<details>` block or in a linked file,
+never in the running text. Follow `.agents/rules/reporting.md`.
+
 ## File
 
 ```
@@ -69,6 +73,6 @@ Reference them relatively (`![](images/2026-08-21-01.png)`) and add a short capt
 
 1. Update the table in `docs/log/README.md` (date, linked topic, role(s), image count if used). Keep date order.
 2. Commit as `docs(log): <short description>`.
-3. Push per the repo's normal branch/PR flow.
+3. Push per the repo's normal branch/PR flow. Write the pull request text with the headings in `.agents/rules/reporting.md`.
 
 Confirm what you wrote and where, and give the user the path.
