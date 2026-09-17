@@ -13,12 +13,16 @@ Before you read `.agents/` rules or skills, update tooling submodules to the lat
 
 This repo mounts [refaqt/refaqt-agents](https://github.com/refaqt/refaqt-agents) at [`.agents/`](.agents/).
 
-1. Read [`.agents/rules/core.md`](.agents/rules/core.md), [`.agents/rules/communication.md`](.agents/rules/communication.md), and [`.agents/rules/living-docs.md`](.agents/rules/living-docs.md).
+1. Read [`.agents/rules/core.md`](.agents/rules/core.md), [`.agents/rules/communication.md`](.agents/rules/communication.md), [`.agents/rules/reporting.md`](.agents/rules/reporting.md), and [`.agents/rules/living-docs.md`](.agents/rules/living-docs.md).
 2. Read [`docs/mistakes/`](docs/mistakes/) and say which prevention rules apply.
 3. Read [`docs/architecture.md`](docs/architecture.md) before larger work.
 4. Before new coding solutions, check [`.agents-local/skills/patterns/SKILL.md`](.agents-local/skills/patterns/SKILL.md) if it is there.
 
 Write every reply and every file in B2 English. Follow `.agents/rules/communication.md`.
+Write pull requests, commit messages, GitHub comments, issues, and log entries for a manager, not
+for a developer. Follow `.agents/rules/reporting.md`.
+Copy [`.agents/templates/pull-request.md`](.agents/templates/pull-request.md) to
+`.github/pull_request_template.md` so the pull request box starts with the right headings.
 
 ## This repository
 

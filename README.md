@@ -5,6 +5,8 @@ Rules and skills for AI agents that work on Refaqt repositories. Any agent tool 
 Add this repository as a git submodule at `.agents/` in each project repo (Cursor, Claude Code, and anything that reads `AGENTS.md`).
 
 Write every reply and every file in B2 English. Follow [`rules/communication.md`](rules/communication.md). Keep official names, file paths, and numbers exact.
+Write pull requests, commit messages, GitHub comments, issues, and log entries for a manager, not for a
+developer. Follow [`rules/reporting.md`](rules/reporting.md).
 
 ## Layout
 
@@ -12,7 +14,7 @@ Write every reply and every file in B2 English. Follow [`rules/communication.md`
 | ----------------- | ------------------------------------------------------------------------------------ |
 | `rules/`          | Lasting guidance (markdown). Project repos load these through small adapters and root `AGENTS.md`. |
 | `skills/`         | Process skills (`SKILL.md`).                                                         |
-| `templates/`      | Starter `AGENTS.md`, decision template, Cursor rule stubs, and living-doc stubs for new repos. |
+| `templates/`      | Starter `AGENTS.md`, pull request template, decision template, Cursor rule stubs, and living-doc stubs for new repos. |
 | `bootstrap/docs/` | Same stubs, kept for kits that still point at `.cursor/bootstrap`.                  |
 
 ## Install into a project repo
@@ -31,12 +33,37 @@ Then:
 3. Add small Cursor adapters under `.cursor/rules/*.mdc` that point at `.agents/rules/*.md` (see project examples in aqtuator).
 4. Put skills that belong only to this repo under `.agents-local/skills/` (not inside the submodule).
 5. Put coding patterns that belong only to this repo in `.agents-local/skills/patterns/SKILL.md` and point agents at them from `AGENTS.md`.
+6. Copy [`templates/pull-request.md`](templates/pull-request.md) to `.github/pull_request_template.md`.
 
 Windows note: do not symlink root `AGENTS.md` into the submodule — use a small stub file.
 
 ## Branching
 
 Every task that changes the repo must start on a **new git branch** off `main`, unless the user says otherwise. Do not put task work as commits directly on `main`.
+
+## Pull requests
+
+A pull request is read by a manager, not only by a developer. Use these four headings, in this
+order, and keep everything above the closed block under 200 words:
+
+```markdown
+## What changed
+
+## Why it matters
+
+## What you need to do
+
+## How it was checked
+
+<details>
+<summary>Notes for reviewers</summary>
+
+</details>
+```
+
+The rule, with a worked example, is [`rules/reporting.md`](rules/reporting.md). Copy
+[`templates/pull-request.md`](templates/pull-request.md) to `.github/pull_request_template.md` in
+each project repo.
 
 ## Skills in this kit
 

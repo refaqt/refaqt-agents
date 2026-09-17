@@ -1,6 +1,6 @@
 # Communication
 
-This rule applies to **every text you write**: chat replies, quotes, specs, work instructions, drafts, logs, decisions, mistake notes, architecture docs, patterns, README files, comments, commit messages, and pull-request text.
+This rule applies to **every text you write**: chat replies, quotes, specs, work instructions, drafts, logs, decisions, mistake notes, architecture docs, patterns, README files, code comments, commit messages, pull-request text, issues, and comments and review replies on GitHub.
 
 ## Language (B2 English)
 
@@ -24,6 +24,34 @@ Write so a non-native speaker can read you easily. Use CEFR B2 English (clear, e
 **Good (repo):** "If the same mistake happens twice, write a clear rule so it does not happen again."
 
 Do not change code names, programming interface names (APIs), file paths, or shell commands to make them simpler.
+
+## The manager test
+
+Before you send any text, read your own sentences as a manager who does not have the repository
+open. Every sentence must pass all three checks.
+
+1. **No hidden nouns.** If a sentence holds a file name, a function name, an error name, or a
+   command, ask what it is doing there. Keep it only if the reader must type it or open it. If it
+   is there as proof, move it to the technical block at the end of the text.
+2. **Says the point, not the route.** Write the result. Do not write the steps you took to get
+   there.
+3. **Stands alone.** No bare `#18`, no "as planned", no "the parity test". Name the thing in full,
+   or leave it out.
+
+Also: no clever headings, no sentence fragments, and no line that only makes sense to someone who
+already read the code.
+
+**Bad:** "Kept subprocess dispatch, so the `SystemExit` that `aggregate_bom.collect()` raises from
+library code stays harmless."
+
+**Good:** "Each check still runs as its own small program. If one check crashes, the others still
+finish, and you still get a full report."
+
+## Reporting work
+
+Pull requests, commit messages, comments and review replies on GitHub, issues, and entries in
+`docs/log/` have a fixed shape. Follow [reporting.md](reporting.md). Use the four standard
+headings and put the technical detail in one closed block at the end.
 
 ## How to answer people
 
