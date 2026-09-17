@@ -4,10 +4,16 @@ Start here if you are an agent (Cursor, Claude Code, or similar) working in this
 
 ## First step (required)
 
-Before you read `.agents/` rules or skills, update tooling submodules to the latest `main`:
+Before you read `.agents/` rules or skills, update the tooling submodules to the latest `main`:
 
-- **All agents, any OS:** `bash setup-tooling.sh`
+- **All agents, any OS:** `bash setup-tooling.sh`, or `bash setup-agents.sh` in a repo that has no `doqs` submodule. Run the file this repo actually has.
 - **People on Windows** may double-click `setup-tooling.bat` (`pause` is OK there only). Agents must not run the `.bat`.
+
+A `SessionStart` hook at [`.claude/hooks/session-start.sh`](.claude/hooks/session-start.sh) usually
+fills those folders before you read this. Run the setup file anyway when you need the launchers it
+installs, or when the hook said it could not reach the network. Both leave the submodule gitlinks
+modified on purpose — leave them uncommitted unless you mean to set a new pin. Installing the kit in
+a new repo: [`.agents/INSTALL.md`](.agents/INSTALL.md).
 
 ## Shared kit
 
