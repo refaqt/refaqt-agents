@@ -1,0 +1,4 @@
+{
+  "name": "<your repository name>",
+  "install": "bash .claude/hooks/session-start.sh"
+}
