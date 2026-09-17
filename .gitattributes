@@ -1,2 +1,6 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+# Shell files must keep LF, even on Windows. The templates in templates/ are
+# copied into project repos and run there, and CRLF stops them from starting.
+*.sh text eol=lf
