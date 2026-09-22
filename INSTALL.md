@@ -93,6 +93,13 @@ your own project name, so Cursor runs the same start-up file:
 }
 ```
 
+Add the starting page by hand. `doqs` never writes `AGENTS.md`, `CLAUDE.md` or `README.md`: those
+are your repository's own text. Copy [`templates/AGENTS.md`](templates/AGENTS.md) from this kit to
+your top folder as `AGENTS.md`, and copy
+[`doqs/templates/setup-tooling/CLAUDE.md`](https://github.com/refaqt/doqs/blob/main/templates/setup-tooling/CLAUDE.md)
+to your top folder as `CLAUDE.md`. Put your machine's name in the title. Use the Route A version of
+`CLAUDE.md`, not the one in this kit: it checks both folders and names `setup-tooling.sh`.
+
 **Do not copy `.agents/templates/setup-agents.sh` or `.agents/templates/session-start.sh` into a
 repository that has `doqs`.** Both routes use the same file name, and the `doqs` helper replaces that
 file every time it runs. You would lose your copy without a warning.
@@ -101,7 +108,7 @@ Now go to Step 3.
 
 ### Route B — the kit on its own
 
-Copy four files out of the kit. The paths below start from the top folder of your repository.
+Copy five files out of the kit. The paths below start from the top folder of your repository.
 
 | Copy this file | To here | What it does |
 | --- | --- | --- |
@@ -109,8 +116,9 @@ Copy four files out of the kit. The paths below start from the top folder of you
 | `.agents/templates/session-start.sh` | `.claude/hooks/session-start.sh` | Fills `.agents/` at the start of every session |
 | `.agents/templates/claude-settings.json` | `.claude/settings.json` | Starts the file above |
 | `.agents/templates/cursor-environment.json` | `.cursor/environment.json` | Starts the same file in Cursor cloud agents |
+| `.agents/templates/CLAUDE.md` | `CLAUDE.md` | Holds the check an agent runs when no hook can start |
 
-These commands do all four copies.
+These commands do the four copies that need no editing. `CLAUDE.md` comes last, because you put your project name in it.
 
 ```bash
 mkdir -p .claude/hooks .cursor
@@ -137,8 +145,14 @@ Then finish three small things by hand.
 
 Last, give agents a starting page. Copy [`templates/AGENTS.md`](templates/AGENTS.md) to the top folder
 as `AGENTS.md` and fill in the "This repository" section. Copy
-[`templates/CLAUDE.md`](templates/CLAUDE.md) to the top folder as `CLAUDE.md`. On Windows, do not link
-`AGENTS.md` into the submodule. Use the small copy, as the template does.
+[`templates/CLAUDE.md`](templates/CLAUDE.md) to the top folder as `CLAUDE.md` and put your project
+name in the title. On Windows, do not link `AGENTS.md` into the submodule. Use the small copy, as the
+template does.
+
+`CLAUDE.md` is no longer one line, and that is on purpose. Claude Code reads it from **every**
+repository a session attaches, while it reads `.claude/settings.json` from one folder only. So the
+check in `CLAUDE.md` is the step that still works when the start-up file cannot run. Step 4 explains
+when that happens.
 
 Commit everything.
 
@@ -180,15 +194,38 @@ anything.
 
 ### Claude Code on the web
 
-Nothing more to do. Step 2 already installed `.claude/hooks/session-start.sh` and the entry in
-`.claude/settings.json` that starts it. Your next cloud session begins with a line like this:
+Step 2 installed the start-up file and the entry that runs it. That is enough **when the session
+opens this repository as its project folder**. Your next cloud session then begins with a line like
+this:
 
 ```
-The agent kit is ready: .agents/ (d42d850).
+The agent kit is ready in /home/user/<your repository>: .agents/ (d42d850).
 Read .agents/rules/core.md first, then AGENTS.md.
 ```
 
-If you see nothing at all, the file is on disk but nothing starts it. Check `.claude/settings.json`.
+One case breaks it. When a session attaches **more than one** repository, it opens their shared
+parent folder instead. That folder is not your repository, so Claude Code never reads
+`.claude/settings.json`, never runs the start-up file, and prints nothing. `.agents/` stays empty and
+nothing warns you. No file in your repository can change that: it is the tool's own behaviour.
+
+Pick one of these two:
+
+- **Attach one repository.** Give the session only this repository as its source. Everything else
+  arrives as a submodule, at the path `AGENTS.md` already names. This is the simple choice, and it
+  also switches on every other setting in `.claude/settings.json`.
+- **Or run the setup file in the environment.** Keep several sources, and put
+  `bash <your repository>/setup-agents.sh` in the setup script of the cloud environment. In Route A
+  that is `bash <your repository>/setup-tooling.sh`. The cost is two checkouts of the same
+  repository in one session: the one you attached, and the one inside the submodule folder. It is
+  easy to read one copy and change the other.
+
+`CLAUDE.md` covers what is left. Claude Code reads that file from **every** repository a session
+attaches, so it works in both cases. It tells the agent to look for `.agents/rules/core.md` and to
+run the setup file when the file is missing. Copy it from
+[`templates/CLAUDE.md`](templates/CLAUDE.md).
+
+If you see no line at all in a **single-repository** session, the file is on disk but nothing starts
+it. Check `.claude/settings.json`.
 
 ### Cursor cloud agents
 
@@ -285,6 +322,7 @@ release. When the kit had not moved, nothing shows up, and that is normal too.
 | `.agents/` is empty | The session copied your repository without the kit | Run `bash setup-agents.sh`, or `bash setup-tooling.sh` in Route A |
 | Git said `Skipping submodule` | Git skipped the folder and still reported success | Check that `.gitmodules` has the `.agents` entry, then run the setup file again |
 | The session says nothing at start-up | The start-up file is on disk, but nothing runs it | Check the `SessionStart` entry in `.claude/settings.json` |
+| The session says nothing at start-up, and it holds several repositories | The session opened the parent folder, so `.claude/settings.json` was never read | Attach one repository, or run the setup file from the environment's setup script. See Step 4 |
 | `bad interpreter` or `\r: command not found` | Windows saved the script with the wrong line endings | Add `*.sh text eol=lf` to `.gitattributes`, then re-checkout the file |
 | `Permission denied` when the start-up file runs | The file is not marked as a program | Run `chmod +x .claude/hooks/session-start.sh` and commit that change |
 | `could not read Username for 'https://github.com'` | The session has no network, or the repository is private | The kit is public, so this is almost always the network. Run the setup file again when you are online |
