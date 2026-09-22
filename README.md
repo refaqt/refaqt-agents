@@ -14,7 +14,7 @@ developer. Follow [`rules/reporting.md`](rules/reporting.md).
 | ----------------- | ------------------------------------------------------------------------------------ |
 | `rules/`          | Lasting guidance (markdown). Project repos load these through small adapters and root `AGENTS.md`. |
 | `skills/`         | Process skills (`SKILL.md`).                                                         |
-| `templates/`      | Starter `AGENTS.md`, setup and session-start files, pull request template, decision template, Cursor rule stubs, and living-doc stubs for new repos. |
+| `templates/`      | Starter `AGENTS.md` and `CLAUDE.md`, setup and session-start files, pull request template, decision template, Cursor rule stubs, and living-doc stubs for new repos. |
 | `bootstrap/docs/` | Same stubs, kept for kits that still point at `.cursor/bootstrap`.                  |
 
 ## Install into a project repo

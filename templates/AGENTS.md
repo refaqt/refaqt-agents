@@ -4,16 +4,30 @@ Start here if you are an agent (Cursor, Claude Code, or similar) working in this
 
 ## First step (required)
 
-Before you read `.agents/` rules or skills, update the tooling submodules to the latest `main`:
+Check the tooling folders before anything else. Run this from the repository root:
 
-- **All agents, any OS:** `bash setup-tooling.sh`, or `bash setup-agents.sh` in a repo that has no `doqs` submodule. Run the file this repo actually has.
+```bash
+ls .agents/rules/core.md doqs/scripts/validate_all.py
+```
+
+Drop `doqs/scripts/validate_all.py` from the command in a repository that has no `doqs` submodule.
+
+- **Both files are there.** The folders are filled. Go on to [Shared kit](#shared-kit).
+- **Either file is missing.** Run `bash setup-tooling.sh` from the repository root, then check again. In a repository with no `doqs` submodule, run `bash setup-agents.sh` instead. Run the file this repo actually has.
 - **People on Windows** may double-click `setup-tooling.bat` (`pause` is OK there only). Agents must not run the `.bat`.
 
-A `SessionStart` hook at [`.claude/hooks/session-start.sh`](.claude/hooks/session-start.sh) usually
-fills those folders before you read this. Run the setup file anyway when you need the launchers it
-installs, or when the hook said it could not reach the network. Both leave the submodule gitlinks
-modified on purpose — leave them uncommitted unless you mean to set a new pin. Installing the kit in
-a new repo: [`.agents/INSTALL.md`](.agents/INSTALL.md).
+A `SessionStart` hook at [`.claude/hooks/session-start.sh`](.claude/hooks/session-start.sh) does the
+same work at the start of a session, and prints one line when it worked. Do not trust it blindly. It
+runs only when the session opens **this folder** as its project folder. Claude Code reads
+`.claude/settings.json` from that folder only, so a session that opens a parent folder, or that
+attaches several repositories at once, never reads the file, never starts the hook, and prints
+nothing at all. Silence and success look the same. The check above is the only step that works in
+every session.
+
+Run the setup file anyway when you need the launchers it installs, or when the hook said it could
+not reach the network. Both leave the submodule gitlinks modified on purpose — leave them
+uncommitted unless you mean to set a new pin. Installing the kit in a new repo:
+[`.agents/INSTALL.md`](.agents/INSTALL.md).
 
 ## Shared kit
 
