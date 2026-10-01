@@ -70,13 +70,16 @@ Task progress:
 | TechDraw missing geometry | Body not visible; wrong view source; outdated projection |
 | FEM mesh or solve failure | Version change; material or boundary setup; check the forum for solver-specific threads |
 
-### When `doqs/` is present: master sketches and Assembly Insert
+### When `doqs/` is present: part container, master sketches, and Assembly Insert
 
 When the machine repo includes a DOQS submodule, also read:
 
 - `doqs/docs/decisions/2026-06-24_freecad-master-sketches-body.md`
+- `doqs/docs/decisions/2026-10-01_part-container-on-top.md`
 
 Key rule: master sketches must live in a dedicated `PartDesign::Body` with their own origin planes — not constrained to Assembly origin planes. That avoids circular document dependencies that block Insert.
+
+Part container rule: when you create a new part, put a Part container (`App::Part`) at the top of the document. Put every `PartDesign::Body` inside it. In a build script, use `body(doc)` from `cad_build`. It returns a Body that is already inside the Part. If a Body sits outside a Part, the build stops and `validate_cad.py` fails. Assembly documents do not follow this rule. These are files under `cad/assemblies/` or files that hold an `Assembly::AssemblyObject`. They keep master sketches in a `Body_master` inside a plain group. See [`doqs/docs/decisions/2026-10-01_part-container-on-top.md`](https://github.com/refaqt/doqs/blob/main/docs/decisions/2026-10-01_part-container-on-top.md).
 
 ## Response format
 
