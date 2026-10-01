@@ -81,6 +81,8 @@ Key rule: master sketches must live in a dedicated `PartDesign::Body` with their
 
 Part container rule: when you create a new part, put a Part container (`App::Part`) at the top of the document. Put every `PartDesign::Body` inside it. In a build script, use `body(doc)` from `cad_build`. It returns a Body that is already inside the Part. If a Body sits outside a Part, the build stops and `validate_cad.py` fails. Assembly documents do not follow this rule. These are files under `cad/assemblies/` or files that hold an `Assembly::AssemblyObject`. They keep master sketches in a `Body_master` inside a plain group. See [`doqs/docs/decisions/2026-10-01_part-container-on-top.md`](https://github.com/refaqt/doqs/blob/main/docs/decisions/2026-10-01_part-container-on-top.md).
 
+Visibility rule: a new part or assembly must open visible. `run()` in `cad_build` does this for you. If you create objects another way, for example through the FreeCAD connection, set `Visibility = True` on each new `App::Part`, `PartDesign::Body`, `Assembly::AssemblyObject` and `App::Link`, and on the `Tip` of each new Body. Keep the coordinate system hidden: the `Origin` and its axes, planes and point stay `Visibility = False`.
+
 ## Response format
 
 Structure every answer as:
