@@ -13,7 +13,9 @@ ls .agents/rules/core.md doqs/scripts/validate_all.py
 Drop `doqs/scripts/validate_all.py` from the command in a repository that has no `doqs` submodule.
 
 - **Both files are there.** The folders are filled. Go on to [Shared kit](#shared-kit).
-- **Either file is missing.** Run `bash setup-tooling.sh` from the repository root, then check again. In a repository with no `doqs` submodule, run `bash setup-agents.sh` instead. Run the file this repo actually has.
+- **Either file is missing.** Pick the helper by looking at the repository root, then run it from there and check again:
+  - A `doqs/` folder exists: run `bash setup-tooling.sh`.
+  - No `doqs/` folder exists: run `bash setup-agents.sh`. Never run `setup-tooling.sh` here. It needs `doqs/scripts/install_root_tools.py`, so it pulls `.agents` and then fails at the end.
 - **People on Windows** may double-click `setup-tooling.bat` (`pause` is OK there only). Agents must not run the `.bat`.
 
 A `SessionStart` hook at [`.claude/hooks/session-start.sh`](.claude/hooks/session-start.sh) does the
