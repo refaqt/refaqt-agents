@@ -11,6 +11,17 @@ test in that file.
 what to tell a customer. They will not open the code. Write for that person. Developers who need
 detail get their own block at the end.
 
+## Report the real state
+
+Say what is true now, and where it is true.
+
+- When files leave git, say whether they are still on disk. If they are, say where, and ask
+  whether to delete them.
+- When a pull request is open, say that the main branch still has the old state until someone
+  merges it.
+- Never write "removed" or "fixed" for something that is only true on a branch. Write "removed on
+  branch `name`, not yet merged".
+
 ## Pull request title
 
 One line, at most 72 characters. Say what a person can now do, or what stopped being broken. No

@@ -19,6 +19,7 @@ Stay current with the latest FreeCAD version and its documentation. Help debug F
 - PartDesign, Assembly, TechDraw, FEM (finite element analysis), or addon/workbench issues
 - Macros, spreadsheets, or top-down design with master sketches (one sketch drives many parts)
 - The user asks why a FreeCAD feature or workflow is not working
+- You model a bought part from a supplier catalogue, datasheet, or drawing
 
 ## Audience
 
@@ -82,6 +83,46 @@ Key rule: master sketches must live in a dedicated `PartDesign::Body` with their
 Part container rule: when you create a new part, put a Part container (`App::Part`) at the top of the document. Put every `PartDesign::Body` inside it. In a build script, use `body(doc)` from `cad_build`. It returns a Body that is already inside the Part. If a Body sits outside a Part, the build stops and `validate_cad.py` fails. Assembly documents do not follow this rule. These are files under `cad/assemblies/` or files that hold an `Assembly::AssemblyObject`. They keep master sketches in a `Body_master` inside a plain group. See [`doqs/docs/decisions/2026-10-01_part-container-on-top.md`](https://github.com/refaqt/doqs/blob/main/docs/decisions/2026-10-01_part-container-on-top.md).
 
 Visibility rule: a new part or assembly must open visible. `run()` in `cad_build` does this for you. If you create objects another way, for example through the FreeCAD connection, set `Visibility = True` on each new `App::Part`, `PartDesign::Body`, `Assembly::AssemblyObject` and `App::Link`, and on the `Tip` of each new Body. Keep the coordinate system hidden: the `Origin` and its axes, planes and point stay `Visibility = False`.
+
+## Modelling a part from a supplier drawing
+
+A model of a bought part is only useful if it matches the real part. A missing grease nipple or
+screw head can hide a collision in the assembly. Follow these rules every time you model a part
+from a catalogue, a datasheet, or a drawing.
+
+1. **Make an inventory first.** Before you model, list every labelled dimension and every drawn
+   feature: holes, threads, plugs, grease nipples, screw heads, reference edges, chamfers. Show the
+   list to the user. Then model each item, or write next to it why you leave it out. Never leave
+   out a feature that sticks out of the main shape.
+2. **Know which values are exact.** A value in a table is exact. A value you read from a figure is
+   an estimate. Before you scale anything from a figure, check that the figure is drawn to scale
+   for this size: compare several dimensions in the same view that the table gives. Catalogues
+   often draw one size for a whole range. Mark every estimate as an estimate in the build script
+   and in your report. Make estimates of features that stick out a little too large, not too
+   small. Ask the user to measure the real part.
+3. **Use the same reference frame.** A model that replaces another model uses the same axes and the
+   same origin. That includes which side is the reference side. If you do not know, ask before
+   you model.
+4. **Options are not the base shape.** A feature that a part-number suffix adds (for example a
+   seal, a plug, or a second grease nipple) is a parameter. Keep it out of the base shape until
+   the drawing and the supplier agree that it belongs there.
+5. **Done means checked against reality.** "The values come from the datasheet" is not proof. The
+   model is done only when you have:
+   - rebuilt it from the build script, not edited it by hand;
+   - measured it: the fingerprint (a short record of volume, area, bounding box, and face count),
+     the bounding box, and a few slices (cuts through the part at known heights);
+   - checked symmetry where the real part is symmetric;
+   - compared it with the reference model or the real part;
+   - shown the user a picture of it.
+
+### FreeCAD jobs and files
+
+- Never run two FreeCAD jobs with a graphical window at the same time.
+- Use `FreeCADCmd` (FreeCAD without a window) to measure and to rebuild.
+- A test must not change a model file. Do not open a model with `openDocument` in a test and then
+  let anything save it. Open a copy, or close the document without saving.
+- Compare the fingerprints with the saved ones before you commit. If a model changed and you did
+  not mean to change it, stop and find out why.
 
 ## Response format
 
