@@ -63,6 +63,26 @@ Use this skill when the project uses (or should use) SysML v2 models as the offi
 3. Split the system with `part def` / `part`, ports, and connections (interface control documents (ICDs))
 4. Link verification cases to requirements with SysML v2 `verify` / `satisfy`
 
+### Requirements that set a size
+
+Many requirements set a size in the CAD model: a travel, a work envelope, a
+load, a clearance. Give such a requirement a stable name and an `attribute`
+with its unit, for example:
+
+```sysml
+requirement def TravelRequirement {
+    doc /* The X-axis shall travel at least 300 mm. */
+    attribute travel_mm : Real;
+    require constraint { travel_mm >= 300.0 }
+}
+```
+
+The CAD parameter that follows from it names it as its source
+(`XAxis::TravelRequirement.travel_mm`). In a DOQS repository that is the
+`source` column of `cad/params/default.csv`, with `basis` set to
+`requirement`. When you rename or remove the requirement, update that row in
+the same change, or the check fails.
+
 ### Change impact
 
 When a requirement or interface changes:

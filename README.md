@@ -76,7 +76,7 @@ each project repo.
 | `mistake-log`       | Read/write `docs/mistakes/`; turn repeats into prevention rules |
 | `maintain-patterns` | Update the project's `.agents-local/skills/patterns/SKILL.md` |
 | `doqs-naming`       | DOQS module/BOM/OKH naming and checks (needs `doqs/` submodule) |
-| `freecad`           | FreeCAD debugging, workbench issues, assembly/Binder problems   |
+| `freecad`           | FreeCAD debugging, parametric modelling, assembly/Binder problems |
 
 ### Role skills
 
