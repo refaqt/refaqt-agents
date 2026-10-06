@@ -7,3 +7,5 @@ globs:
 ---
 
 When you debug FreeCAD designs, workbench issues, or `.FCStd` failures, read `.agents/skills/freecad/SKILL.md` and search the wiki, forum, and GitHub before you answer. Cite specific online references in every response.
+
+When you create or change a model, think parametric. Every size has a reason: a requirement, a bought part, a standard, a simulation, or a design choice. Write the parameter table first (independent values with their reason, everything else as a formula). Fully constrain every sketch. Never type a number into a dimension: use `Params.<alias>` or a formula. Draw a repeated feature once and pattern it from a count and a pitch. See the section "Think parametric" in `.agents/skills/freecad/SKILL.md`.

@@ -36,11 +36,14 @@ Use this skill for physical structure, motion, and how easy the mechanical syste
 - **Safety by design:** Treat places that can pinch fingers (pinch points), emergency-stop (e-stop) reach, stability, and sharp edges as design inputs to `product-compliance` (Machinery Regulation / International Organization for Standardization (ISO) 12100 approach). This feeds European product conformity (CE) evidence.
 - **Revision discipline:** Use part numbers, revision tables, and a change log. Align with `doqs-naming` in project repos.
 - **Modularity:** Keep interfaces (mounting, space envelopes, couplings) stable across product variants.
+- **Every dimension has a reason:** Each size comes from a requirement, a bought part, a standard, a calculation or simulation, or a recorded design choice. Keep these independent values few, in one parameter table, with their reason. Derive every other size from them by a formula. In CAD, fully constrain each sketch and link each dimension to the parameter table (`freecad`). A row of equal holes is one count and one pitch, not one number per gap.
 
 ## Key workflows
 
 ### Design review checklist
 
+- [ ] Every independent dimension has a reason (requirement, bought part, standard, calculation, or design choice); every other dimension is derived
+- [ ] Sketches fully constrained; no typed numbers in the CAD model
 - [ ] Loads and boundary conditions documented
 - [ ] Tolerances achievable at target process and volume
 - [ ] Standard parts preferred over custom

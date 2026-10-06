@@ -7,3 +7,4 @@ Write entries in B2 English. Follow [`rules/communication.md`](../../rules/commu
 | Date | Entry |
 | ---- | ----- |
 | 2026-10-02 | [A supplier part model was called done, but it did not match the real part](2026-10-02_supplier-part-model.md) |
+| 2026-10-06 | [CAD models had typed numbers and sketches that could still move](2026-10-06_unlinked-dimensions.md) |

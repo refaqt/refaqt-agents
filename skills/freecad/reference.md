@@ -86,7 +86,9 @@ FreeCAD "SubShapeBinder" circular dependency
 | Links between documents | [Std LinkMake](https://wiki.freecad.org/Std_LinkMake) | wiki "Link"; broken path after move |
 | TechDraw views | [TechDraw Workbench](https://wiki.freecad.org/TechDraw_Workbench) | forum workbench-specific section |
 | FEM meshing / solver | [FEM Workbench](https://wiki.freecad.org/FEM_Workbench) | forum + GitHub; version-specific regressions |
-| Spreadsheet / expressions | [Spreadsheet Workbench](https://wiki.freecad.org/Spreadsheet_Workbench) | wiki "Expression" |
+| Spreadsheet / expressions | [Spreadsheet Workbench](https://wiki.freecad.org/Spreadsheet_Workbench), [Expressions](https://wiki.freecad.org/Expressions) | wiki "Expression"; a sketch dimension is `Sketch.Constraints[16]` or `Sketch.Constraints.name` |
+| Fully constrained sketches | [Sketcher Workbench](https://wiki.freecad.org/Sketcher_Workbench), [Sketcher ConstrainLock](https://wiki.freecad.org/Sketcher_ConstrainLock) | forum "fully constrained" "degrees of freedom" |
+| Patterns from a count and a pitch | [PartDesign LinearPattern](https://wiki.freecad.org/PartDesign_LinearPattern), [PartDesign PolarPattern](https://wiki.freecad.org/PartDesign_PolarPattern) | wiki "Mode" Extent / Spacing (FreeCAD 1.1) |
 | Safe Mode | Help → Safe Mode in app | forum "safe mode" for isolating addon issues |
 | Macro errors | [Power users hub](https://wiki.freecad.org/Power_users_hub) | forum Macros section; addon repo if macro is third-party |
 
@@ -95,6 +97,7 @@ FreeCAD "SubShapeBinder" circular dependency
 | Doc | Path | When |
 |-----|------|------|
 | Master sketches in Body | `doqs/docs/decisions/2026-06-24_freecad-master-sketches-body.md` | Assembly Insert failures, Binder cycles |
+| Every dimension has a reason | `doqs/docs/decisions/2026-10-06_every-dimension-has-a-source.md` | Parameter sources, fully constrained sketches, linked dimensions |
 | Architecture (top-down) | `doqs/docs/architecture.md` | Module layout, params.csv → Spreadsheet |
 
 ## Reporting bugs (for the user)

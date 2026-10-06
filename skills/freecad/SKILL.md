@@ -1,7 +1,8 @@
 ---
 name: freecad
 description: >-
-  Debug FreeCAD designs and answer modeling and workbench questions for
+  Debug FreeCAD designs, build parametric models where every dimension is
+  linked to a reason, and answer modeling and workbench questions for
   intermediate users. Search the official wiki, forum, and GitHub issues,
   discussions, and pull requests (PRs) before you answer. Use when the user
   mentions FreeCAD, .FCStd, PartDesign, Assembly, workbenches, macros,
@@ -20,6 +21,7 @@ Stay current with the latest FreeCAD version and its documentation. Help debug F
 - Macros, spreadsheets, or top-down design with master sketches (one sketch drives many parts)
 - The user asks why a FreeCAD feature or workflow is not working
 - You model a bought part from a supplier catalogue, datasheet, or drawing
+- You create or change any sketch, feature, or parameter in a model
 
 ## Audience
 
@@ -83,6 +85,63 @@ Key rule: master sketches must live in a dedicated `PartDesign::Body` with their
 Part container rule: when you create a new part, put a Part container (`App::Part`) at the top of the document. Put every `PartDesign::Body` inside it. In a build script, use `body(doc)` from `cad_build`. It returns a Body that is already inside the Part. If a Body sits outside a Part, the build stops and `validate_cad.py` fails. Assembly documents do not follow this rule. These are files under `cad/assemblies/` or files that hold an `Assembly::AssemblyObject`. They keep master sketches in a `Body_master` inside a plain group. See [`doqs/docs/decisions/2026-10-01_part-container-on-top.md`](https://github.com/refaqt/doqs/blob/main/docs/decisions/2026-10-01_part-container-on-top.md).
 
 Visibility rule: a new part or assembly must open visible. `run()` in `cad_build` does this for you. If you create objects another way, for example through the FreeCAD connection, set `Visibility = True` on each new `App::Part`, `PartDesign::Body`, `Assembly::AssemblyObject` and `App::Link`, and on the `Tip` of each new Body. Keep the coordinate system hidden: the `Origin` and its axes, planes and point stay `Visibility = False`.
+
+## Think parametric: every dimension has a reason
+
+Every size in a machine has a reason. It comes from a requirement, from a part
+we buy, from a standard, from a calculation or simulation, or from a choice a
+designer made. A number typed into a sketch hides that reason. When the reason
+changes, nobody knows that the number must change too. Follow these rules every
+time you create or change a model.
+
+1. **Write the parameter table before you draw.** List every size the part
+   needs. Sort each one:
+   - **Independent:** a number someone chose. Write down its reason: the
+     requirement, the supplier document and page, the standard, the simulation
+     file, or the design choice. If you cannot find a reason, ask the user. Do
+     not invent one.
+   - **Derived:** everything else. Write it as a formula of other values, for
+     example `plate_width - 2 * edge_margin`.
+
+   Keep the independent values few. Show the table to the user before you
+   model. The independent values go into a parameter spreadsheet (`Params`),
+   which links to the requirements model or the source document.
+2. **Fully constrain every sketch.** Nothing may move: zero degrees of freedom.
+   Use relations first (coincident, horizontal, vertical, equal, symmetric,
+   tangent). A relation needs no number. Add dimensions only for what is left.
+3. **Never type a number into a dimension.** Every driving dimension and every
+   feature size (pad length, hole diameter, pattern count and length, offsets)
+   is an expression: `Params.<alias>`, a formula of aliases, or a named
+   dimension of another sketch. Only zero, a full turn (360°), and a single
+   copy need no parameter.
+4. **Know what drives and what is driven.** A driven size is a formula or a
+   reference dimension (a dimension that shows a value and drives nothing).
+   It is never a second typed number that happens to agree with the first.
+5. **Model a repeated feature once.** For 8 holes at one pitch, draw one hole
+   and pattern it: the count is `Params.hole_count`, the overall length is
+   `(Params.hole_count - 1) * Params.hole_pitch`. In one sketch, tie the copies
+   with `Equal` and dimension one of them. Never give 7 spacings 7 numbers.
+6. **Check before you say done.** Look for sketches that are not fully
+   constrained and for sizes without an expression. Report what is left to the
+   user. "It looks right" is not the check.
+
+### When `doqs/` is present: parameter sources and the check
+
+- Independent values live in `cad/params/default.csv` with a `basis` and a
+  `source` column. `basis` is one of `requirement`, `catalogue`, `estimated`,
+  `measured`, `standard`, `simulation`, `design`. A `requirement` source names
+  a requirement in `architecture/*.sysml`, like
+  `XAxis::TravelRequirement.travel_mm`. A derived row starts with `=` and leaves
+  both columns empty.
+- In a build script, use `dim(sketch, constraint, "Params.x")` for sketch
+  dimensions and `bind(feature, "Length", "Params.x")` for feature sizes. Both
+  come from `cad_build`.
+- Every build prints the free sketches and typed sizes it finds, and writes
+  them into the fingerprint under `parametric`. A clean model has none.
+  `validate_cad.py` and `validate_variants.py` report them; with
+  `--strict-parametric` they fail.
+- Read `doqs/docs/decisions/2026-10-06_every-dimension-has-a-source.md` and the
+  section "Every dimension has a reason" in `doqs/docs/agent-cad.md`.
 
 ## Modelling a part from a supplier drawing
 
