@@ -180,6 +180,12 @@ from a catalogue, a datasheet, or a drawing.
 - Use `FreeCADCmd` (FreeCAD without a window) to measure and to rebuild.
 - A test must not change a model file. Do not open a model with `openDocument` in a test and then
   let anything save it. Open a copy, or close the document without saving.
+- When you edit models in the open FreeCAD window through the FreeCAD MCP server, save those
+  documents before you commit and before you open a pull request. You may save them yourself:
+  run `doc.save()` inside the running FreeCAD (with `execute_code`). Git only sees what is on disk,
+  so unsaved changes never reach the pull request. Save only documents that already have a file in
+  the repository, and tell the user which files you saved. A new document with no file name needs
+  a name: ask the user.
 - Compare the fingerprints with the saved ones before you commit. If a model changed and you did
   not mean to change it, stop and find out why.
 
