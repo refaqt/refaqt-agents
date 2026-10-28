@@ -178,6 +178,23 @@ from a catalogue, a datasheet, or a drawing.
 
 - Never run two FreeCAD jobs with a graphical window at the same time.
 - Use `FreeCADCmd` (FreeCAD without a window) to measure and to rebuild.
+- When `doqs/` is present, check FreeCAD before every edit of a model:
+  `bash doqs.sh freecad status --file <the .FCStd>`. Do not ask the user if the FreeCAD MCP
+  server runs. The command says it, and gives one advice. Follow it:
+  - `mcp` and the file is open: edit in the open window, through the FreeCAD MCP server. Never
+    headless: two copies of one file overwrite each other without a warning.
+  - `mcp` and the file is not open: you choose. Use `FreeCADCmd` for a rebuild, a measurement or
+    batch work. Use the open window when the user wants to watch, or for a job that needs the
+    window, like a STEP import.
+  - `headless`: no FreeCAD runs. Use `FreeCADCmd`. If you need the window, run
+    `bash doqs.sh freecad start <the .FCStd>`. It starts FreeCAD with the MCP server on and waits
+    for it.
+  - `ask-user`: FreeCAD runs, but its MCP server does not answer. You cannot see which files it
+    has open, so do not edit headless. Run `bash doqs.sh freecad autostart`, so the server
+    starts with FreeCAD from now on. Then ask the user to click **Start RPC Server** in the
+    **FreeCAD MCP** toolbar, once.
+  - Tell the user in one line which way you chose and why.
+  - See `doqs/docs/agent-cad.md`, section "Headless or MCP: the agent decides".
 - A test must not change a model file. Do not open a model with `openDocument` in a test and then
   let anything save it. Open a copy, or close the document without saving.
 - When you edit models in the open FreeCAD window through the FreeCAD MCP server, save those
