@@ -74,7 +74,8 @@ Check this with `business-development` evidence. Check technical claims with eng
 | Deals and objections | `sales` |
 | Compliance wording | `product-compliance` |
 | Community programs | `open-source-community` |
-| Web presence implementation | `software-development` |
+| Web presence implementation | `software-development`, `web-app-design` |
+| Product renders and visual style | `3d-design`, `gui-design` |
 
 ## Practical constraints
 

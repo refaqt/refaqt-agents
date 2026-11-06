@@ -89,6 +89,7 @@ Files live under `skills/{category}/{skill-name}/SKILL.md` for cooperative open-
 | `supply-chain/` | `supply-chain-management` |
 | `compliance/` | `product-compliance` (CE marking, machinery safety, conformity checks) |
 | `legal/` | `legal-advice`, `belgian-law`, `european-law`, `us-law`, `belgian-fiscal-tax`, `belgian-corporate-law` |
+| `design/` | `design-quality` (measure and judge any design), `ux-design`, `gui-design`, `web-app-design`, `machine-hmi-design`, `industrial-design`, `3d-design` |
 | `governance/` | `open-source-community`, `sociocracy`, `agile` |
 | `web3/` | `web3-blockchain`, `token-engineering` |
 

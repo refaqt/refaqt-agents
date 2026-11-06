@@ -83,6 +83,8 @@ Use this skill for physical structure, motion, and how easy the mechanical syste
 | CE guards and fixtures | `product-compliance` |
 | Costing | `finance`, `purchasing` |
 | System envelopes | `systems-engineering` |
+| Product form, ergonomics, colours and finishes | `industrial-design` |
+| Model appearance, review views, renders | `3d-design` |
 
 ## Practical constraints
 
