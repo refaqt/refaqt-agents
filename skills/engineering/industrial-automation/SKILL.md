@@ -18,7 +18,7 @@ Use this skill for industrial control systems on the factory floor: programmable
 - Control architecture (PLC, safety PLC, remote input/output (I/O))
 - I/O mapping and signal conditioning requirements
 - PLC programming (International Electrotechnical Commission (IEC) 61131-3 languages), state machines, interlocks
-- Human-machine interface (HMI) and supervisory control and data acquisition (SCADA) screens for operators (operator experience with input from operations)
+- Human-machine interface (HMI) and supervisory control and data acquisition (SCADA) screens for operators: building them and linking them to the PLC. Follow `machine-hmi-design` for screen layout, colours, and alarm presentation
 - Fieldbus selection (Profinet, EtherCAT, Modbus TCP, and similar)
 - Commissioning procedures (first start-up on site) and backup/export of programs
 - Integration with manufacturing execution (MES) and enterprise resource planning (ERP) boundaries (document interfaces to `software-development`)
@@ -74,6 +74,7 @@ Coordinate with `product-compliance` for International Organization for Standard
 | System requirements | `systems-engineering` |
 | Production rollout | `production-engineering` |
 | European product conformity (CE) machinery | `product-compliance` |
+| Operator screen layout, colours, and alarms | `machine-hmi-design` |
 
 ## Practical constraints
 

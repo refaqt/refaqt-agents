@@ -79,6 +79,7 @@ Use this skill for code that runs on devices, servers, or developer computers. T
 | Production flashing | `production-engineering` |
 | Web3 interfaces | `web3-blockchain` |
 | Patterns in repo | `maintain-patterns` |
+| User flows, screen design, and usability | `ux-design`, `gui-design`, `web-app-design`, `design-quality` |
 
 ## Practical constraints
 
