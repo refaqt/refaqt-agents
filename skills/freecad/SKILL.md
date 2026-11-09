@@ -121,7 +121,19 @@ time you create or change a model.
    and pattern it: the count is `Params.hole_count`, the overall length is
    `(Params.hole_count - 1) * Params.hole_pitch`. In one sketch, tie the copies
    with `Equal` and dimension one of them. Never give 7 spacings 7 numbers.
-6. **Check before you say done.** Look for sketches that are not fully
+6. **Build every shape from features, not from a raw solid.** A part is a
+   chain of PartDesign features: fully constrained sketches, then Pad, Pocket,
+   Revolution, Groove, Hole, Fillet and patterns, each sized by an expression.
+   Do not compute a solid with Part maths (`Part.makeBox`, `fuse`, `cut`) and
+   put it in the model as a `Part::Feature` or as the `BaseFeature` of a Body.
+   Nobody can change such a solid in FreeCAD, and the parameter check cannot
+   see its sizes. Use a raw solid only when no feature can make the shape (for
+   example an imported STEP file of a bought part). Then write in the build
+   script why no feature could do it. In a build script, make features with
+   `body.newObject("Sketcher::SketchObject")`, `"PartDesign::Pad"`,
+   `"PartDesign::Pocket"`, `"PartDesign::Hole"`, and bind their sizes with
+   `dim()` and `bind()`.
+7. **Check before you say done.** Look for sketches that are not fully
    constrained and for sizes without an expression. Report what is left to the
    user. "It looks right" is not the check.
 
