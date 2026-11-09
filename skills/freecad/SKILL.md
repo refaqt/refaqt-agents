@@ -133,7 +133,23 @@ time you create or change a model.
    `body.newObject("Sketcher::SketchObject")`, `"PartDesign::Pad"`,
    `"PartDesign::Pocket"`, `"PartDesign::Hole"`, and bind their sizes with
    `dim()` and `bind()`.
-7. **Check before you say done.** Look for sketches that are not fully
+7. **Design every part for the way it is made.** Before you say a part is
+   done, check it against its process:
+   - **Milling:** a milled pocket has no sharp inside vertical corner. Give
+     every inside corner a radius at least as large as the radius of the end
+     mill that cuts it. Close a pocket or a slot end with a radius or a half
+     circle, never with a straight line that meets a wall at a corner. A
+     deeper step inside a slot follows the same rule. Every hole, countersink
+     and pocket must be reachable by a tool from the side it is cut from,
+     with nothing of the part in the way.
+   - **3D printing:** a printed part needs one flat face to stand on the
+     build plate. Put it where it costs the least (often the top or the
+     bottom), and keep everything else above it.
+   - **Fit in an existing feature:** when a part must fit in a slot or a
+     pocket that already exists, take its sizes from that feature (slot width
+     minus the room asked for). Do not make a new, wider pocket unless the
+     user asks for it.
+8. **Check before you say done.** Look for sketches that are not fully
    constrained and for sizes without an expression. Report what is left to the
    user. "It looks right" is not the check.
 
