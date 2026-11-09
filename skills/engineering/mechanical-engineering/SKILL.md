@@ -63,9 +63,9 @@ Use this skill for physical structure, motion, and how easy the mechanical syste
 
 | Process | Ask |
 | --- | --- |
-| Computer numerical control (CNC) | Setup count, tool access, thin walls |
+| Computer numerical control (CNC) | Setup count, tool access from the cutting side, thin walls, a radius at every inside corner (at least the end mill radius) |
 | Sheet metal | Bend radius, hole edge distance |
-| 3D print | Orientation, supports, strength that depends on print direction (anisotropy) |
+| 3D print | A flat face for the build plate, orientation, supports, strength that depends on print direction (anisotropy) |
 | Injection mold | Draft angles, undercuts, tooling cost |
 
 ## Terminology and standards
