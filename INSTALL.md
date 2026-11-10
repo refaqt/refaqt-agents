@@ -337,4 +337,5 @@ release. When the kit had not moved, nothing shows up, and that is normal too.
 | [`rules/core.md`](rules/core.md) | The rules every agent follows |
 | [`rules/communication.md`](rules/communication.md) | How to write, in B2 English |
 | [`rules/reporting.md`](rules/reporting.md) | How to write pull requests, commits, and log entries |
+| [`rules/copyright.md`](rules/copyright.md) | Copyright lines in new files, material from others, new repositories |
 | [`templates/AGENTS.md`](templates/AGENTS.md) | The starting page you copy into your repository |

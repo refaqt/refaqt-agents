@@ -35,7 +35,7 @@ uncommitted unless you mean to set a new pin. Installing the kit in a new repo:
 
 This repo mounts [refaqt/refaqt-agents](https://github.com/refaqt/refaqt-agents) at [`.agents/`](.agents/).
 
-1. Read [`.agents/rules/core.md`](.agents/rules/core.md), [`.agents/rules/communication.md`](.agents/rules/communication.md), [`.agents/rules/reporting.md`](.agents/rules/reporting.md), and [`.agents/rules/living-docs.md`](.agents/rules/living-docs.md).
+1. Read [`.agents/rules/core.md`](.agents/rules/core.md), [`.agents/rules/communication.md`](.agents/rules/communication.md), [`.agents/rules/reporting.md`](.agents/rules/reporting.md), [`.agents/rules/living-docs.md`](.agents/rules/living-docs.md), and [`.agents/rules/copyright.md`](.agents/rules/copyright.md).
 2. Read [`docs/mistakes/`](docs/mistakes/) and say which prevention rules apply.
 3. Read [`docs/architecture.md`](docs/architecture.md) before larger work.
 4. Before new coding solutions, check [`.agents-local/skills/patterns/SKILL.md`](.agents-local/skills/patterns/SKILL.md) if it is there.

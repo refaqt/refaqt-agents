@@ -95,4 +95,6 @@ Files live under `skills/{category}/{skill-name}/SKILL.md` for cooperative open-
 
 ## License
 
+Copyright © 2025–2026 Refaqt (BE 0804.145.539) and contributors. Contributions are accepted under the [Refaqt Contributor Licence Agreement](https://github.com/refaqt/.github/blob/main/CLA.md).
+
 GPL-3.0 (see [LICENSE](LICENSE)).
