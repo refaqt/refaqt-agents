@@ -35,6 +35,7 @@ Use this skill to grow healthy contributor groups for open hardware, firmware, d
 - **Open hardware needs care for the physical build:** Document tools, costs, and safety for people who build it.
 - **A welcome is not a lower quality bar:** Contribution guidelines and tests keep quality (`software-development`, `maintain-patterns`).
 - **Credit fairly:** CONTRIBUTORS file, release notes, talk invitations.
+- **Refaqt already chose a contributor agreement:** every Refaqt repository uses the [Refaqt Contributor Licence Agreement](https://github.com/refaqt/.github/blob/main/CLA.md) and its check, and the [contributor manual](https://github.com/refaqt/.github/blob/main/CONTRIBUTING.md). Point contributors there. Do not write a second agreement or advise a DCO for Refaqt work. Changes to the agreement go to `legal-advice` and a lawyer.
 - **Commercial cooperative and community:** Be clear about what the community governs versus what the employer roadmap covers.
 
 ## Key workflows

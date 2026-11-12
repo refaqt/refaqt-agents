@@ -101,7 +101,7 @@ Explain each item as what happens to you if this goes wrong. Do not list clauses
 - [ ] Licenses on mechanical files, electrical files, firmware, and docs — do they work together?
 - [ ] Third-party parts: the mix of licenses is written down (license stack)
 - [ ] Trademarks on the product name — do you need a clearance check?
-- [ ] Contributor License Agreement (CLA) or Developer Certificate of Origin (DCO) policy (`open-source-community`)
+- [ ] Contributor License Agreement (CLA) or Developer Certificate of Origin (DCO) policy (`open-source-community`). For Refaqt this is the [Refaqt Contributor Licence Agreement](https://github.com/refaqt/.github/blob/main/CLA.md): a broad licence, not a transfer, under Belgian law. Copyright notices follow [`rules/copyright.md`](../../../rules/copyright.md).
 - [ ] Patent grant clauses — do you understand them?
 - [ ] Founders and contractors have given the intellectual property (IP) to the company in writing (assignment)?
 
