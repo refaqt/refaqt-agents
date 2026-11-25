@@ -16,6 +16,7 @@ Drop `doqs/scripts/validate_all.py` from the command in a repository that has no
 - **Either file is missing.** Pick the helper by looking at the repository root, then run it from there and check again:
   - A `doqs/` folder exists: run `bash setup-tooling.sh`.
   - No `doqs/` folder exists: run `bash setup-agents.sh`. Never run `setup-tooling.sh` here. It needs `doqs/scripts/install_root_tools.py`, so it pulls `.agents` and then fails at the end.
+- **Either file is missing, and you are in plan mode.** Plan mode blocks commands that change files. Ask the user to approve the helper above anyway. It only fills the tooling folders and changes no file that git tracks. Do not write a plan without the rules.
 - **People on Windows** may double-click `setup-tooling.bat` (`pause` is OK there only). Agents must not run the `.bat`.
 
 A `SessionStart` hook at [`.claude/hooks/session-start.sh`](.claude/hooks/session-start.sh) does the
@@ -23,8 +24,12 @@ same work at the start of a session, and prints one line when it worked. Do not 
 runs only when the session opens **this folder** as its project folder. Claude Code reads
 `.claude/settings.json` from that folder only, so a session that opens a parent folder, or that
 attaches several repositories at once, never reads the file, never starts the hook, and prints
-nothing at all. Silence and success look the same. The check above is the only step that works in
-every session.
+nothing at all. A thread inside a Claude project does not run it either, even with one repository.
+Silence and success look the same.
+
+The permission mode does not matter: the hook runs in plan mode too. When the folders are empty in
+plan mode, the cause is the session layout, not the mode. The check above is the only step that
+works in every session.
 
 Run the setup file anyway when you need the launchers it installs, or when the hook said it could
 not reach the network. Both leave the submodule gitlinks modified on purpose — leave them
