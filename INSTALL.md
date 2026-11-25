@@ -323,6 +323,7 @@ release. When the kit had not moved, nothing shows up, and that is normal too.
 | Git said `Skipping submodule` | Git skipped the folder and still reported success | Check that `.gitmodules` has the `.agents` entry, then run the setup file again |
 | The session says nothing at start-up | The start-up file is on disk, but nothing runs it | Check the `SessionStart` entry in `.claude/settings.json` |
 | The session says nothing at start-up, and it holds several repositories | The session opened the parent folder, so `.claude/settings.json` was never read | Attach one repository, or run the setup file from the environment's setup script. See Step 4 |
+| `.agents/` is empty, and the session is in plan mode | Plan mode is not the cause: the start-up file runs in every mode. Look at how the session was opened. Plan mode only blocks the setup file | Approve the setup file when the agent asks. It changes no file that git tracks |
 | `bad interpreter` or `\r: command not found` | Windows saved the script with the wrong line endings | Add `*.sh text eol=lf` to `.gitattributes`, then re-checkout the file |
 | `Permission denied` when the start-up file runs | The file is not marked as a program | Run `chmod +x .claude/hooks/session-start.sh` and commit that change |
 | `could not read Username for 'https://github.com'` | The session has no network, or the repository is private | The kit is public, so this is almost always the network. Run the setup file again when you are online |
