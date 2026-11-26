@@ -29,8 +29,8 @@ RULE_LIMIT = 150
 NAME_RE = re.compile(r"^(\d{4}-\d{2}-\d{2})_.+\.md$")
 TITLE_RE = re.compile(r"^#\s+(.*)$", re.MULTILINE)
 DATE_PREFIX_RE = re.compile(r"^\d{4}-\d{2}-\d{2}\s*[—–-]+\s*")
-# "## Prevention rule" (any level, plural too) or "**Prevention rule:**".
-HEADING_RE = re.compile(r"^#{2,4}\s*prevention rules?\s*$", re.IGNORECASE | re.MULTILINE)
+# "## Prevention rule" or "## Rule" (any level, plural too), or "**Prevention rule:**".
+HEADING_RE = re.compile(r"^#{2,4}\s*(?:prevention )?rules?\s*$", re.IGNORECASE | re.MULTILINE)
 INLINE_RE = re.compile(r"\*\*prevention rules?:?\*\*:?\s*(.+)", re.IGNORECASE)
 
 

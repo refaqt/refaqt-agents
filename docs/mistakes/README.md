@@ -10,7 +10,7 @@ The table below is generated. Update it with `python3 scripts/mistakes_index.py`
 
 | Date | Mistake | Prevention rule |
 | ---- | ------- | --------------- |
-| 2026-10-02 | [A supplier part model was called done, but it did not match the real part](2026-10-02_supplier-part-model.md) | Before you model from a drawing, list every dimension and feature, and show the list to the user. Model each one, or write why you leave it out. Never leave out a feature that sticks out. |
-| 2026-10-06 | [CAD models had typed numbers and sketches that could still move](2026-10-06_unlinked-dimensions.md) | Before you draw, write the parameter table. Mark each value as independent, with its reason, or derived, as a formula. Ask the user before you invent a design value. |
+| 2026-10-02 | [A supplier part model was called done, but it did not match the real part](2026-10-02_supplier-part-model.md) | Before you model from a drawing, list every dimension and feature, and show the list to the user. Model each one, or write why you leave it out. … |
+| 2026-10-06 | [CAD models had typed numbers and sketches that could still move](2026-10-06_unlinked-dimensions.md) | Before you draw, write the parameter table. Mark each value as independent, with its reason, or derived, as a formula. Ask the user before you invent … |
 
 <!-- mistakes-index:end -->
