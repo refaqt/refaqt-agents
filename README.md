@@ -63,6 +63,7 @@ To use the skills in Claude Code without the submodule, install the plugin:
 | `machine-hmi-design` | Operator screens and alarms on machines |
 | `product-compliance` | CE marking and the machinery rules for selling a machine in the EU |
 | `belgian-cooperative-legal-tax` | Belgian company, cooperative, tax and token questions |
+| `github-actions` | Adding or changing a GitHub Actions workflow |
 
 General knowledge that Claude already has (marketing, sales, agile, general engineering) is not
 repeated here. Anthropic's own plugins, such as Claude for Manufacturing, are turned on for the
