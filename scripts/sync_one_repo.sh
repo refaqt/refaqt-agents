@@ -33,7 +33,8 @@ tooling=(.agents)
 if grep -Eq '^\s*path\s*=\s*doqs\s*$' .gitmodules; then
   tooling+=(doqs)
 fi
-git submodule update --init --remote --depth 1 -- "${tooling[@]}"
+# --checkout overrides "update = none", which doqs sets on its own .agents.
+git submodule update --init --remote --checkout --depth 1 -- "${tooling[@]}"
 
 if [ -f doqs/scripts/install_root_tools.py ]; then
   # Writes the launchers, setup-tooling.*, the session hook and the settings,
