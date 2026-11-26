@@ -1,0 +1,11 @@
+{
+  "name": "refaqt",
+  "description": "Refaqt working rules as skills: reporting for managers, copyright, mistakes and activity logs, DOQS naming, FreeCAD, SysML v2, design quality, machine screens, CE compliance, and Belgian cooperative law and tax.",
+  "author": {
+    "name": "Refaqt",
+    "url": "https://github.com/refaqt"
+  },
+  "homepage": "https://github.com/refaqt/refaqt-agents",
+  "repository": "https://github.com/refaqt/refaqt-agents",
+  "license": "GPL-3.0-or-later"
+}

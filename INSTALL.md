@@ -1,342 +1,113 @@
 # Install the agent kit in your repository
 
-This guide adds the shared rules and skills to one project repository. After that, every AI agent
-that works in that repository reads the same rules, on a laptop and in the cloud.
+After these steps, every AI agent that works in your repository reads the same short rules, on a
+laptop and in the cloud. You need `git`, Python 3.11 or newer, and push rights to the repository.
 
-You do not need to be a software developer to follow this. You do need to be able to run commands in
-a terminal and push to the repository.
+## Step 1: add the kit
 
-Write every file and every reply in B2 English. Follow [`rules/communication.md`](rules/communication.md).
-
-## What you get
-
-The kit is a folder of shared rules and skills. It arrives in your repository as a folder called
-`.agents/`. You do not copy the files. You link to them, so every repository uses one shared copy and
-gets improvements automatically.
-
-The link is a **git submodule**: a second repository that lives in a folder inside yours and keeps
-its own history. Your repository records which version of the kit it uses.
-
-## Before you start
-
-You need three things.
-
-- A project repository on GitHub, and permission to push to it.
-- `git` installed on your computer.
-- A terminal open in your repository folder.
-
-Nothing else. [refaqt/refaqt-agents](https://github.com/refaqt/refaqt-agents) is a public repository,
-so no password or access token is needed to read it.
-
-## Which case are you in
-
-Look in your repository for a folder called `doqs`. Your answer decides which version of Step 2
-you follow, and which command you run in Step 3.
-
-| Your repository | Follow | Why |
-| --- | --- | --- |
-| Has a `doqs` folder (machine and hardware projects) | **Route A** | `doqs` already ships a setup helper that handles both folders. |
-| Has no `doqs` folder (business, legal, web, and other projects) | **Route B** | You install the kit on its own, with the files in `templates/`. |
-
-Do not mix the two routes. Route A and Route B both install a start-up file at the same place, and
-`doqs` overwrites whatever it finds there.
-
-## Step 1 — Add the kit (both routes)
-
-Run this from the top folder of your repository.
+From the top folder of your repository:
 
 ```bash
 git submodule add -b main https://github.com/refaqt/refaqt-agents.git .agents
-git commit -m "chore: add the shared agent kit at .agents"
 ```
 
-`-b main` matters. It writes `branch = main` into your `.gitmodules` file, which is what lets the kit
-move forward later. Without it, your repository stays on today's version of the kit and never gets a
-newer one.
+`-b main` lets the kit move forward later. Without it, your repository stays on today's version.
 
-Open `.gitmodules` and check that it now holds this entry:
+A machine repository also adds doqs. Follow
+[doqs `templates/setup-tooling/README.md`](https://github.com/refaqt/doqs/blob/main/templates/setup-tooling/README.md)
+for that part. It copies `setup-tooling.sh`, which fills both folders.
 
-```
-[submodule ".agents"]
-	path = .agents
-	url = https://github.com/refaqt/refaqt-agents.git
-	branch = main
-```
+## Step 2: describe your repository
 
-If the folder `.agents/` already exists in your repository with older copied files in it, move those
-files somewhere else first. Git refuses to add a submodule on top of an existing folder.
+Write `.agents-local/rules/repo.md` with what is true only for this repository: what it is, its
+folders, its stack, and its special rules. Keep it under 3 KB. Every session loads it. Put
+everything that is true for all Refaqt repositories in this kit instead. When the file is
+missing, Step 3 writes a starting file with the headings to fill in.
 
-## Step 2 — Add the start-up files
+Repository-only skills go in `.agents-local/skills/<name>/SKILL.md`.
 
-### Route A — your repository has `doqs`
+The script finds the rest itself. The name is the first `# ` heading of `README.md`. The profile
+is `doqs` when the repository has a `doqs` submodule, and `base` otherwise. Only when you need to
+change one of these, create `.agents-local/profile.toml`:
 
-The `doqs` repository owns the helpers. Take them from
-[`doqs/templates/setup-tooling/`](https://github.com/refaqt/doqs/tree/main/templates/setup-tooling).
+```toml
+name = "Your project name"   # instead of the README heading
+profile = "base"             # instead of the automatic choice
+setup = "..."                # a different setup command for the first step
+own_hook = true              # keep the repository's own session hook
 
-1. Copy `setup-tooling.sh` and `setup-tooling.bat` to the top folder of your repository. Commit them.
-   Do not put them in `.gitignore`. Do not run them from inside the templates folder: they would look
-   in the wrong place.
-2. Add the line `*.sh text eol=lf` to your `.gitattributes` file. This stops Windows from saving the
-   helper with line endings that Linux cannot read.
-3. Run `bash setup-tooling.sh` once, from the top folder.
-
-That one run does the rest. It fills both folders, installs the start-up file at
-`.claude/hooks/session-start.sh`, and adds the entry to `.claude/settings.json` that starts it.
-
-If you use Cursor cloud agents, add one more file by hand. Create `.cursor/environment.json` with
-your own project name, so Cursor runs the same start-up file:
-
-```json
-{
-  "name": "<your repository name>",
-  "install": "bash .claude/hooks/session-start.sh"
-}
+[plugins]                    # claude.ai plugins to switch off or on in this repository
+off = ["claude-for-manufacturing@synced"]
+on = []
 ```
 
-Add the starting page by hand. `doqs` never writes `AGENTS.md`, `CLAUDE.md` or `README.md`: those
-are your repository's own text. Copy [`templates/AGENTS.md`](templates/AGENTS.md) from this kit to
-your top folder as `AGENTS.md`, and copy
-[`doqs/templates/setup-tooling/CLAUDE.md`](https://github.com/refaqt/doqs/blob/main/templates/setup-tooling/CLAUDE.md)
-to your top folder as `CLAUDE.md`. Put your machine's name in the title. Use the Route A version of
-`CLAUDE.md`, not the one in this kit: it checks both folders and names `setup-tooling.sh`.
-
-**Do not copy `.agents/templates/setup-agents.sh` or `.agents/templates/session-start.sh` into a
-repository that has `doqs`.** Both routes use the same file name, and the `doqs` helper replaces that
-file every time it runs. You would lose your copy without a warning.
-
-Now go to Step 3.
-
-### Route B — the kit on its own
-
-Copy five files out of the kit. The paths below start from the top folder of your repository.
-
-| Copy this file | To here | What it does |
-| --- | --- | --- |
-| `.agents/templates/setup-agents.sh` | `setup-agents.sh` | Fills and updates `.agents/` when you run it by hand |
-| `.agents/templates/session-start.sh` | `.claude/hooks/session-start.sh` | Fills `.agents/` at the start of every session |
-| `.agents/templates/claude-settings.json` | `.claude/settings.json` | Starts the file above |
-| `.agents/templates/cursor-environment.json` | `.cursor/environment.json` | Starts the same file in Cursor cloud agents |
-| `.agents/templates/CLAUDE.md` | `CLAUDE.md` | Holds the check an agent runs when no hook can start |
-
-These commands do the four copies that need no editing. `CLAUDE.md` comes last, because you put your project name in it.
+## Step 3: write the shared files
 
 ```bash
-mkdir -p .claude/hooks .cursor
-cp .agents/templates/setup-agents.sh setup-agents.sh
-cp .agents/templates/session-start.sh .claude/hooks/session-start.sh
-cp .agents/templates/cursor-environment.json .cursor/environment.json
-chmod +x setup-agents.sh .claude/hooks/session-start.sh
+python3 .agents/scripts/sync_root.py
 ```
 
-Then finish three small things by hand.
+This writes `CLAUDE.md`, `AGENTS.md`, the Cursor rule files, the pull request template and the
+contributor agreement check, and merges the session hook into `.claude/settings.json`. In a `base` repository it also writes
+`setup-agents.sh` and `.claude/hooks/session-start.sh`. In a `doqs` repository, doqs installs
+those. Commit the result.
 
-1. **The settings file.** If you have no `.claude/settings.json` yet, copy the template:
-   `cp .agents/templates/claude-settings.json .claude/settings.json`. If you already have one, open
-   both files and add the `hooks` block from the template into your file. Do not replace your file:
-   you would throw away your own settings.
-2. **The name in `.cursor/environment.json`.** Replace `<your repository name>` with the name of your
-   project.
-3. **Line endings.** Add this line to your `.gitattributes` file, so Windows cannot save the scripts
-   in a form that Linux refuses to run:
+Do not edit the generated files by hand. The weekly sync below writes them again.
 
-   ```
-   *.sh text eol=lf
-   ```
-
-Last, give agents a starting page. Copy [`templates/AGENTS.md`](templates/AGENTS.md) to the top folder
-as `AGENTS.md` and fill in the "This repository" section. Copy
-[`templates/CLAUDE.md`](templates/CLAUDE.md) to the top folder as `CLAUDE.md` and put your project
-name in the title. On Windows, do not link `AGENTS.md` into the submodule. Use the small copy, as the
-template does.
-
-`CLAUDE.md` is no longer one line, and that is on purpose. Claude Code reads it from **every**
-repository a session attaches, while it reads `.claude/settings.json` from one folder only. So the
-check in `CLAUDE.md` is the step that still works when the start-up file cannot run. Step 4 explains
-when that happens.
-
-Commit everything.
+## Step 4: check it
 
 ```bash
-git add -A
-git commit -m "chore: run agents from the shared kit in every session"
+python3 .agents/scripts/sync_root.py --check
+python3 .agents/scripts/context_budget.py --budget 20000
 ```
 
-## Step 3 — Agents on your own computer
+The first says whether the shared files match the kit. The second prints how much text an agent
+loads before it starts, and fails above 20 KB.
 
-This covers Claude Code in a terminal or in the desktop app, and Cursor on a laptop.
+## The weekly sync
 
-**If you are cloning the repository for the first time**, ask for the kit in the same command:
+The job `.github/workflows/sync-root.yml` in this kit keeps the shared files the same in every
+Refaqt repository that mounts the kit at `.agents/`. It runs when the templates change on `main`,
+every Monday, and when you start it by hand.
 
-```bash
-git clone --recurse-submodules <the address of your repository>
-```
+- In every repository it runs `sync_root.py` and the mistakes index.
+- In a machine repository it also runs doqs' installer. That writes `doqs.sh`, `doqs.bat`,
+  `syson.*`, `setup-tooling.sh`, `setup-tooling.bat`, the session hook and the doqs settings.
+- When something changed, it opens one pull request from the branch `refaqt-agent-files`. A
+  person merges it. When nothing changed, it closes an old sync pull request.
+- It uses no AI, and an agent can change it from a cloud session.
 
-**If you already have the repository on your computer**, run the setup file once from the top folder:
+It uses the GitHub App "Refaqt file sync", which is installed on every Refaqt repository. One
+setting is needed once: give this repository access to the App's key.
 
-| Route | Command |
+1. In GitHub, open the `refaqt` organization, then **Settings**.
+2. In the menu on the left, open **Secrets and variables**, then **Actions**.
+3. On the **Secrets** tab, click the pencil next to `SYNC_APP_PRIVATE_KEY`. Under **Repository
+   access**, add `refaqt-agents`, and save.
+4. On the **Variables** tab, open `SYNC_APP_ID`. If it is limited to some repositories, add
+   `refaqt-agents` there too.
+
+To try it: open **Actions** in this repository, choose "Sync shared agent files", then **Run
+workflow**. Tick "Only report what would change" the first time. The run's summary lists each
+repository and its files.
+
+## How it works in each tool
+
+| Tool | What happens |
 | --- | --- |
-| Route A | `bash setup-tooling.sh` |
-| Route B | `bash setup-agents.sh` |
-
-On Windows, people may double-click `setup-tooling.bat` instead. Agents must not use the `.bat` file:
-it waits for a key press and nobody is there to press one. Agents run the `.sh` file in Git Bash.
-
-You should see a line that says the kit is ready, with a short code for the version.
-
-## Step 4 — Agents in the cloud
-
-A cloud session copies your repository **without** the contents of the kit folder. The folder
-`.agents/` arrives empty. Nothing warns you about it. The agent reads no rules, finds no skills, and
-keeps working as if everything were normal.
-
-That is why the start-up file from Step 2 exists. It fills the folder before the agent reads
-anything.
-
-### Claude Code on the web
-
-Step 2 installed the start-up file and the entry that runs it. That is enough **when the session
-opens this repository as its project folder**. Your next cloud session then begins with a line like
-this:
-
-```
-The agent kit is ready in /home/user/<your repository>: .agents/ (d42d850).
-Read .agents/rules/core.md first, then AGENTS.md.
-```
-
-One case breaks it. When a session attaches **more than one** repository, it opens their shared
-parent folder instead. That folder is not your repository, so Claude Code never reads
-`.claude/settings.json`, never runs the start-up file, and prints nothing. `.agents/` stays empty and
-nothing warns you. No file in your repository can change that: it is the tool's own behaviour.
-
-Pick one of these two:
-
-- **Attach one repository.** Give the session only this repository as its source. Everything else
-  arrives as a submodule, at the path `AGENTS.md` already names. This is the simple choice, and it
-  also switches on every other setting in `.claude/settings.json`.
-- **Or run the setup file in the environment.** Keep several sources, and put
-  `bash <your repository>/setup-agents.sh` in the setup script of the cloud environment. In Route A
-  that is `bash <your repository>/setup-tooling.sh`. The cost is two checkouts of the same
-  repository in one session: the one you attached, and the one inside the submodule folder. It is
-  easy to read one copy and change the other.
-
-`CLAUDE.md` covers what is left. Claude Code reads that file from **every** repository a session
-attaches, so it works in both cases. It tells the agent to look for `.agents/rules/core.md` and to
-run the setup file when the file is missing. Copy it from
-[`templates/CLAUDE.md`](templates/CLAUDE.md).
-
-If you see no line at all in a **single-repository** session, the file is on disk but nothing starts
-it. Check `.claude/settings.json`.
-
-### Cursor cloud agents
-
-Cursor reads `.cursor/environment.json` and runs the same file. Step 2 created it. Check that it
-holds this, with your own project name:
-
-```json
-{
-  "name": "<your repository name>",
-  "install": "bash .claude/hooks/session-start.sh"
-}
-```
-
-### GitHub Actions
-
-Automated checks need the same thing, and they ask for it in the checkout step. Add the `submodules`
-line to that step in every workflow that needs the rules or the skills:
-
-```yaml
-steps:
-  - uses: actions/checkout@v4
-    with:
-      submodules: recursive
-```
-
-Use `submodules: recursive`, not the update command with `--remote`. A check should run against the
-version of the kit your repository records, so that the same commit always gives the same result.
-
-### Any other agent tool
-
-The rule is the same for every tool. Before the agent reads anything, the tool must run one of these
-from the top folder of the repository:
-
-| Route | Command |
-| --- | --- |
-| Route A | `bash setup-tooling.sh` |
-| Route B | `bash setup-agents.sh` |
-
-Most tools have a setting for a command that runs when a session or a container starts. Put the
-command there.
-
-## Step 5 — Check that it worked
-
-Run this from the top folder:
-
-```bash
-head -3 .agents/rules/core.md
-```
-
-You should see the first lines of the shared rules. If the command says the file does not exist, the
-kit is not installed. Go to the table at the end of this guide.
-
-Then check the list below.
-
-- [ ] `.gitmodules` holds a `.agents` entry with `branch = main`.
-- [ ] `.agents/rules/core.md` opens and has text in it.
-- [ ] Route B only: `setup-agents.sh` is in the top folder.
-- [ ] `.claude/hooks/session-start.sh` is there and is executable.
-- [ ] `.claude/settings.json` names that file under `SessionStart`.
-- [ ] `.cursor/environment.json` names that file under `install`.
-- [ ] `AGENTS.md` and `CLAUDE.md` are in the top folder.
-
-## Step 6 — Files that belong only to your repository
-
-The kit holds what every Refaqt repository shares. Four more things are yours alone. Add them when
-you need them.
-
-| What you want | Where it goes |
-| --- | --- |
-| The four headings in the pull request box on GitHub | Copy [`templates/pull-request.md`](templates/pull-request.md) to `.github/pull_request_template.md` |
-| A skill only this repository needs | `.agents-local/skills/<name>/SKILL.md` |
-| Coding patterns only this repository uses | `.agents-local/skills/patterns/SKILL.md`, named from `AGENTS.md` |
-| Cursor rules that point at the shared rules | Small files under `.cursor/rules/*.mdc` that link to `.agents/rules/*.md` |
-
-Keep all of these **outside** `.agents/`. That folder belongs to the kit, and anything you write
-inside it is lost the next time the kit updates. Two ready-made Cursor files are in the kit:
-[`templates/cursor-rule-doqs-naming.mdc`](templates/cursor-rule-doqs-naming.mdc) and
-[`templates/cursor-rule-freecad.mdc`](templates/cursor-rule-freecad.mdc).
-
-## Keeping the kit up to date
-
-The setup file and the start-up file both move `.agents/` to the latest `main` every time they run.
-So you get new rules and skills without doing anything.
-
-When the kit has moved on since your repository last recorded it, `git status` then shows `.agents` as
-modified. That is normal, and it is the update doing its job. **Leave it uncommitted.** Only commit it
-when you mean to fix your repository to one version of the kit on purpose, for example just before a
-release. When the kit had not moved, nothing shows up, and that is normal too.
+| Claude Code, one repository | The session hook fills `.agents/` and links the skills into `.claude/skills/`. `CLAUDE.md` imports `AGENTS.md`, which imports `core.md` and `repo.md`. |
+| Claude Code, several repositories, or a thread in a Claude project | The hook does not run. `CLAUDE.md` tells the agent to run the check and the setup file. |
+| Claude, for your team | Add the marketplace `refaqt/refaqt-agents` in claude.ai under Organization settings, Plugins & skills, and turn the plugin `refaqt` on for all members. The skills then reach every session, also Cowork, chat, and sessions where the hook does not run. Marking it "required" only stops members from switching it off. The hook sees the plugin and does not link the kit skills a second time. |
+| Cursor | Reads `AGENTS.md` and the generated `.cursor/rules/refaqt-*.mdc`. `.cursor/environment.json` runs the same hook in Cursor cloud agents. |
+| GitHub Actions | Add `submodules: recursive` to the checkout step of every workflow that needs the kit. |
 
 ## When something goes wrong
 
-| What you see | What it means | What to do |
-| --- | --- | --- |
-| `.agents/` is empty | The session copied your repository without the kit | Run `bash setup-agents.sh`, or `bash setup-tooling.sh` in Route A |
-| Git said `Skipping submodule` | Git skipped the folder and still reported success | Check that `.gitmodules` has the `.agents` entry, then run the setup file again |
-| The session says nothing at start-up | The start-up file is on disk, but nothing runs it | Check the `SessionStart` entry in `.claude/settings.json` |
-| The session says nothing at start-up, and it holds several repositories | The session opened the parent folder, so `.claude/settings.json` was never read | Attach one repository, or run the setup file from the environment's setup script. See Step 4 |
-| `.agents/` is empty, and the session is in plan mode | Plan mode is not the cause: the start-up file runs in every mode. Look at how the session was opened. Plan mode only blocks the setup file | Approve the setup file when the agent asks. It changes no file that git tracks |
-| `bad interpreter` or `\r: command not found` | Windows saved the script with the wrong line endings | Add `*.sh text eol=lf` to `.gitattributes`, then re-checkout the file |
-| `Permission denied` when the start-up file runs | The file is not marked as a program | Run `chmod +x .claude/hooks/session-start.sh` and commit that change |
-| `could not read Username for 'https://github.com'` | The session has no network, or the repository is private | The kit is public, so this is almost always the network. Run the setup file again when you are online |
-| Your start-up file keeps changing back | The repository has `doqs`, and `doqs` owns that file | Follow Route A only. Delete the copies you made from `templates/` |
-| The folder `.agents/` already existed | Git will not add a submodule on top of a folder | Move the old files somewhere else, then run Step 1 again |
-
-## Where to read next
-
-| File | What is in it |
+| What you see | What to do |
 | --- | --- |
-| [`README.md`](README.md) | What the kit holds, and the list of skills |
-| [`rules/core.md`](rules/core.md) | The rules every agent follows |
-| [`rules/communication.md`](rules/communication.md) | How to write, in B2 English |
-| [`rules/reporting.md`](rules/reporting.md) | How to write pull requests, commits, and log entries |
-| [`rules/copyright.md`](rules/copyright.md) | Copyright lines in new files, material from others, new repositories |
-| [`templates/AGENTS.md`](templates/AGENTS.md) | The starting page you copy into your repository |
+| `.agents/` is empty | Run `bash setup-agents.sh`, or `bash setup-tooling.sh` in a doqs repository |
+| The session says nothing at start | The hook did not run. Check the `SessionStart` entry in `.claude/settings.json`, or see the second row above |
+| A sync pull request changes a file you edited | Generated files come from the kit. Make the change in the kit, or in `.agents-local/` |
+| `bad interpreter` or `\r: command not found` | Add `*.sh text eol=lf` to `.gitattributes` (the sync adds it) and check the file out again |
+| Each skill shows up twice | The plugin is on, and an old link is left in `.claude/skills/`. Delete that folder; the hook makes it again |
+| `.agents` shows as modified in `git status` | That is the update working. Leave it uncommitted unless you mean to fix a version |

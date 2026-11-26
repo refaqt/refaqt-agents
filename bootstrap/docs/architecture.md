@@ -1,7 +1,7 @@
 # Architecture
 
 Short map of this repository. Update when the layout, start points, or main parts change.
-Write this file in B2 English. Follow `.agents/rules/communication.md`.
+Write this file in B2 English. Follow `.agents/rules/core.md`.
 
 ## Purpose
 

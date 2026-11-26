@@ -1,14 +1,12 @@
 ---
 name: maintain-patterns
 description: >-
-  Applies and maintains project-specific reusable patterns in .agents-local/skills/patterns/SKILL.md.
-  Use before starting implementation, after a novel codebase-specific fix, when the
-  user mentions project patterns, reusable patterns, or deprecating a documented pattern.
+  Use before you build a new solution in code, after a fix that is specific to this codebase, or when the user mentions project patterns. Keeps .agents-local/skills/patterns/SKILL.md current.
 ---
 
 # Project patterns (`.agents-local/skills/patterns/SKILL.md`)
 
-Write pattern entries in B2 English. Follow `.agents/rules/communication.md`.
+Write pattern entries in B2 English. Follow `.agents/rules/core.md`.
 Keep code, file paths, and official names exact.
 
 ## Before starting work

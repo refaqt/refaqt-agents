@@ -1,11 +1,7 @@
 ---
 name: log
 description: >-
-  Add or edit an entry in the activity log (docs/log/). Use whenever the
-  user wants to record work — engineering, hardware, software, outreach, research,
-  a call or meeting, or a business decision. Triggers on "log this", "add a log
-  entry", "note that", "record today's work", or a photo sent with a description
-  of work done.
+  Use when the user wants to record work in docs/log/: engineering, hardware, software, research, a call, a meeting or a business decision ("log this", "add a log entry"). Gives the file name, headings and roles.
 ---
 
 # Adding an activity log entry
@@ -14,13 +10,13 @@ description: >-
 One flat directory — no per-role subfolder. Every entry is labeled with the role(s)
 it belongs to under the heading.
 
-Write every log entry in B2 English. Follow `.agents/rules/communication.md`.
+Write every log entry in B2 English. Follow `.agents/rules/core.md`.
 Keep numbers, units, and official names exact. If you quote a person, you may keep
 their words in quotation marks.
 
 Write the outcome first, so a manager can read the entry without opening the code. Put command
 output, error traces, and long file listings in a closed `<details>` block or in a linked file,
-never in the running text. Follow `.agents/rules/reporting.md`.
+never in the running text. Follow the `reporting` skill.
 
 ## File
 
@@ -73,6 +69,6 @@ Reference them relatively (`![](images/2026-08-21-01.png)`) and add a short capt
 
 1. Update the table in `docs/log/README.md` (date, linked topic, role(s), image count if used). Keep date order.
 2. Commit as `docs(log): <short description>`.
-3. Push per the repo's normal branch/PR flow. Write the pull request text with the headings in `.agents/rules/reporting.md`.
+3. Push per the repo's normal branch/PR flow. Write the pull request text with the headings in the `reporting` skill.
 
 Confirm what you wrote and where, and give the user the path.
