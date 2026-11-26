@@ -214,8 +214,11 @@ def merge_cursor_env(text: str | None, profile: dict) -> str:
 
 def merge_lines(text: str | None, lines: list[str]) -> str:
     current = text or ""
-    existing = {line.strip() for line in current.splitlines()}
-    missing = [line for line in lines if line.strip() not in existing]
+    def norm(line: str) -> str:
+        return " ".join(line.split())
+
+    existing = {norm(line) for line in current.splitlines()}
+    missing = [line for line in lines if norm(line) not in existing]
     if not missing:
         return current
     joined = current.rstrip("\n")
