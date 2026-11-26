@@ -1,12 +1,7 @@
 ---
 name: freecad
 description: >-
-  Debug FreeCAD designs, build parametric models where every dimension is
-  linked to a reason, and answer modeling and workbench questions for
-  intermediate users. Search the official wiki, forum, and GitHub issues,
-  discussions, and pull requests (PRs) before you answer. Use when the user
-  mentions FreeCAD, .FCStd, PartDesign, Assembly, workbenches, macros,
-  Binder or Link errors, or FreeCAD troubleshooting.
+  Use when you create, change or debug a FreeCAD model (.FCStd), or answer a FreeCAD workbench question. Every size has a reason and is linked, sketches are fully constrained, sources are cited.
 ---
 
 # FreeCAD

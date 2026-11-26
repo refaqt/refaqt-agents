@@ -1,9 +1,7 @@
 ---
 name: mistake-log
 description: >-
-  Logs incidents to docs/mistakes/, records repeated failures, and turns them
-  into prevention rules. Use at task start, after bugs, failed approaches, rejected
-  output, or convention misunderstandings in this repository.
+  Use after a bug, a failed approach, rejected output or a misunderstood convention, to write docs/mistakes/ and its prevention rule, and to turn a repeated mistake into a lasting rule.
 ---
 
 # Mistake log
@@ -18,26 +16,26 @@ description: >-
 
 ## Before starting work
 
-1. Read `docs/mistakes/` (and its `README.md` index).
-2. Say which prevention rules apply to the current task.
+1. Read the index `docs/mistakes/README.md`. Do not read every note.
+2. Say which prevention rules apply to the current task. Open a note only when its rule matches.
 
 ## After a mistake
 
-1. Add `docs/mistakes/YYYY-MM-DD_topic.md` (one file per incident) and a row in `docs/mistakes/README.md`.
-2. If the same mistake happens twice, add a bold warning on the relevant section and write a lasting rule (`.agents/rules/` in the kit, or a small adapter such as `.cursor/rules/`).
+1. Add `docs/mistakes/YYYY-MM-DD_topic.md` (one file per incident), with a `## Prevention rule` section whose first line is the rule. Then update the index with `python3 .agents/scripts/mistakes_index.py` (in a doqs repository: `./doqs.sh mistakes`). Do not edit the index table by hand.
+2. If the same mistake happens twice, add a bold warning on the relevant section and write a lasting rule: in `.agents-local/rules/repo.md` for this repository, or in the kit when every repository needs it.
 3. Treat every mistake as a gap in the process, not a one-off.
 
-Write every mistake entry in B2 English. Follow `.agents/rules/communication.md`.
+Write every mistake entry in B2 English. Follow `.agents/rules/core.md`.
 Keep file names, commands, and official names exact.
 
 ## Continuous improvement
 
-- After a long session, review `docs/mistakes/` and `.agents-local/skills/patterns/SKILL.md` (if present) for rules or patterns to promote.
+- After a long session, review the mistakes index and `.agents-local/skills/patterns/SKILL.md` (if present) for rules or patterns to promote.
 - Prefer making `docs/mistakes/` shorter over time by stopping repeat categories.
 
 ## Entry format
 
-Use this format (see also [`templates/adr.md`](../templates/adr.md) for ADRs):
+Use this format (see also [`templates/adr.md`](../../templates/adr.md) for decision records):
 
 ```markdown
 # YYYY-MM-DD — Short title

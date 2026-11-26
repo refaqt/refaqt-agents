@@ -1,7 +1,7 @@
 # Onboarding
 
 How to set up, run, and find your way around this repository.
-Write this file in B2 English. Follow `.agents/rules/communication.md`.
+Write this file in B2 English. Follow `.agents/rules/core.md`.
 
 ## Prerequisites
 

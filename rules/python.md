@@ -1,5 +1,5 @@
 # Python
 
-- Run package entry points from the repository root so config paths and imports resolve.
-- Prefer installable packages (`pip install -e …`) over changing `sys.path`.
-- Prefer the project's existing test runner. When none is documented, `python -m unittest discover` from the repo root is a reasonable default.
+This rule moved. It is now part of the skill [`coding`](../skills/coding/SKILL.md).
+
+Old links point here, so this short note stays. Do not add rules to this file.

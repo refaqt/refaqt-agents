@@ -1,9 +1,7 @@
 ---
 name: doqs-naming
 description: >-
-  Apply DOQS naming and versioning rules when you create or rename modules,
-  bill of materials (BOM) rows, parts, adapters, or release tags. Run
-  validate_all after structural changes.
+  Use when you create or rename DOQS modules, bill of materials (BOM) rows, parts, adapters, okh.toml versions or release tags. Gives the naming rules and the check command.
 ---
 
 # DOQS naming and validation
@@ -39,17 +37,19 @@ Quick reference (kebab-case means lowercase words with hyphens; semver means sem
 
 From the **machine repository root** after Open Know-How (OKH), bill of materials (BOM), or path changes:
 
-```powershell
-python doqs/scripts/validate_all.py
+```bash
+./doqs.sh check
 ```
+
+On Windows, use `doqs.bat check`.
 
 Before tagging:
 
-```powershell
-python doqs/scripts/validate_okh.py --expected-version X.Y.Z
+```bash
+./doqs.sh check --expected-version X.Y.Z
 ```
 
-On existing machines, adopt the names step by step: `python doqs/scripts/check_names.py --warnings-only` until bill of materials (BOM) and folder names are migrated.
+On existing machines, adopt the names step by step. `./doqs.sh check` reports names that do not follow the rules yet.
 
 ## Do not
 

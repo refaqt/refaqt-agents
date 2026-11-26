@@ -1,0 +1,13 @@
+{
+  "name": "refaqt",
+  "owner": {
+    "name": "Refaqt"
+  },
+  "plugins": [
+    {
+      "name": "refaqt",
+      "source": "./",
+      "description": "Refaqt working rules and skills for every repository and every Claude surface."
+    }
+  ]
+}
