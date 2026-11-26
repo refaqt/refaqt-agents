@@ -25,6 +25,9 @@ Create `.agents-local/profile.toml`:
 name = "Your project name"
 profile = "base"      # "doqs" in a machine repository with a doqs/ submodule
 
+# setup = "..."      # optional: a different setup command for the first step
+# own_hook = true     # optional: keep the repository's own session hook
+
 [plugins]             # claude.ai plugins to switch off or on in this repository
 off = []              # for example ["claude-for-manufacturing@synced"]
 on = []

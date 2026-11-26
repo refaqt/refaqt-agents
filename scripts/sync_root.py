@@ -17,6 +17,8 @@ profile.toml looks like this:
 
     name = "AQTUATOR"
     profile = "doqs"            # "doqs" for machine repositories, else "base"
+    setup = "..."               # optional: another setup command for the first step
+    own_hook = false            # optional: true keeps the repository's own session hook
     [plugins]                   # claude.ai plugins: on or off in this repository
     off = ["claude-for-manufacturing@synced"]
     on = []
@@ -103,6 +105,8 @@ def load_profile(root: Path) -> dict:
     return {
         "name": data["name"],
         "kind": kind,
+        "setup": data.get("setup"),
+        "own_hook": bool(data.get("own_hook", False)),
         "on": list(plugins.get("on", [])),
         "off": list(plugins.get("off", [])),
     }
@@ -161,7 +165,7 @@ def render_root_files(root: Path, profile: dict) -> dict[str, str]:
     values = {
         "{{NAME}}": profile["name"],
         "{{CHECK}}": spec["check"],
-        "{{SETUP}}": spec["setup"],
+        "{{SETUP}}": profile["setup"] or spec["setup"],
         "{{NEVER_COMMIT}}": spec["never_commit"],
         "{{PROFILE_ROWS}}": "".join(row + "\n" for row in spec["rows"]),
         "{{SKILL_ROWS}}": "".join(row + "\n" for row in skill_rows(root)),
@@ -179,7 +183,7 @@ def render_root_files(root: Path, profile: dict) -> dict[str, str]:
     pr = "\n".join(line for line in pr.splitlines() if not line.startswith("Copy this file")) + "\n"
     files[".github/pull_request_template.md"] = pr
 
-    if profile["kind"] == "base":
+    if profile["kind"] == "base" and not profile["own_hook"]:
         files[".claude/hooks/session-start.sh"] = (TEMPLATES / "session-start.sh").read_text(encoding="utf-8")
         files["setup-agents.sh"] = (TEMPLATES / "setup-agents.sh").read_text(encoding="utf-8")
     return files
@@ -208,7 +212,10 @@ def merge_settings(text: str | None, profile: dict) -> str:
 def merge_cursor_env(text: str | None, profile: dict) -> str:
     data = json.loads(text) if text and text.strip() else {}
     data.setdefault("name", profile["name"].lower())
-    data["install"] = "bash .claude/hooks/session-start.sh"
+    hook = "bash .claude/hooks/session-start.sh"
+    install = data.get("install", "")
+    if hook not in install:
+        data["install"] = f"{install} && {hook}" if install else hook
     return json.dumps(data, indent=2) + "\n"
 
 
