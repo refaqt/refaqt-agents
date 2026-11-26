@@ -22,7 +22,9 @@ for that part. It copies `setup-tooling.sh`, which fills both folders.
 Write `.agents-local/rules/repo.md` with what is true only for this repository: what it is, its
 folders, its stack, and its special rules. Keep it under 3 KB. Every session loads it. Put
 everything that is true for all Refaqt repositories in this kit instead. When the file is
-missing, Step 3 writes a starting file with the headings to fill in.
+missing, Step 3 writes it once. If the old `AGENTS.md` was written by hand, its part from "## This
+repository" on moves there unchanged; shorten it later. Otherwise you get a file with the headings to
+fill in.
 
 Repository-only skills go in `.agents-local/skills/<name>/SKILL.md`.
 
