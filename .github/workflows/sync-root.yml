@@ -1,0 +1,81 @@
+# SPDX-FileCopyrightText: 2025-2026 Refaqt (BE 0804.145.539) and contributors
+# SPDX-License-Identifier: GPL-3.0-or-later
+#
+# Keep the shared agent files the same in every Refaqt repository.
+#
+# For each repository in the organization that has .agents-local/profile.toml,
+# this job runs scripts/sync_root.py and scripts/mistakes_index.py. When a file
+# changed, it opens a pull request, or updates the one that is already open.
+# It uses no AI: the same templates always give the same files.
+#
+# It needs one secret, SYNC_TOKEN: a fine-grained token (or a GitHub App token)
+# for the refaqt organization, with read and write access to "Contents" and
+# "Pull requests" on the repositories that use the kit.
+
+name: Sync shared agent files
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "templates/**"
+      - "skills/**"
+      - "rules/core.md"
+      - "scripts/sync_root.py"
+      - "scripts/mistakes_index.py"
+  schedule:
+    - cron: "17 4 * * 1"   # every Monday, 04:17 UTC
+  workflow_dispatch:
+    inputs:
+      repository:
+        description: "Only this repository (for example aqtuator). Empty means all."
+        required: false
+        default: ""
+
+permissions:
+  contents: read
+
+concurrency:
+  group: sync-root
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.SYNC_TOKEN }}
+      ORG: refaqt
+      BRANCH: chore/sync-agent-files
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          path: kit
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Sync every repository that uses the kit
+        run: |
+          set -euo pipefail
+          if [ -z "${GH_TOKEN}" ]; then
+            echo "::error::The secret SYNC_TOKEN is missing. See the comment at the top of this file."
+            exit 1
+          fi
+          git config --global user.name "refaqt-kit-sync"
+          git config --global user.email "refaqt-kit-sync@users.noreply.github.com"
+
+          only="${{ github.event.inputs.repository }}"
+          repos="$(gh repo list "$ORG" --limit 200 --no-archived --json name --jq '.[].name')"
+          failed=0
+          for repo in $repos; do
+            [ -n "$only" ] && [ "$repo" != "$only" ] && continue
+            gh api "repos/$ORG/$repo/contents/.agents-local/profile.toml" >/dev/null 2>&1 || continue
+            echo "::group::$repo"
+            if ! bash kit/scripts/sync_one_repo.sh "$ORG" "$repo" "$BRANCH" "$GITHUB_SHA"; then
+              echo "::warning::Sync failed for $repo."
+              failed=1
+            fi
+            echo "::endgroup::"
+          done
+          exit $failed

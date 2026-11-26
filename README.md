@@ -26,7 +26,7 @@ when a task asks for it.
 | --- | --- |
 | `rules/core.md` | The rules for every task. Keep it under 2.5 KB. The other files in `rules/` only point to where their text moved. |
 | `skills/<name>/SKILL.md` | Skills, one folder each, in the open Agent Skills format |
-| `scripts/` | `sync_root.py` (writes the shared root files), `link_skills.sh`, `mistakes_index.py`, `context_budget.py` |
+| `scripts/` | `sync_root.py` (writes the shared root files), `sync_one_repo.sh` (used by the weekly sync job), `link_skills.sh`, `mistakes_index.py`, `context_budget.py` |
 | `templates/root/` | Templates for `CLAUDE.md`, `AGENTS.md` and the Cursor rule files |
 | `templates/` | The session hook and setup file for repositories without doqs, the pull request and decision templates |
 | `bootstrap/docs/` | Starting files for `docs/log/`, `docs/decisions/`, `docs/mistakes/` and `docs/architecture.md` |

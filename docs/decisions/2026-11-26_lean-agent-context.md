@@ -36,7 +36,8 @@ Agents spent many tokens before they started any work. In aqtuator, a normal sta
    `.agents-local/profile.toml`, to save the space their skill list takes. Copying them would break
    updates, and their licence does not allow it in this GPL repository.
 7. **Root files are generated.** `scripts/sync_root.py` writes them from `templates/root/`. A
-   GitHub Action in `refaqt/.github` runs it in every repository and opens a pull request. It uses
+   GitHub Action in this kit (`.github/workflows/sync-root.yml`) runs it in every repository
+   that has `.agents-local/profile.toml`, and opens a pull request. It uses
    no AI, so the result is the same every time.
 
 ## Consequences

@@ -47,7 +47,7 @@ merges the session hook into `.claude/settings.json`. In a `base` repository it 
 `setup-agents.sh` and `.claude/hooks/session-start.sh`. In a `doqs` repository, doqs installs
 those. Commit the result.
 
-Do not edit the generated files by hand. A weekly job in `refaqt/.github` runs the same script in
+Do not edit the generated files by hand. A weekly job in this kit (`.github/workflows/sync-root.yml`) runs the same script in
 every repository and opens a pull request when the templates change.
 
 ## Step 4: check it
