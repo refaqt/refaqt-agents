@@ -1,16 +1,22 @@
 # SPDX-FileCopyrightText: 2025-2026 Refaqt (BE 0804.145.539) and contributors
 # SPDX-License-Identifier: GPL-3.0-or-later
 #
-# Keep the shared agent files the same in every Refaqt repository.
+# Keep the shared files the same in every Refaqt repository that uses this kit.
 #
-# For each repository in the organization that has .agents-local/profile.toml,
-# this job runs scripts/sync_root.py and scripts/mistakes_index.py. When a file
-# changed, it opens a pull request, or updates the one that is already open.
-# It uses no AI: the same templates always give the same files.
+# For each repository with a .agents submodule, this job writes the shared files
+# from the kit's templates: CLAUDE.md, AGENTS.md, the Cursor rules, the pull
+# request template, the contributor agreement check and the mistakes index. In a
+# machine repository it also runs doqs' installer, which writes the doqs and
+# SysON launchers, setup-tooling.sh and .bat, and the session hook.
 #
-# It needs one secret, SYNC_TOKEN: a fine-grained token (or a GitHub App token)
-# for the refaqt organization, with read and write access to "Contents" and
-# "Pull requests" on the repositories that use the kit.
+# When a file changed, it opens one pull request (or updates the open one). When
+# nothing changed, it closes an old sync pull request. It never writes to a
+# default branch, and it uses no AI: the same templates always give the same files.
+#
+# It uses the GitHub App "Refaqt file sync", the same App as the old sync job in
+# refaqt/.github. It needs the organization variable SYNC_APP_ID and the
+# organization secret SYNC_APP_PRIVATE_KEY, with refaqt-agents in the secret's
+# repository access. See INSTALL.md, "The weekly sync".
 
 name: Sync shared agent files
 
@@ -22,11 +28,17 @@ on:
       - "skills/**"
       - "rules/core.md"
       - "scripts/sync_root.py"
+      - "scripts/sync_one_repo.sh"
       - "scripts/mistakes_index.py"
+      - ".github/workflows/sync-root.yml"
   schedule:
     - cron: "17 4 * * 1"   # every Monday, 04:17 UTC
   workflow_dispatch:
     inputs:
+      dry_run:
+        description: "Only report what would change. Write nothing."
+        type: boolean
+        default: false
       repository:
         description: "Only this repository (for example aqtuator). Empty means all."
         required: false
@@ -36,17 +48,21 @@ permissions:
   contents: read
 
 concurrency:
-  group: sync-root
+  group: sync-agent-files
   cancel-in-progress: false
 
 jobs:
   sync:
     runs-on: ubuntu-latest
-    env:
-      GH_TOKEN: ${{ secrets.SYNC_TOKEN }}
-      ORG: refaqt
-      BRANCH: chore/sync-agent-files
     steps:
+      - name: Get a token for the GitHub App
+        id: app
+        uses: actions/create-github-app-token@v3
+        with:
+          app-id: ${{ vars.SYNC_APP_ID }}
+          private-key: ${{ secrets.SYNC_APP_PRIVATE_KEY }}
+          owner: ${{ github.repository_owner }}
+
       - uses: actions/checkout@v7
         with:
           path: kit
@@ -56,24 +72,33 @@ jobs:
           python-version: "3.12"
 
       - name: Sync every repository that uses the kit
+        env:
+          GH_TOKEN: ${{ steps.app.outputs.token }}
+          ORG: ${{ github.repository_owner }}
+          BRANCH: refaqt-agent-files
+          DRY_RUN: ${{ inputs.dry_run == true }}
+          ONLY: ${{ inputs.repository }}
         run: |
           set -euo pipefail
-          if [ -z "${GH_TOKEN}" ]; then
-            echo "::error::The secret SYNC_TOKEN is missing. See the comment at the top of this file."
-            exit 1
-          fi
-          git config --global user.name "refaqt-kit-sync"
-          git config --global user.email "refaqt-kit-sync@users.noreply.github.com"
+          # Commits made with the App token show up as the App.
+          git config --global user.name "refaqt-file-sync[bot]"
+          git config --global user.email "refaqt-file-sync[bot]@users.noreply.github.com"
+          gh auth setup-git
 
-          only="${{ github.event.inputs.repository }}"
-          repos="$(gh repo list "$ORG" --limit 200 --no-archived --json name --jq '.[].name')"
+          echo "## Shared agent files" >> "$GITHUB_STEP_SUMMARY"
+          [ "$DRY_RUN" = "true" ] && echo "Dry run: nothing was written." >> "$GITHUB_STEP_SUMMARY"
+
+          repos="$(gh repo list "$ORG" --limit 300 --no-archived --source --json name --jq '.[].name')"
           failed=0
           for repo in $repos; do
-            [ -n "$only" ] && [ "$repo" != "$only" ] && continue
-            gh api "repos/$ORG/$repo/contents/.agents-local/profile.toml" >/dev/null 2>&1 || continue
+            [ -n "$ONLY" ] && [ "$repo" != "$ONLY" ] && continue
+            # Only repositories that mount this kit at .agents.
+            modules="$(gh api "repos/$ORG/$repo/contents/.gitmodules" --jq '.content' 2>/dev/null | base64 -d 2>/dev/null || true)"
+            printf '%s\n' "$modules" | grep -Eq '^\s*path\s*=\s*\.agents\s*$' || continue
             echo "::group::$repo"
-            if ! bash kit/scripts/sync_one_repo.sh "$ORG" "$repo" "$BRANCH" "$GITHUB_SHA"; then
+            if ! bash kit/scripts/sync_one_repo.sh "$ORG" "$repo" "$BRANCH" "$GITHUB_SHA" "$DRY_RUN"; then
               echo "::warning::Sync failed for $repo."
+              echo "- $repo: **failed**, see the log" >> "$GITHUB_STEP_SUMMARY"
               failed=1
             fi
             echo "::endgroup::"

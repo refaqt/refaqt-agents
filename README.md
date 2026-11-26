@@ -35,7 +35,8 @@ when a task asks for it.
 ## Install
 
 See [INSTALL.md](INSTALL.md). Short version: add the kit as a submodule at `.agents/`, write
-`.agents-local/profile.toml`, and run `python3 .agents/scripts/sync_root.py`.
+`.agents-local/rules/repo.md`, and run `python3 .agents/scripts/sync_root.py`. A weekly job then
+keeps the shared files current in every repository.
 
 To use the skills in Claude Code without the submodule, install the plugin:
 

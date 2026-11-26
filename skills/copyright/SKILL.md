@@ -58,8 +58,8 @@ A new Refaqt repository gets, from the start:
 - licence files with the copyright notice: run `python doqs/scripts/apply_licenses.py` in a
   repository that uses doqs, or copy the pattern from an existing Refaqt repository;
 - a licence section in `README.md` that starts with the copyright notice;
-- `.github/workflows/contributor-agreement.yml`, copied from `doqs/templates/contributing/` or
-  from `workflow-templates/` in `refaqt/.github`;
+- `.github/workflows/contributor-agreement.yml`. The kit's `sync_root.py` writes it, and the
+  weekly sync keeps it current;
 - a `CONTRIBUTING.md` that links to the central contributor manual.
 
 ## Pull requests from others

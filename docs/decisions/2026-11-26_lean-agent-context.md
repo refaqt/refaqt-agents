@@ -32,12 +32,16 @@ Agents spent many tokens before they started any work. In aqtuator, a normal sta
    plugin in claude.ai, so every session gets the skills. Other people get links that the session
    hook makes in `.claude/skills/`. Cursor reads the table in `AGENTS.md`.
 6. **Anthropic plugins are not copied.** Claude for Manufacturing and other Anthropic plugins are
-   turned on for the organization in claude.ai. Each repository can turn one off in
-   `.agents-local/profile.toml`, to save the space their skill list takes. Copying them would break
+   turned on for the organization in claude.ai. Each repository can turn one off in an
+   optional `.agents-local/profile.toml`, to save the space their skill list takes. Copying them would break
    updates, and their licence does not allow it in this GPL repository.
 7. **Root files are generated.** `scripts/sync_root.py` writes them from `templates/root/`. A
    GitHub Action in this kit (`.github/workflows/sync-root.yml`) runs it in every repository
-   that has `.agents-local/profile.toml`, and opens a pull request. It uses
+   that mounts the kit, and opens a pull request. In machine repositories it also runs doqs'
+   installer, so the doqs launchers and `setup-tooling.*` stay current. It reuses the GitHub App
+   of the old sync job in `refaqt/.github`. That job lives in a repository that cloud sessions
+   cannot attach, because its name starts with a dot, so agents could not change it. The
+   contributor agreement file moves to this sync too. It uses
    no AI, so the result is the same every time.
 
 ## Consequences
@@ -48,4 +52,5 @@ Agents spent many tokens before they started any work. In aqtuator, a normal sta
   which.
 - People change shared text in this kit, never in a repository's `CLAUDE.md` or `AGENTS.md`.
 - Outside contributors do not get Anthropic's plugins. They do get every Refaqt skill.
-- Repositories need `.agents-local/profile.toml` before the sync can run.
+- `.agents-local/profile.toml` is optional. The script takes the name from the README and the
+  profile from `.gitmodules`.

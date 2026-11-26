@@ -9,11 +9,16 @@ Every Refaqt repository shows its agents the same entry files. This script
 writes them from the templates in .agents/templates/root/, so they cannot drift
 apart. What belongs to one repository lives in .agents-local/ only:
 
-    .agents-local/profile.toml     name, profile, plugins (read by this script)
-    .agents-local/rules/repo.md    the repository's own rules (imported by AGENTS.md)
+    .agents-local/rules/repo.md    the repository's own rules (imported by AGENTS.md).
+                                   Written once as a starting file when missing.
     .agents-local/skills/<name>/   the repository's own skills
+    .agents-local/profile.toml     optional overrides, see below
 
-profile.toml looks like this:
+Without profile.toml the script finds what it needs:
+    name     the first "# " heading of README.md, else the folder name
+    profile  "doqs" when .gitmodules has a doqs submodule, else "base"
+
+profile.toml, when a repository needs to override something:
 
     name = "AQTUATOR"
     profile = "doqs"            # "doqs" for machine repositories, else "base"
@@ -25,7 +30,7 @@ profile.toml looks like this:
 
 Files this script owns and rewrites:
     CLAUDE.md, AGENTS.md, .github/pull_request_template.md,
-    .cursor/rules/refaqt-*.mdc
+    .github/workflows/contributor-agreement.yml, .cursor/rules/refaqt-*.mdc
     base profile only: .claude/hooks/session-start.sh, setup-agents.sh
     (in a doqs repository, doqs installs those itself)
 
@@ -84,21 +89,52 @@ FRONTMATTER_RE = re.compile(r"^---\n(.*?)\n---", re.DOTALL)
 WHEN_RE = re.compile(r"\bUse (?:it )?(?:when|for|at|before|after|to)\b", re.IGNORECASE)
 
 
+REPO_STARTER = """# {name}: rules for this repository
+
+Every session loads this file, so keep it under 3 KB. Write only what is true for this
+repository. Rules for every Refaqt repository belong in the shared kit.
+
+## What this repository is
+
+(One or two sentences.)
+
+## Where things go
+
+| You are adding | It goes in |
+| --- | --- |
+
+## Hard rules
+
+- (Rules an agent must never break here.)
+"""
+
+
 class ProfileError(Exception):
     pass
 
 
+def _readme_title(root: Path) -> str | None:
+    readme = root / "README.md"
+    if not readme.is_file():
+        return None
+    for line in readme.read_text(encoding="utf-8").splitlines():
+        if line.startswith("# "):
+            return line[2:].strip() or None
+    return None
+
+
+def _has_doqs_submodule(root: Path) -> bool:
+    gitmodules = root / ".gitmodules"
+    if not gitmodules.is_file():
+        return False
+    return re.search(r"^\s*path\s*=\s*doqs\s*$", gitmodules.read_text(encoding="utf-8"), re.MULTILINE) is not None
+
+
 def load_profile(root: Path) -> dict:
     path = root / ".agents-local" / "profile.toml"
-    if not path.is_file():
-        raise ProfileError(
-            f"{path} is missing. Create it with at least: name = \"<repository name>\" and "
-            "profile = \"base\" (or \"doqs\" in a machine repository)."
-        )
-    data = tomllib.loads(path.read_text(encoding="utf-8"))
-    if "name" not in data:
-        raise ProfileError(f"{path} has no name.")
-    kind = data.get("profile", "base")
+    data = tomllib.loads(path.read_text(encoding="utf-8")) if path.is_file() else {}
+    data.setdefault("name", _readme_title(root) or root.resolve().name)
+    kind = data.get("profile") or ("doqs" if _has_doqs_submodule(root) else "base")
     if kind not in PROFILES:
         raise ProfileError(f"{path}: profile must be one of {', '.join(PROFILES)}, not {kind!r}.")
     plugins = data.get("plugins", {})
@@ -179,6 +215,10 @@ def render_root_files(root: Path, profile: dict) -> dict[str, str]:
     for name in spec["cursor"]:
         files[f".cursor/rules/{name}"] = (ROOT_TEMPLATES / "cursor" / name).read_text(encoding="utf-8")
 
+    files[".github/workflows/contributor-agreement.yml"] = (
+        ROOT_TEMPLATES / "github" / "contributor-agreement.yml"
+    ).read_text(encoding="utf-8")
+
     pr = (TEMPLATES / "pull-request.md").read_text(encoding="utf-8")
     pr = "\n".join(line for line in pr.splitlines() if not line.startswith("Copy this file")) + "\n"
     files[".github/pull_request_template.md"] = pr
@@ -242,6 +282,9 @@ def desired_state(root: Path, profile: dict) -> dict[str, str]:
     files[".cursor/environment.json"] = merge_cursor_env(read(".cursor/environment.json"), profile)
     files[".gitignore"] = merge_lines(read(".gitignore"), GITIGNORE_LINES)
     files[".gitattributes"] = merge_lines(read(".gitattributes"), [GITATTRIBUTES_LINE])
+    # Written once. After that the file belongs to the repository.
+    if read(".agents-local/rules/repo.md") is None:
+        files[".agents-local/rules/repo.md"] = REPO_STARTER.format(name=profile["name"])
     return files
 
 
